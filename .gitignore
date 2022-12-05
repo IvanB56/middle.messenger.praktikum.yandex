@@ -1,0 +1,8 @@
+/git/
+/.idea/
+/node_modules/
+/dist/
+/.parcel-cache/
+/git/.github/
+/git/node_modules/
+/.github/

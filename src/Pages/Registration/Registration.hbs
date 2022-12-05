@@ -1,0 +1,38 @@
+---
+"title": "Регистрация"
+form-data: {
+    "inputName": {
+        "type": "text",
+        "placeholder": "Имя"
+    },
+    "inputSurname": {
+        "type": "text",
+        "placeholder": "Фамилия"
+    },
+    "inputLogin": {
+        "type": "text",
+        "placeholder": "Логин"
+    },
+    "inputEmail": {
+        "type": "email",
+        "placeholder": "Ваша почта"
+    },
+    "inputPassword": {
+        "type": "password",
+        "placeholder": "Ваш пароль"
+    },
+    "inputPhone": {
+        "type": "tel",
+        "placeholder": "Телефон"
+    }
+
+}
+formButtonText: "Регистрация"
+---
+
+
+{{!< base}}
+
+<div id="registration">
+    {{>'Form/GuestForm' data=form-data title=title formButtonText=formButtonText }}
+</div>
