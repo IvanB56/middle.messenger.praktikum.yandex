@@ -5,7 +5,7 @@
     <div class="form-inner-body">
         <form>
             {{#each data}}
-                {{> "UI/FormInput/FormInput" placeholder=this.placeholder type=this.type }}
+                {{> "UI/FormInput/FormInput" placeholder=this.placeholder type=this.type name=this.name}}
             {{/each}}
 
             {{#if regButton}}
