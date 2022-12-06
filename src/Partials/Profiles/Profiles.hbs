@@ -27,7 +27,7 @@
     </div>
     <div class="profiles-body">
         {{#each profiles }}
-            {{> ProfileItem/ProfileItem name=this.name message=this.messages}}
+            {{> ProfileItem/ProfileItem name=this.name message=this.messages active=this.active}}
         {{/each}}
     </div>
 </div>
