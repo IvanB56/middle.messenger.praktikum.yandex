@@ -1,13 +1,14 @@
 ---
 profiles: [
-{
-"name": "Вася",
-"messages": {
-text: "Lorem Ipsum is simply dummy text of the p",
-time: "12:33",
-count: 0
-}
-},
+    {
+        "name": "Вася",
+        "active": true,
+        "messages": {
+            text: "Lorem Ipsum is simply dummy text of the p",
+            time: "12:33",
+            count: 0
+        }
+    },
 {
 "name": "Петр",
 "messages": {
@@ -52,6 +53,6 @@ to: 'me'
 {{!< base}}
 
 <div id="chat">
-    {{> Profiles/Profiles}}
+    {{> Profiles/Profiles profiles=profiles}}
     {{> ChatMessages/ChatMessages messages=chat }}
 </div>
