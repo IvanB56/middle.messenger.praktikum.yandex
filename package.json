@@ -14,5 +14,9 @@
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
     "parcel": "^2.8.0"
+  },
+  "engines": {
+    "node": ">=16.16.0",
+    "npm": ">= 8.11.0"
   }
 }
