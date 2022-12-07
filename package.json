@@ -2,6 +2,7 @@
   "name": "meesanger",
   "version": "1.0.0",
   "description": "",
+  "main": "index.js",
   "scripts": {
     "dev": "parcel src/index.hbs --no-cache --watch-for-stdin",
     "build": "parcel build src/index.hbs && node ./server.js",
