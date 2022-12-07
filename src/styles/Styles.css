@@ -20,7 +20,7 @@ html {
   font-size: 14px;
   font-family: 'Quattrocento Sans', sans-serif;
 }
-body {
+main {
   background: linear-gradient(#BC82D7 0%, rgba(188, 130, 215, 0.75) 34.9%, rgba(188, 130, 215, 0.75) 65.67%, #BC82D7 100%), url(../Assets/bg.jfif) no-repeat center center;
   background-size: cover;
   background-clip: border-box;
