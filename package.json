@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel src/index.hbs --no-cache --watch-for-stdin",
+    "dev": "parcel src/index.hbs --no-cache",
     "build": "parcel build src/index.hbs",
-    "start": "npm run build && node ./server.js",
+    "start": "npn run build && node ./server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
