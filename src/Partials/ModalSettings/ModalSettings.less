@@ -1,3 +1,5 @@
+@import "../../styles/colors";
+
 #modal-settings {
   position: absolute;
   width: 100%;
@@ -11,7 +13,7 @@
     left: calc(50% - 300px);
     top: calc(50% - 400px);
     background-color: #fff;
-    border: 1px solid #603276;
+    border: 1px solid @border-color;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -20,7 +22,7 @@
       font-size: 36px;
       text-align: center;
       padding: 20px 0;
-      text-shadow: 2px 2px 2px #ccc;
+      text-shadow: 2px 2px 2px @text-shadow-color;
     }
 
     .row {
@@ -31,7 +33,7 @@
       border-bottom: 1px solid #490c664d;
 
       span:last-child {
-        color: #999;
+        color: @text-color_second;
       }
 
       i {
@@ -55,7 +57,7 @@
     .change-avatar {
       width: 150px;
       height: 150px;
-      border: 1px solid #603276;
+      border: 1px solid @border-color;
       border-radius: 50%;
       cursor: pointer;
       background-color: #d9d9d9;
@@ -99,7 +101,7 @@
 
       i {
         font-size: 60px;
-        color: #CCCCCC;
+        color: #cccccc;
         transition: opacity 0.3s;
       }
 

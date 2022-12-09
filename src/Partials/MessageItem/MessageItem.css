@@ -16,7 +16,8 @@
   top: 0;
   left: -10px;
   content: '';
-  border: 10px solid transparent;
+  border-left: 10px solid transparent;
+  border-bottom: 10px solid transparent;
   border-top: 10px solid #9cdb2b;
   border-right: 10px solid #9cdb2b;
 }

@@ -1,6 +1,8 @@
+@import "../../styles/colors";
+
 .message-item {
   padding: 20px;
-  background-color: #9cdb2b;
+  background-color: @main-color_second;
   box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   max-width: 400px;
@@ -17,13 +19,14 @@
     top: 0;
     left: -10px;
     content: '';
-    border: 10px solid transparent;
-    border-top: 10px solid #9cdb2b;
-    border-right: 10px solid #9cdb2b;
+    border-left: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-top: 10px solid @main-color_second;
+    border-right: 10px solid @main-color_second;
   }
 
   &.my-message {
-    background-color: #b277ce;
+    background-color: @main-color;
     margin-left: auto;
     align-self: flex-end;
 
@@ -33,8 +36,8 @@
       right: -10px;
       content: '';
       border: 10px solid transparent;
-      border-left: 10px solid #b277ce;
-      border-top: 10px solid #b277ce;
+      border-left: 10px solid @main-color;
+      border-top: 10px solid @main-color;
     }
   }
 

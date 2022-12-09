@@ -1,18 +1,20 @@
+@import "../../styles/colors";
+
 .form-inner {
   display: flex;
   flex-direction: column;
   position: absolute;
   background-color: #fff;
   border-radius: 10px;
-  border: 1px solid #603276;
-  box-shadow: 0 0 10px 2px #603276;
+  border: 1px solid @border-color;
+  box-shadow: 0 0 10px 2px @shadow-color;
 
   .form-inner-header {
     h2 {
       font-size: 36px;
       text-align: center;
       padding: 20px 0;
-      text-shadow: 2px 2px 2px #ccc;
+      text-shadow: 2px 2px 2px @text-shadow-color;
     }
   }
 

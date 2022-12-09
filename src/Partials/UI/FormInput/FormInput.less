@@ -1,3 +1,5 @@
+@import "../../../styles/colors";
+
 .form-input {
   width: 100%;
   height: auto;
@@ -9,14 +11,14 @@
     height: 40px;
     color: #333;
     font-size: 14px;
-    border: 1px solid #BC82D7;
+    border: 1px solid @border-color;
     border-radius: 5px;
     padding: 0 0 0 24px;
 
     &:active, &:focus {
       box-shadow: none;
       outline: none;
-      border-color: #603276;
+      border-color: @border-color_hover;
     }
   }
 

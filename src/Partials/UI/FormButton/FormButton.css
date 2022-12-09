@@ -7,9 +7,9 @@
 .form-button button {
   height: 40px;
   width: 100%;
-  background-color: #A858CE;
+  background-color: #a858ce;
   border-radius: 5px;
-  border: 1px solid #603276;
+  border: 1px solid #bc82d7;
   color: #fff;
   cursor: pointer;
   transition: opacity 0.3s;
