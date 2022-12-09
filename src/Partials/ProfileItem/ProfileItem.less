@@ -1,3 +1,4 @@
+@import "../../styles/colors";
 .profile {
   display: flex;
   width: 100%;
@@ -25,7 +26,7 @@
   }
 
   .profile-message_preview {
-    color: #999999;
+    color: @text-color_second;
     font-size: 12px;
     max-width: 65%;
     overflow: hidden;
@@ -35,7 +36,7 @@
 
   .time {
     font-size: 12px;
-    color: #999;
+    color: @text-color_second;
     position: absolute;
     right: 10px;
     top: 10px;
@@ -46,7 +47,7 @@
     width: 25px;
     height: 25px;
     color: #fff;
-    background-color: #baed5e;
+    background-color:@main-color_second;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -69,7 +70,7 @@
       left: 0;
       bottom: 0;
       width: 10px;
-      background-color: #b277ce;
+      background-color: @main-color;
       position: absolute;
     }
   }

@@ -4,14 +4,14 @@
   position: absolute;
   background-color: #fff;
   border-radius: 10px;
-  border: 1px solid #603276;
+  border: 1px solid #bc82d7;
   box-shadow: 0 0 10px 2px #603276;
 }
 .form-inner .form-inner-header h2 {
   font-size: 36px;
   text-align: center;
   padding: 20px 0;
-  text-shadow: 2px 2px 2px #ccc;
+  text-shadow: 2px 2px 2px #cccccc;
 }
 .form-inner .form-inner-body {
   padding: 20px;
