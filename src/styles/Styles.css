@@ -55,7 +55,7 @@ a:hover {
   left: calc(50% - 300px);
   top: calc(50% - 400px);
   background-color: #fff;
-  border: 1px solid #603276;
+  border: 1px solid #bc82d7;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -64,7 +64,7 @@ a:hover {
   font-size: 36px;
   text-align: center;
   padding: 20px 0;
-  text-shadow: 2px 2px 2px #ccc;
+  text-shadow: 2px 2px 2px #cccccc;
 }
 #modal-profile-info .inner .row {
   display: flex;
@@ -74,7 +74,7 @@ a:hover {
   border-bottom: 1px solid #490c664d;
 }
 #modal-profile-info .inner .row span:last-child {
-  color: #999;
+  color: #999999;
 }
 #modal-profile-info .inner .button-exit {
   margin-top: 15px;
@@ -95,7 +95,7 @@ a:hover {
 #modal-profile-info .inner .change-avatar {
   width: 150px;
   height: 150px;
-  border: 1px solid #603276;
+  border: 1px solid #bc82d7;
   border-radius: 50%;
   cursor: pointer;
   background-color: #d9d9d9;
@@ -127,7 +127,7 @@ a:hover {
 }
 #modal-profile-info .inner .change-avatar i {
   font-size: 60px;
-  color: #CCCCCC;
+  color: #cccccc;
   transition: opacity 0.3s;
 }
 #modal-profile-info .inner .change-avatar:hover {
@@ -152,7 +152,7 @@ a:hover {
   left: calc(50% - 300px);
   top: calc(50% - 400px);
   background-color: #fff;
-  border: 1px solid #603276;
+  border: 1px solid #bc82d7;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -161,7 +161,7 @@ a:hover {
   font-size: 36px;
   text-align: center;
   padding: 20px 0;
-  text-shadow: 2px 2px 2px #ccc;
+  text-shadow: 2px 2px 2px #cccccc;
 }
 #modal-settings .inner .row {
   display: flex;
@@ -171,7 +171,7 @@ a:hover {
   border-bottom: 1px solid #490c664d;
 }
 #modal-settings .inner .row span:last-child {
-  color: #999;
+  color: #999999;
 }
 #modal-settings .inner .row i {
   margin-left: 5px;
@@ -190,7 +190,7 @@ a:hover {
 #modal-settings .inner .change-avatar {
   width: 150px;
   height: 150px;
-  border: 1px solid #603276;
+  border: 1px solid #bc82d7;
   border-radius: 50%;
   cursor: pointer;
   background-color: #d9d9d9;
@@ -220,9 +220,18 @@ a:hover {
   width: 70%;
   text-align: center;
 }
+#modal-settings .inner .change-avatar .change-avatar-input {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+}
 #modal-settings .inner .change-avatar i {
   font-size: 60px;
-  color: #CCCCCC;
+  color: #cccccc;
   transition: opacity 0.3s;
 }
 #modal-settings .inner .change-avatar:hover {

@@ -1,13 +1,15 @@
+@import "../../styles/colors";
+
 #profiles {
   min-width: 30%;
   background-color: rgba(188, 130, 215, 0.2);
-  border-right: 1px solid #490c664d;
+  border-right: 1px solid @profile-border;
   overflow-y: hidden;
 
   .profiles-top {
     padding-bottom: 15px;
     margin: 15px;
-    border-bottom: 1px solid #490c664d;
+    border-bottom: 1px solid @profile-border;
   }
 
   .row {
@@ -31,7 +33,7 @@
     }
 
     .profile-status {
-      color: #999999;
+      color: @text-color_second;
       font-size: 12px;
     }
   }
@@ -58,14 +60,14 @@
       height: 40px;
       color: #333;
       font-size: 14px;
-      border: 1px solid #BC82D7;
+      border: 1px solid @border-color;
       border-radius: 5px;
       padding: 0 0 0 24px;
 
       &:active, &:focus {
         box-shadow: none;
         outline: none;
-        border-color: #603276;
+        border-color: @border-color_hover;
       }
     }
   }
