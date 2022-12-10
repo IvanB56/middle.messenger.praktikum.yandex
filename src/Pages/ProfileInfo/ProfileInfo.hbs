@@ -1,0 +1,36 @@
+---
+profiles: [
+    {
+        "name": "Вася",
+        "messages": {
+            text: "Lorem Ipsum is simply dummy text of the p",
+            time: "12:33",
+            count: 0
+        }
+    },
+    {
+        "name": "Петр",
+        "messages": {
+            text: "text message 2",
+            time: "10:12",
+            count: 2
+        }
+    },
+    {
+        "name": "Алёна",
+        "messages": {
+            text: "text message 3",
+            time: "14:16",
+            count: 0
+        }
+    }
+]
+---
+
+{{!< base}}
+
+<div id="chat">
+    {{> Profiles/Profiles profiles=profiles}}
+    {{> NotChangeChat/NotChangeChat}}
+    {{> ModalProfileInfo/ModalProfileInfo }}
+</div>

@@ -1,0 +1,54 @@
+@import "colors";
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  color: #490C66;
+}
+
+html {
+  font-size: 14px;
+  font-family: 'Quattrocento Sans', sans-serif;
+}
+
+main {
+  background: linear-gradient(#BC82D7 0%, rgba(188, 130, 215, 0.75) 34.9%, rgba(188, 130, 215, 0.75) 65.67%, #BC82D7 100%), url(../Assets/bg.jfif) no-repeat center center;
+  background-size: cover;
+  background-clip: border-box;
+  height: 100vh;
+  width: 100vw;
+}
+
+a {
+  display: inline-block;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.img {
+  border-radius: 50%;
+  background-color: #d9d9d9;
+  overflow: hidden;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+@import "../Partials/Form/GuestForm.css";
+@import "../Pages/Login/Login.css";
+@import "../Pages/Chat/Chat.css";
+@import "../Pages/Registration/Registration.css";
+@import "../Pages/Services/Services.css";
+@import "../Partials/UI/FormInput/FormInput.css";
+@import "../Partials/UI/FormButton/FormButton.css";
+@import "../Partials/UI/DefaultButton/DefaultButton.css";
+@import "../Partials/ChatMessages/ChatMessages.css";
+@import "../Partials/NotChangeChat/NotChangeChat.css";
+@import "../Partials/Profiles/Profiles.css";
+@import "../Partials/ProfileItem/ProfileItem.css";
+@import "../Partials/MessageItem/MessageItem.css";
+@import "../Partials/ModalProfileInfo/ModalProfileInfo.less";
+@import "../Partials/ModalSettings/ModalSettings.less";

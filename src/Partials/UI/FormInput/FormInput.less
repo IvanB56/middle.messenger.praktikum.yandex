@@ -1,0 +1,34 @@
+@import "../../../styles/colors";
+
+.form-input {
+  width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+  position: relative;
+
+  input {
+    width: 100%;
+    height: 40px;
+    color: #333;
+    font-size: 14px;
+    border: 1px solid @border-color;
+    border-radius: 5px;
+    padding: 0 0 0 24px;
+
+    &:active, &:focus {
+      box-shadow: none;
+      outline: none;
+      border-color: @border-color_hover;
+    }
+  }
+
+  span {
+    font-size: 13px;
+    position: absolute;
+    background-color: #fff;
+    padding: 0 10px;
+    top: -8px;
+    left: 15px;
+    font-weight: 700;
+  }
+}

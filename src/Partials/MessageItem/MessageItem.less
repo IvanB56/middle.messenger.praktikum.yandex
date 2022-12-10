@@ -1,0 +1,52 @@
+@import "../../styles/colors";
+
+.message-item {
+  padding: 20px;
+  background-color: @main-color_second;
+  box-shadow: 4px 4px 4px 0 @shadow-color_second;
+  border-radius: 5px;
+  max-width: 400px;
+  position: relative;
+  margin-bottom: 20px;
+  align-self: flex-start;
+
+  p {
+    color: #fff;
+  }
+
+  &:not(.my-message):before {
+    position: absolute;
+    top: 0;
+    left: -10px;
+    content: '';
+    border-left: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-top: 10px solid @main-color_second;
+    border-right: 10px solid @main-color_second;
+  }
+
+  &.my-message {
+    background-color: @main-color;
+    margin-left: auto;
+    align-self: flex-end;
+
+    &:before {
+      position: absolute;
+      top: 0;
+      right: -10px;
+      content: '';
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 10px solid @main-color;
+      border-top: 10px solid @main-color;
+    }
+  }
+
+  .message-item-date {
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    color: @main-color_third;
+    font-size: 12px;
+  }
+}
