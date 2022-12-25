@@ -10,11 +10,9 @@
   margin-bottom: 20px;
   align-self: flex-start;
 }
-
 .message-item p {
   color: #fff;
 }
-
 .message-item:not(.my-message):before {
   position: absolute;
   top: 0;
@@ -25,13 +23,11 @@
   border-top: 10px solid #9cdb2b;
   border-right: 10px solid #9cdb2b;
 }
-
 .message-item.my-message {
   background-color: #b277ce;
   margin-left: auto;
   align-self: flex-end;
 }
-
 .message-item.my-message:before {
   position: absolute;
   top: 0;
@@ -42,7 +38,6 @@
   border-left: 10px solid #b277ce;
   border-top: 10px solid #b277ce;
 }
-
 .message-item .message-item-date {
   position: absolute;
   right: 10px;
