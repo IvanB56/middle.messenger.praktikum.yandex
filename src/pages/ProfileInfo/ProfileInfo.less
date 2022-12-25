@@ -1,0 +1,113 @@
+@import "../../styles/variable";
+
+.profile-info {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  .inner {
+    position: absolute;
+    width: 500px;
+    height: 800px;
+    left: calc(50% - 250px);
+    top: calc(50% - 400px);
+    background-color: #fff;
+    border: 1px solid @border-color;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      font-size: 36px;
+      text-align: center;
+      padding: 20px 0;
+      text-shadow: 2px 2px 2px @text-shadow-color;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #490c664d;
+
+      span:last-child {
+        color: @text-color_second;
+      }
+    }
+
+    .button-exit {
+      margin-top: 15px;
+
+      button {
+        color: red;
+      }
+    }
+
+    .inner-body {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .change-data, .change-password {
+      margin-top: 20px;
+    }
+
+    .change-avatar {
+      width: 150px;
+      height: 150px;
+      border: 1px solid @border-color;
+      border-radius: 50%;
+      cursor: pointer;
+      background-color: #d9d9d9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s;
+      overflow: hidden;
+      position: relative;
+      margin: 0 auto 30px;
+
+      .change-avatar-text {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+
+        span {
+          color: #fff;
+          width: 70%;
+          text-align: center;
+        }
+      }
+
+      i {
+        font-size: 60px;
+        color: #cccccc;
+        transition: opacity 0.3s;
+      }
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+
+        .change-avatar-text {
+          opacity: 1;
+        }
+
+        i {
+          opacity: 0.2;
+        }
+      }
+    }
+  }
+}
