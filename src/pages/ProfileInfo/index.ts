@@ -1,1 +1,1 @@
-export {ProfileInfo as default} from './ProfileInfo';
+export {ProfileInfo as default} from "./ProfileInfo";

@@ -85,7 +85,7 @@
 }
 .profile-info .inner .change-avatar i {
   font-size: 60px;
-  color: #cccccc;
+  color: #ccc;
   transition: opacity 0.3s;
 }
 .profile-info .inner .change-avatar:hover {
