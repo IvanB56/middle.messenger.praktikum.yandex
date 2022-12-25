@@ -1,0 +1,52 @@
+/* stylelint-disable no-empty-source, at-rule-no-unknown */
+/* stylelint-enable no-empty-source, at-rule-no-unknown */
+.message-item {
+  padding: 20px;
+  background-color: #9cdb2b;
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  max-width: 400px;
+  position: relative;
+  margin-bottom: 20px;
+  align-self: flex-start;
+}
+
+.message-item p {
+  color: #fff;
+}
+
+.message-item:not(.my-message):before {
+  position: absolute;
+  top: 0;
+  left: -10px;
+  content: "";
+  border-left: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-top: 10px solid #9cdb2b;
+  border-right: 10px solid #9cdb2b;
+}
+
+.message-item.my-message {
+  background-color: #b277ce;
+  margin-left: auto;
+  align-self: flex-end;
+}
+
+.message-item.my-message:before {
+  position: absolute;
+  top: 0;
+  right: -10px;
+  content: "";
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #b277ce;
+  border-top: 10px solid #b277ce;
+}
+
+.message-item .message-item-date {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  color: #f1f1f1;
+  font-size: 12px;
+}
