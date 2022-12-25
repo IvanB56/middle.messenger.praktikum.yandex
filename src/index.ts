@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             ]
         }));
-    } else if (pathName === '/settings') {
+    } else if (pathName === "/settings") {
         renderDOM(new ProfileInfo({}));
     }
 });

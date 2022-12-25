@@ -12,13 +12,13 @@ module.exports = {
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "sourceType": "module",
-        "ecmaVersion": 2018
+        "ecmaVersion": 2020
     },
     "plugins": [
         "@typescript-eslint"
     ],
     "rules": {
-        "quotes": 1,
+        "quotes": 0,
         "max-len": [1, 150],
         "max-params": [2, 3],
         "no-use-before-define": "off",
