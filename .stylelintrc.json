@@ -1,0 +1,14 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "alpha-value-notation": "number",
+    "color-function-notation": "legacy",
+    "selector-pseudo-element-colon-notation": "single",
+    "color-hex-case": "lower",
+    "length-zero-no-unit": true,
+    "selector-list-comma-newline-after": "never-multi-line",
+    "at-rule-empty-line-before": "always",
+    "at-rule-no-unknown": null,
+    "property-no-unknown": null
+  }
+}
