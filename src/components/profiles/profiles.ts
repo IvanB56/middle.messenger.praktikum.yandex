@@ -25,13 +25,13 @@ export default class Profiles extends Block<ProfilesProps> {
     }
 
     protected render(): string {
+        /* eslint max-len: [1, 300] */
         return `
             <div class="profiles">
                 <div class="profiles-top">
                     <div class="row">
                         <div class="profiles-top-info">
                             <div class="profiles-top-info-left">
-                             /* eslint max-len: [1, 300] */
                                 <div class="img">
                                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAQAAACQ9RH5AAAANklEQVR42u3NAQ0AAAgDIN8/oWk0hnODAqSnTkQsFovFYrFYLBaLxWKxWCwWi8VisVgsFn+KF/YRbt0rxAMbAAAAAElFTkSuQmCC" alt="Profile img"  width="60"  height="60">
                                 </div>

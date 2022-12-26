@@ -23,10 +23,10 @@ export default class ProfileItem extends Block<BlockProps> {
     }
 
     render() {
+        /* eslint max-len: [1, 300] */
         return `
             <div class="profile {{#if this.profile.active}}active{{/if}}">
                 <div class="img">
-                 /* eslint max-len: [1, 300] */
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAQAAACQ9RH5AAAANklEQVR42u3NAQ0AAAgDIN8/oWk0hnODAqSnTkQsFovFYrFYLBaLxWKxWCwWi8VisVgsFn+KF/YRbt0rxAMbAAAAAElFTkSuQmCC" alt="Profile name" width="60" height="60">
                 </div>
                 <div class="info">
