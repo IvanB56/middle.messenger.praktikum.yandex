@@ -21,11 +21,13 @@ export class Profiles extends Block<object> {
     static componentName = "Profiles";
 
     constructor({...props}: ProfilesProps) {
-        super({...props});
+        super({
+            avatar: new URL("../../placeholder_60x60.png", import.meta.url),
+            ...props
+        });
     }
 
     protected render(): string {
-        /* eslint max-len: [1, 300] */
         return `
             <div class="profiles">
                 <div class="profiles-top">
@@ -33,11 +35,7 @@ export class Profiles extends Block<object> {
                         <div class="profiles-top-info">
                             <div class="profiles-top-info-left">
                                 <div class="img">
-                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAQAAACQ9RH5AAAANklEQVR42u3NAQ0AAAgDIN8/oWk0hnODAqSnTkQsFovFYrFYLBaLxWKxWCwWi8VisVgsFn+KF/YRbt0rxAMbAAAAAElFTkSuQmCC" 
-                                    alt="Profile img" 
-                                    width="60" 
-                                    height="60"
-                                    >
+                                    <img src={{ this.avatar }} alt="Profile img"  width="60"  height="60">
                                 </div>
                             </div>
                             <div class="profiles-top-info-left">
