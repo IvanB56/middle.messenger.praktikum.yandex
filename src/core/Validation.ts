@@ -29,21 +29,31 @@ export default class Validation {
     }
 
     checkField() {
-        let isValid = false;
-        if (["first_name", "second_name", "username"].includes((this.element as HTMLInputElement).name)) {
-            isValid = this.validateName();
-        } else if ((this.element as HTMLInputElement).name === "login") {
-            isValid = this.validateLogin();
-        } else if ((this.element as HTMLInputElement).name === "email") {
-            isValid = this.validateEmail();
-        } else if ((this.element as HTMLInputElement).name === "password") {
-            isValid = this.validatePassword();
-        } else if ((this.element as HTMLInputElement).name === "phone") {
-            isValid = this.validatePhone();
-        } else if ((this.element as HTMLInputElement).name === "message") {
-            isValid = this.validateMessage();
-        } else {
-            isValid = true;
+        let isValid;
+        const name = (this.element as HTMLInputElement).name;
+        switch (name) {
+            case "first_name":
+            case "second_name":
+            case "username":
+                isValid = this.validateName();
+                break;
+            case "login":
+                isValid = this.validateLogin();
+                break;
+            case "email":
+                isValid = this.validateEmail();
+                break;
+            case "password":
+                isValid = this.validatePassword();
+                break;
+            case "phone":
+                isValid = this.validatePhone();
+                break;
+            case "message":
+                isValid = this.validateMessage();
+                break;
+            default:
+                isValid = true;
         }
         (this.element as HTMLInputElement).dataset.isValid = isValid.toString();
     }
