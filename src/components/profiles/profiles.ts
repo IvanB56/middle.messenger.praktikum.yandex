@@ -17,14 +17,11 @@ interface profileProps {
     messages?: messageProps
 }
 
-export default class Profiles extends Block<object> {
+export default class Profiles extends Block<ProfilesProps> {
     static componentName = "Profiles";
 
     constructor({...props}: ProfilesProps) {
-        super({
-            avatar: new URL("../../static/placeholder_60x60.png", import.meta.url),
-            ...props
-        });
+        super({...props});
     }
 
     protected render(): string {
@@ -35,7 +32,7 @@ export default class Profiles extends Block<object> {
                         <div class="profiles-top-info">
                             <div class="profiles-top-info-left">
                                 <div class="img">
-                                    <img src={{ this.avatar }} alt="Profile img"  width="60"  height="60">
+                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAQAAACQ9RH5AAAANklEQVR42u3NAQ0AAAgDIN8/oWk0hnODAqSnTkQsFovFYrFYLBaLxWKxWCwWi8VisVgsFn+KF/YRbt0rxAMbAAAAAElFTkSuQmCC" alt="Profile img"  width="60"  height="60">
                                 </div>
                             </div>
                             <div class="profiles-top-info-left">

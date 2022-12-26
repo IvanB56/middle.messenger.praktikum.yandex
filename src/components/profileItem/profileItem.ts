@@ -15,21 +15,18 @@ interface messageProps {
     [key: string]: string | number
 }
 
-export default class ProfileItem extends Block<object> {
+export default class ProfileItem extends Block<BlockProps> {
     static componentName = "ProfileItem";
 
     constructor({...props}: BlockProps) {
-        super({
-            avatar: new URL("../../static/placeholder_60x60.png", import.meta.url),
-            ...props
-        });
+        super({...props});
     }
 
     render() {
         return `
             <div class="profile {{#if this.profile.active}}active{{/if}}">
                 <div class="img">
-                    <img src={{ this.avatar }} alt="Profile name" width="60" height="60">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAQAAACQ9RH5AAAANklEQVR42u3NAQ0AAAgDIN8/oWk0hnODAqSnTkQsFovFYrFYLBaLxWKxWCwWi8VisVgsFn+KF/YRbt0rxAMbAAAAAElFTkSuQmCC" alt="Profile name" width="60" height="60">
                 </div>
                 <div class="info">
                     <p class="profile-name">{{ this.profile.name }}</p>
