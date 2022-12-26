@@ -14,7 +14,7 @@ function queryStringify(data = {}) {
     }, '?') : '';
 }
 
-enum METHODS {
+enum Methods {
     GET = 'GET',
     POST = 'POST',
     PUT = 'PUT',
@@ -32,19 +32,19 @@ type OptionsWithoutMethod = Omit<Options, 'method'>;
 
 export default class Fetch {
     get(url: string | URL, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
-        return this.request(url + queryStringify(options.data), {...options, method: METHODS.GET}, options.timeout);
+        return this.request(url + queryStringify(options.data), {...options, method: Methods.GET}, options.timeout);
     }
 
     post(url: string | URL, options: Options) {
-        return this.request(url, {...options, method: METHODS.POST}, options.timeout);
+        return this.request(url, {...options, method: Methods.POST}, options.timeout);
     }
 
     put(url: string | URL, options: Options) {
-        return this.request(url, {...options, method: METHODS.PUT}, options.timeout);
+        return this.request(url, {...options, method: Methods.PUT}, options.timeout);
     }
 
     delete(url: string | URL, options: Options) {
-        return this.request(url, {...options, method: METHODS.DELETE}, options.timeout);
+        return this.request(url, {...options, method: Methods.DELETE}, options.timeout);
     }
 
     request(url: string | URL, options: Options, timeout = 5000): Promise<XMLHttpRequest> {
@@ -66,7 +66,7 @@ export default class Fetch {
             Object.keys(headers).forEach(key => {
                 xhr.setRequestHeader(key, headers[key]);
             });
-            if (method === METHODS.GET || !data) {
+            if (method === Methods.GET || !data) {
                 xhr.send();
             } else {
                 xhr.send(data as Document);
