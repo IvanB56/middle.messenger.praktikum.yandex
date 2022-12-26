@@ -3,17 +3,19 @@
 .message-item {
   padding: 20px;
   background-color: #9cdb2b;
-  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 4px 4px 4px 0 rgb(0 0 0 / 25%);
   border-radius: 5px;
   max-width: 400px;
   position: relative;
   margin-bottom: 20px;
   align-self: flex-start;
 }
+
 .message-item p {
   color: #fff;
 }
-.message-item:not(.my-message):before {
+
+.message-item:not(.my-message)::before {
   position: absolute;
   top: 0;
   left: -10px;
@@ -23,12 +25,14 @@
   border-top: 10px solid #9cdb2b;
   border-right: 10px solid #9cdb2b;
 }
+
 .message-item.my-message {
   background-color: #b277ce;
   margin-left: auto;
   align-self: flex-end;
 }
-.message-item.my-message:before {
+
+.message-item.my-message::before {
   position: absolute;
   top: 0;
   right: -10px;
@@ -38,6 +42,7 @@
   border-left: 10px solid #b277ce;
   border-top: 10px solid #b277ce;
 }
+
 .message-item .message-item-date {
   position: absolute;
   right: 10px;

@@ -10,9 +10,9 @@
   justify-content: center;
   background-color: #fff;
 }
+
 .chat-message_empty h2 {
   font-size: 24px;
   font-weight: 700;
   text-shadow: 2px 2px 2px #ccc;
 }
-/* stylelint-enable selector-class-pattern */

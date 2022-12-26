@@ -7,7 +7,7 @@
     "build": "parcel build src/index.html --no-cache",
     "start": "npm run build && node server.js",
     "jsLint": "eslint --fix --config=./.eslintrc.js .",
-    "styleLint": "npx stylelint ./src/**/*.css"
+    "styleLint": "npx stylelint --fix ./src/**/*.css"
   },
   "alias": {
     "core": "./src/core",
@@ -21,6 +21,7 @@
   "license": "ISC",
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "1.0.9",
+    "@parcel/transformer-less": "2.8.2",
     "@types/node": "18.11.17",
     "@typescript-eslint/eslint-plugin": "5.46.1",
     "@typescript-eslint/parser": "5.46.1",
