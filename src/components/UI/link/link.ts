@@ -6,7 +6,7 @@ interface LinkProps {
     href: string;
 }
 
-export default class Link extends Block<LinkProps> {
+export default class Link extends Block<LinkProps | object> {
     static componentName = "Link";
     constructor({text, href}: LinkProps) {
         super({text, href});

@@ -5,7 +5,7 @@ interface FormInputProps {
     [key: string]: string
 }
 
-export default class FormInput extends Block<FormInputProps> {
+export default class FormInput extends Block<FormInputProps | object> {
     static componentName = "FormInput";
 
     constructor({type, inputName, placeholder, ...props}: FormInputProps) {

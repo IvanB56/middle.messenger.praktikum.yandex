@@ -15,7 +15,7 @@ interface messageProps {
     [key: string]: string | number
 }
 
-export default class ProfileItem extends Block<BlockProps> {
+export default class ProfileItem extends Block<BlockProps | object> {
     static componentName = "ProfileItem";
 
     constructor({...props}: BlockProps) {

@@ -9,7 +9,7 @@ interface MessageProps {
     "from_me"?: boolean
 }
 
-export default class MessageItem extends Block<MessageProps> {
+export default class MessageItem extends Block<MessageProps | object> {
     static componentName = "MessageItem";
 
     constructor(props: MessageProps) {

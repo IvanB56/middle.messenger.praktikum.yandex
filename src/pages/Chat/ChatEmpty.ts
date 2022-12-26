@@ -15,7 +15,7 @@ interface profileProps {
     messages: messageProps
 }
 
-export default class ChatEmpty extends Block<ChatEmptyProps> {
+export default class ChatEmpty extends Block<ChatEmptyProps | object> {
     static componentName = "ChatEmpty";
 
     constructor({profiles, ...props}: ChatEmptyProps) {
