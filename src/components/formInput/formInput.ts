@@ -6,6 +6,8 @@ interface FormInputProps {
 }
 
 export class FormInput extends Block<object> {
+    static componentName = "FormInput";
+
     constructor({type, inputName, placeholder, ...props}: FormInputProps) {
         super({type, inputName, placeholder, ...props});
     }
