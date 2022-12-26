@@ -84,7 +84,7 @@
 .chat-message .chat-message-send .send-button button {
   font-size: 12px;
 }
-.chat-message input[type="file"] {
+.chat-message .input_file {
   position: absolute;
   opacity: 0;
   width: 0;

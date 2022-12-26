@@ -27,7 +27,7 @@ export default class Input extends Block<object> {
 
     protected render(): string {
         return `
-            <input type={{ type }} name={{ inputName }} placeholder="{{ placeholder }}"  autocomplete="off"> 
+            <input type={{ type }} name={{ inputName }} placeholder="{{ placeholder }}"  autocomplete="off" class={{ className }}> 
         `;
     }
 }
