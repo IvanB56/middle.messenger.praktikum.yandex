@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "parcel src/index.html --port 3000 --no-cache",
     "build": "parcel build src/index.html --no-cache",
-    "start": "parcel src/index.html --no-cache --port 3000",
+    "start": "npm run build && node server.js",
     "jsLint": "eslint --fix --config=./.eslintrc.js .",
     "styleLint": "npx stylelint ./src/**/*.css"
   },
