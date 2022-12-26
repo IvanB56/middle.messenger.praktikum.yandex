@@ -9,6 +9,7 @@
   cursor: pointer;
   transition: opacity 0.3s;
 }
+
 .btn-default:hover {
   opacity: 0.7;
 }

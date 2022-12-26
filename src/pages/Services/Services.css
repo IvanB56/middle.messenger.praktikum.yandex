@@ -7,14 +7,17 @@
   align-items: center;
   justify-content: center;
 }
+
 .services h2 {
   font-size: 40px;
   text-shadow: 2px 2px 2px #ccc;
 }
+
 .services p {
   font-size: 36px;
   text-shadow: 2px 2px 2px #ccc;
 }
+
 .services .inner {
   width: 500px;
   height: 300px;

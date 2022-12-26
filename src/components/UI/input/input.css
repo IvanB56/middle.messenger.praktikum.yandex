@@ -9,6 +9,7 @@ input {
   border-radius: 5px;
   padding: 0 0 0 24px;
 }
+
 input:active,
 input:focus {
   box-shadow: none;
