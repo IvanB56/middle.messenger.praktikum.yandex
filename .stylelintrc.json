@@ -11,6 +11,7 @@
     "at-rule-no-unknown": null,
     "property-no-unknown": null,
     "rule-empty-line-before": null,
-    "no-empty-source": null
+    "no-empty-source": null,
+    "block-closing-brace-newline-after": "always"
   }
 }
