@@ -5,7 +5,7 @@ Figma</a>
 
 <p>Для запуска: npm run start</p>
 
-ссылка на сайт: <a href="https://cerulean-dodol-4ea8e0.netlify.app/pages/profileinfo/profileinfo">Netlify</a>
+ссылка на сайт: <a href="https://deploy--cerulean-dodol-4ea8e0.netlify.app/">Netlify</a>
 
 <h2>Sprint 2</h2>
 <p>В проект добавлен TypeScript</p>
