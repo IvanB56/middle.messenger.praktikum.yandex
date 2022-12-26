@@ -39,7 +39,7 @@ registerComponent(DefaultButton);
 
 document.addEventListener("DOMContentLoaded", () => {
     const pathName = window.location.pathname;
-    if (pathName === "/FormLogin") {
+    if (pathName === "/login") {
         renderDOM(new FormLogin({text: "Авторизация"}));
     } else if (pathName === "/registration") {
         renderDOM(new FormRegistration({text: "Регистрация"}));
