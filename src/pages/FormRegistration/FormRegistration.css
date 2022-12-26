@@ -7,6 +7,7 @@
   padding: 20px;
   color: #b277ce;
 }
+
 .registration .form-inner {
   width: 500px;
   height: 640px;
@@ -20,16 +21,19 @@
   border: 1px solid #bc82d7;
   box-shadow: 0 0 10px 2px #603276;
 }
+
 .registration .form-inner .form-inner-header h2 {
   font-size: 36px;
   text-align: center;
   padding: 20px 0;
   text-shadow: 2px 2px 2px #ccc;
 }
+
 .registration .form-inner .form-inner-body {
   padding: 20px;
   flex: 1 0 auto;
 }
+
 .registration .form-inner .form-inner-body form {
   display: flex;
   height: 100%;

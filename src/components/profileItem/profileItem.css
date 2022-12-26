@@ -5,15 +5,17 @@
   display: flex;
   width: 100%;
   padding: 15px;
-  border-top: 1px solid rgba(73, 12, 102, 0.3);
+  border-top: 1px solid rgb(73 12 102 / 30%);
   background-color: #fff;
   cursor: pointer;
   transition: background-color 0.3s;
   position: relative;
 }
+
 .profile .img {
   margin-right: 10px;
 }
+
 .profile .info {
   flex-grow: 1;
   display: flex;
@@ -21,9 +23,11 @@
   align-items: start;
   flex-direction: column;
 }
+
 .profile .profile-name {
   font-weight: 700;
 }
+
 .profile .profile-message_preview {
   color: #999;
   font-size: 12px;
@@ -32,6 +36,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .profile .time {
   font-size: 12px;
   color: #999;
@@ -39,6 +44,7 @@
   right: 10px;
   top: 10px;
 }
+
 .profile .profile-message-count {
   position: absolute;
   width: 25px;
@@ -53,13 +59,16 @@
   right: 10px;
   line-height: 1;
 }
+
 .profile:hover {
   background-color: #f1f1f1;
 }
+
 .profile.active {
   background-color: #f1f1f1;
 }
-.profile.active:before {
+
+.profile.active::before {
   content: "";
   top: 0;
   left: 0;

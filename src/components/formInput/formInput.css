@@ -4,6 +4,7 @@
   margin-bottom: 30px;
   position: relative;
 }
+
 .form-input span {
   user-select: none;
   position: absolute;
@@ -11,11 +12,13 @@
   left: 15px;
   font-weight: 700;
 }
+
 .form-input span:not(.error) {
   font-size: 13px;
   top: -8px;
   background-color: #fff;
 }
+
 .form-input span.error {
   font-size: 11px;
   color: red;
