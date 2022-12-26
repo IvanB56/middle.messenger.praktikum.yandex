@@ -17,7 +17,7 @@ interface profileProps {
     messages?: messageProps
 }
 
-export default class Profiles extends Block<ProfilesProps> {
+export default class Profiles extends Block<ProfilesProps | object> {
     static componentName = "Profiles";
 
     constructor({...props}: ProfilesProps) {

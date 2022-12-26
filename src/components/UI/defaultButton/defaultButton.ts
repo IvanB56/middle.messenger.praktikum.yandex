@@ -7,7 +7,7 @@ interface DefaultButtonProps {
     onClick?: () => void;
 }
 
-export default class DefaultButton extends Block<DefaultButtonProps> {
+export default class DefaultButton extends Block<DefaultButtonProps | object> {
     static componentName = "DefaultButton";
 
     constructor({text}: DefaultButtonProps) {
