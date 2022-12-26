@@ -2,10 +2,11 @@ import Block from "core/Block";
 import "./link.css"
 
 interface LinkProps {
-    [key: string]: string;
+    text: string;
+    href: string;
 }
 
-export class Link extends Block<object> {
+export default class Link extends Block<LinkProps> {
     static componentName = "Link";
     constructor({text, href}: LinkProps) {
         super({text, href});

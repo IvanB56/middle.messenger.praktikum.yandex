@@ -1,7 +1,7 @@
 import Block from "core/Block";
 import "./Services.css";
 
-export class Error404 extends Block<object> {
+export default class Error404 extends Block<object> {
     static componentName = "Error404";
 
     render() {

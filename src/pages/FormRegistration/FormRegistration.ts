@@ -6,7 +6,7 @@ interface FormRegistrationProps {
     text: string
 }
 
-export class FormRegistration extends Block<Omit<FormRegistrationProps, "text">> {
+export default class FormRegistration extends Block<Omit<FormRegistrationProps, "text">> {
     static componentName = "FormRegistration";
 
     constructor({text}: FormRegistrationProps) {

@@ -6,7 +6,7 @@ interface FormLoginProps {
     text: string
 }
 
-export class FormLogin extends Block<object> {
+export default class FormLogin extends Block<FormLoginProps | object> {
     static componentName = "FormLogin";
 
     constructor({text}: FormLoginProps) {

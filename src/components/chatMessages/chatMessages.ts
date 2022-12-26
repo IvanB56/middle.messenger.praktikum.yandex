@@ -10,7 +10,7 @@ interface ChatProps {
     "from_me"?: boolean
 }
 
-export class ChatMessages extends Block<object> {
+export default class ChatMessages extends Block<object> {
     static componentName = "ChatMessages";
 
     private readonly chat: ChatProps[] = [
@@ -59,7 +59,7 @@ export class ChatMessages extends Block<object> {
             </div>
             <form class="chat-message-send">
                 <label>
-                    {{{ Input type="file" inputName="file" hidden="hidden" }}}
+                    {{{ Input type="file" inputName="file" hidden="hidden" className="input_file" }}}
                     <i class="fa fa-paperclip" aria-hidden="true"></i>
                 </label>
                 <label for="chat-message-text"></label>
