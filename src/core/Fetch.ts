@@ -35,19 +35,19 @@ export default class Fetch {
         return this.request(url + queryStringify(options.data), {...options, method: METHODS.GET}, options.timeout);
     }
 
-    post(url: string | URL, options: Options = {method: METHODS.POST}) {
+    post(url: string | URL, options: Options) {
         return this.request(url, {...options, method: METHODS.POST}, options.timeout);
     }
 
-    put(url: string | URL, options: Options = {method: METHODS.PUT}) {
+    put(url: string | URL, options: Options) {
         return this.request(url, {...options, method: METHODS.PUT}, options.timeout);
     }
 
-    delete(url: string | URL, options: Options = {method: METHODS.DELETE}) {
+    delete(url: string | URL, options: Options) {
         return this.request(url, {...options, method: METHODS.DELETE}, options.timeout);
     }
 
-    request(url: string | URL, options: RequestOptions & {method: string}, timeout = 5000): Promise<XMLHttpRequest> {
+    request(url: string | URL, options: Options, timeout = 5000): Promise<XMLHttpRequest> {
         const {method, headers = {}, data} = options;
         return new Promise((resolve, reject) => {
             if (!method) {
