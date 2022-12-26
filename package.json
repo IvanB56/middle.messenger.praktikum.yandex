@@ -49,7 +49,7 @@
     "nanoid": "3.0.0"
   },
   "staticFiles": {
-    "staticPath": "./src/static",
+    "staticPath": ["./src/static", "_redirects"],
     "watcherGlob": "**"
   }
 }
