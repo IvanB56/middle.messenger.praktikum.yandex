@@ -4,4 +4,10 @@ Cсылка на дизайн проекта: https://www.figma.com/file/wARxYxi
 
 Для запуска: npm run start
 
-ссылка на сайт: https://cerulean-dodol-4ea8e0.netlify.app/pages/profileinfo/profileinfo
+ссылка на сайт: <a href="https://cerulean-dodol-4ea8e0.netlify.app/pages/profileinfo/profileinfo">Netlify</a> 
+
+
+<h2>Sprint 2</h2>
+<p>В проект добавлен TypeScript</p>
+<p>Шаблоны перенесены в файлы ts</p>
+<p>Рендер страниц происходит на стороне клиента</p>
