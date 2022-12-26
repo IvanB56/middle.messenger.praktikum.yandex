@@ -8,7 +8,7 @@ function queryStringify(data = {}) {
     if (typeof data !== 'object') {
         throw new Error('Data must be object');
     }
-    let arr = [...Object.entries(data)];
+    const arr = [...Object.entries(data)];
     return (data) ? arr.reduce((prev, item, index) => {
         return prev += `${item[0]}=${item[1]}${(index !== arr.length - 1) ? '&' : ''}`;
     }, '?') : '';
@@ -24,7 +24,7 @@ enum METHODS {
 type Options = {
     method: string;
     timeout?: number;
-    data?: any;
+    data?: object;
     headers?: { [key: string]: string };
 }
 
