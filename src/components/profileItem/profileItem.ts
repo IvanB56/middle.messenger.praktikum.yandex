@@ -20,7 +20,7 @@ export class ProfileItem extends Block<object> {
 
     constructor({...props}: BlockProps) {
         super({
-            avatar: new URL("../../placeholder_60x60.png", import.meta.url),
+            avatar: new URL("../../static/placeholder_60x60.png", import.meta.url),
             ...props
         });
     }

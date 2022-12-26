@@ -17,12 +17,12 @@ interface profileProps {
     messages?: messageProps
 }
 
-export class Profiles extends Block<object> {
+export default class Profiles extends Block<object> {
     static componentName = "Profiles";
 
     constructor({...props}: ProfilesProps) {
         super({
-            avatar: new URL("../../placeholder_60x60.png", import.meta.url),
+            avatar: new URL("../../static/placeholder_60x60.png", import.meta.url),
             ...props
         });
     }
