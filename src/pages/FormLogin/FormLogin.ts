@@ -29,8 +29,8 @@ export class FormLogin extends Block<object> {
                 </div>
                 <div class="form-inner-body">
                     <form class="form-login">
-                        {{{ Input type="text" label="Логин" inputName="login" }}}
-                        {{{ Input type="password" inputName="password" label="Пароль" }}}
+                        {{{ FormInput type="text" label="Логин" inputName="login" }}}
+                        {{{ FormInput type="password" inputName="password" label="Пароль" }}}
                         {{{ Link text="Ещё не зарегистрированы?" href="/registration" }}}
                         {{{ Button text="Войти" onClick=onButtonClick }}}
                     </form>

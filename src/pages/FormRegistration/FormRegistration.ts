@@ -29,12 +29,12 @@ export class FormRegistration extends Block<Omit<FormRegistrationProps, "text">>
                 </div>
                 <div class="form-inner-body">
                     <form class="form-login">
-                        {{{ Input type="text"     inputName="first_name"  label="Имя"         }}}
-                        {{{ Input type="text"     inputName="second_name" label="Фамилия"     }}}
-                        {{{ Input type="text"     inputName="login"       label="Логин"       }}}
-                        {{{ Input type="email"    inputName="email"       label="Ваша почта"  }}}
-                        {{{ Input type="password" inputName="password"    label="Ваш пароль"  }}}
-                        {{{ Input type="tel"      inputName="phone"       label="Телефон"     }}}
+                        {{{ FormInput type="text"     inputName="first_name"  label="Имя"         }}}
+                        {{{ FormInput type="text"     inputName="second_name" label="Фамилия"     }}}
+                        {{{ FormInput type="text"     inputName="login"       label="Логин"       }}}
+                        {{{ FormInput type="email"    inputName="email"       label="Ваша почта"  }}}
+                        {{{ FormInput type="password" inputName="password"    label="Ваш пароль"  }}}
+                        {{{ FormInput type="tel"      inputName="phone"       label="Телефон"     }}}
                         {{{ Button text="Регистрация" onClick=onButtonClick }}}
                     </form>
                 </div>
