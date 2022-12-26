@@ -1,7 +1,7 @@
 import Block from "core/Block";
 import "./noSelect.css"
 
-export class NoSelect extends Block<object> {
+export default class NoSelect extends Block<object> {
     static componentName = "NoSelect";
 
     protected render(): string {

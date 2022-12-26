@@ -10,7 +10,7 @@ interface ChatProps {
     "from_me"?: boolean
 }
 
-export class ChatMessages extends Block<object> {
+export default class ChatMessages extends Block<object> {
     static componentName = "ChatMessages";
 
     private readonly chat: ChatProps[] = [

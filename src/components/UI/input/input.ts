@@ -6,7 +6,7 @@ interface InputProps {
     [keys: string]: string;
 }
 
-export class Input extends Block<object> {
+export default class Input extends Block<object> {
     private readonly name: string | undefined;
     static componentName = "Input";
 
@@ -27,7 +27,7 @@ export class Input extends Block<object> {
 
     protected render(): string {
         return `
-            <input type="{{ type }}" name="{{ inputName }}" placeholder="{{ placeholder }}"  autocomplete="off" {{...props}} > 
+            <input type={{ type }} name={{ inputName }} placeholder="{{ placeholder }}"  autocomplete="off"> 
         `;
     }
 }
