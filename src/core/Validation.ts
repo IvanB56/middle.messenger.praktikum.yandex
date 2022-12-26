@@ -30,7 +30,7 @@ export default class Validation {
 
     checkField() {
         let isValid = false;
-        if (["first_name", "second_name", "username"].indexOf((this.element as HTMLInputElement).name) !== -1) {
+        if (["first_name", "second_name", "username"].includes((this.element as HTMLInputElement).name)) {
             isValid = this.validateName();
         } else if ((this.element as HTMLInputElement).name === "login") {
             isValid = this.validateLogin();
