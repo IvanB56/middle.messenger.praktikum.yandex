@@ -1,5 +1,4 @@
 import Block from "core/Block";
-import "./Chat.css";
 
 interface ChatActiveProps {
     profiles: profileProps[];

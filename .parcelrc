@@ -10,5 +10,6 @@
     "bundle-text:*": [
         "@parcel/transformer-inline-string"
     ]
-  }
+  },
+  "optimizers": { "*.html": [] }
 }

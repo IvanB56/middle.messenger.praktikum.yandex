@@ -1,6 +1,5 @@
 import Block from "core/Block";
 import Validation from "core/Validation";
-import "./FormLogin.css";
 
 interface FormLoginProps {
     text: string

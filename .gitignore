@@ -6,3 +6,4 @@
 /git/.github/
 /git/node_modules/
 /.github/
+/**/*.css

@@ -1,6 +1,5 @@
 import Block from "core/Block";
 import Validation from "core/Validation";
-import "./FormRegistration.css"
 
 interface FormRegistrationProps {
     text: string

@@ -1,5 +1,4 @@
 import Block from "core/Block";
-import "./ProfileInfo.css";
 
 export default class ProfileInfo extends Block<object> {
     protected render(): string {
