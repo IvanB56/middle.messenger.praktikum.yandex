@@ -1,5 +1,4 @@
 import Block from "core/Block";
-import "./settingsButtons.css"
 
 export default class SettingsButtons extends Block<object> {
     protected render(): string {

@@ -1,5 +1,4 @@
 import Block from "core/Block";
-import "./profiles.css";
 
 interface ProfilesProps {
     profiles: profileProps;

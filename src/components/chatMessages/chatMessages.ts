@@ -1,5 +1,4 @@
 import Block from "core/Block";
-import "./chatMessages.css"
 import Validation from "../../core/Validation";
 
 interface ChatProps {

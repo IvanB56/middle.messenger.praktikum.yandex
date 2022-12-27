@@ -1,5 +1,4 @@
 import Block from "core/Block";
-import "./formInput.css";
 
 interface FormInputProps {
     [key: string]: string

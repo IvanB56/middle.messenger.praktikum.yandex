@@ -1,5 +1,4 @@
 import Block from "core/Block";
-import "./defaultButton.css";
 
 interface DefaultButtonProps {
     text: string;

@@ -1,5 +1,4 @@
 import Block from "core/Block";
-import "./Services.css";
 
 export default class Error500 extends Block<object> {
     static componentName = "Error500";

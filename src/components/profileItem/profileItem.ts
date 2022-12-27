@@ -1,5 +1,4 @@
 import Block from "core/Block";
-import "./profileItem.css"
 
 interface BlockProps {
     profile: ProfileItemProps
