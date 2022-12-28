@@ -1,26 +1,20 @@
-/* stylelint-disable selector-class-pattern */
 * {
   margin: 0;
   box-sizing: border-box;
-  color: #490c66;
+  color: #490C66;
 }
 
 html {
   font-size: 14px;
-  font-family: "Quattrocento Sans", sans-serif;
+  font-family: 'Quattrocento Sans', sans-serif;
 }
 
-main {
-  #app {
-    /* stylelint-disable  max-line-length */
-    background: linear-gradient(#bc82d7 0%, rgba(188, 130, 215, 0.75) 34.9%,
-    rgba(188, 130, 215, 0.75) 65.67%, #bc82d7 100%),
-    url("../static/bg.jfif") no-repeat center center;
-    background-size: cover;
-    background-clip: border-box;
-    height: 100vh;
-    width: 100vw;
-  }
+body {
+  background: linear-gradient(#BC82D7 0%, rgba(188, 130, 215, 0.75) 34.9%, rgba(188, 130, 215, 0.75) 65.67%, #BC82D7 100%), url(../Assets/bg.jfif) no-repeat center center;
+  background-size: cover;
+  background-clip: border-box;
+  height: 100vh;
+  width: 100vw;
 }
 
 a {
@@ -41,19 +35,16 @@ a {
   flex-shrink: 0;
 }
 
-@import url("../components/chatMessages/chatMessages");
-@import url("../components/formInput/formInput");
-@import url("../components/messageItem/messageItem");
-@import url("../components/noSelect/noSelect");
-@import url("../components/profileItem/profileItem");
-@import url("../components/profiles/profiles");
-@import url("../components/UI/button/button");
-@import url("../components/UI/defaultButton/defaultButton");
-@import url("../components/UI/input/input");
-@import url("../components/UI/link/link");
-@import url("../components/UI/settingsButtons/settingsButtons");
-@import url("../pages/Chat/Chat");
-@import url("../pages/FormLogin/FormLogin");
-@import url("../pages/FormRegistration/FormRegistration");
-@import url("../pages/ProfileInfo/ProfileInfo");
-@import url("../pages/Services/Services");
+@import "../Partials/Form/GuestForm.css";
+@import "../Pages/Login/Login.css";
+@import "../Pages/Chat/Chat.css";
+@import "../Pages/Registration/Registration.css";
+@import "../Pages/Services/Services.css";
+@import "../Partials/UI/FormInput/FormInput.css";
+@import "../Partials/UI/FormButton/FormButton.css";
+@import "../Partials/UI/DefaultButton/DefaultButton.css";
+@import "../Partials/ChatMessages/ChatMessages.css";
+@import "../Partials/NotChangeChat/NotChangeChat.css";
+@import "../Partials/Profiles/Profiles.css";
+@import "../Partials/ProfileItem/ProfileItem.css";
+@import "../Partials/MessageItem/MessageItem.css";
