@@ -14,9 +14,22 @@ export default class Input extends Block<object> {
         this.name = inputName;
         this.setProps({
             events: {
-                change: () => this.validateField()
+                focus: () => this.inputFocus(),
+                blur: () => this.validateField()
             }
         })
+    }
+
+    inputFocus() {
+        const nextElement = (this.element as HTMLElement).nextElementSibling as HTMLElement;
+        if (this.element) {
+            nextElement.textContent = '';
+            this.element.removeAttribute('data-is-valid');
+        }
+    }
+
+    inputBlur(e: Event) {
+        console.log(e);
     }
 
     validateField() {
