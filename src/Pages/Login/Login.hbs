@@ -1,0 +1,22 @@
+---
+"title": "Авторизация"
+form-data: {
+    "inputText": {
+        "type": "text",
+        "placeholder": "Ваш логин"
+    },
+    "inputPassword": {
+        "type": "password",
+        "placeholder": "Ваш пароль"
+    }
+}
+regButton: true
+formButtonText: "Войти"
+---
+
+
+{{!< base}}
+
+<div id="login">
+    {{>'Form/GuestForm' data=form-data title=title regButton=regButton formButtonText=formButtonText}}
+</div>
