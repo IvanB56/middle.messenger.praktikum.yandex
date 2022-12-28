@@ -28,10 +28,6 @@ export default class Input extends Block<object> {
         }
     }
 
-    inputBlur(e: Event) {
-        console.log(e);
-    }
-
     validateField() {
         const child = document.querySelector(`[name=${this.name}]`) as HTMLElement;
         new Validation().validField(child);
