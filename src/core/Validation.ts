@@ -121,7 +121,7 @@ export default class Validation {
     }
 
     validateLogin(): boolean {
-        const regexp = new RegExp(/[a-zA-Z0-9-_]/);
+        const regexp = new RegExp(/^[a-zA-Z0-9-_]*$/);
         const child = this.element?.nextElementSibling as HTMLElement;
         const value = (this.element as HTMLInputElement).value as string;
         child.textContent = "";
