@@ -121,7 +121,7 @@ export default class Validation {
     }
 
     validateLogin(): boolean {
-        const regexp = new RegExp(/[a-zA-Z0-9-_]{3,20}]/);
+        const regexp = new RegExp(/[a-zA-Z0-9-_]/);
         const child = this.element?.nextElementSibling as HTMLElement;
         const value = (this.element as HTMLInputElement).value as string;
         child.textContent = "";
@@ -134,7 +134,7 @@ export default class Validation {
         } else if (value.includes(" ")) {
             child.textContent = "Логин не может содержать пробелы";
         }
-        if (regexp.test(value)) {
+        if (!regexp.test(value)) {
             child.textContent = "Не допустимые символы";
             return false;
         }
