@@ -72,9 +72,14 @@ export default class Validation {
 
     validatePassword(): boolean {
         const child = this.element?.nextElementSibling as HTMLElement;
-        const regexp = new RegExp(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,40})/);
+        let value: string = (this.element as HTMLInputElement).value;
+        const regexp = new RegExp(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z]))/);
         child.textContent = "";
-        if (!regexp.test((this.element as HTMLInputElement).value)) {
+        if  (value.length < 8 || value.length > 40) {
+            child.textContent = "Пароль должен содержать от 8 до 40 символов";
+            return false;
+        }
+        if (!regexp.test(value)) {
             child.textContent = "Не корректный пароль";
             return false;
         }
