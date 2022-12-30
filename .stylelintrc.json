@@ -1,0 +1,11 @@
+{
+  "extends": "stylelint-config-standard",
+  "ignoreFiles": [
+    "dist/*",
+    "**/*.ts",
+    "**/*.hbs"
+  ],
+  "rules": {
+    "selector-class-pattern": null
+  }
+}

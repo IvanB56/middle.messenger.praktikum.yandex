@@ -1,0 +1,59 @@
+/* stylelint-disable selector-class-pattern */
+* {
+  margin: 0;
+  box-sizing: border-box;
+  color: #490c66;
+}
+
+html {
+  font-size: 14px;
+  font-family: "Quattrocento Sans", sans-serif;
+}
+
+main {
+  #app {
+    /* stylelint-disable  max-line-length */
+    background: linear-gradient(#bc82d7 0%, rgba(188, 130, 215, 0.75) 34.9%,
+    rgba(188, 130, 215, 0.75) 65.67%, #bc82d7 100%),
+    url("../static/bg.jfif") no-repeat center center;
+    background-size: cover;
+    background-clip: border-box;
+    height: 100vh;
+    width: 100vw;
+  }
+}
+
+a {
+  display: inline-block;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.img {
+  border-radius: 50%;
+  background-color: #d9d9d9;
+  overflow: hidden;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+@import url("../components/chatMessages/chatMessages");
+@import url("../components/formInput/formInput");
+@import url("../components/messageItem/messageItem");
+@import url("../components/noSelect/noSelect");
+@import url("../components/profileItem/profileItem");
+@import url("../components/profiles/profiles");
+@import url("../components/UI/button/button");
+@import url("../components/UI/defaultButton/defaultButton");
+@import url("../components/UI/input/input");
+@import url("../components/UI/link/link");
+@import url("../components/UI/settingsButtons/settingsButtons");
+@import url("../pages/Chat/Chat");
+@import url("../pages/FormLogin/FormLogin");
+@import url("../pages/FormRegistration/FormRegistration");
+@import url("../pages/ProfileInfo/ProfileInfo");
+@import url("../pages/Services/Services");
