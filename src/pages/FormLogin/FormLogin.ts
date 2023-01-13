@@ -28,8 +28,9 @@ export class FormLogin extends Block<FormLoginProps | object> {
 
     onNavigateRegistration(event: Event) {
         event.preventDefault();
-        console.log(123);
-        this.props.router.go(Routes.REGISTRATION);
+        if ("router" in this.props) {
+            this.props.router.go(Routes.REGISTRATION);
+        }
     }
 
     protected render(): string {

@@ -49,7 +49,7 @@ export function initRouter(router: Router, store: Store<AppState>) {
         if (prevState.screen !== nextState.screen) {
             const Page = getScreenComponent(nextState.screen);
             renderDOM(new Page({}));
-            document.title = `App / StartPage`;
+            document.title = `App / ${Page.componentName}`;
         }
     });
 }
