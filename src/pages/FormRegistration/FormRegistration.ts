@@ -1,11 +1,14 @@
 import Block from "core/Block";
 import Validation from "core/Validation";
+import {withRouter} from "utils/withRouter";
+import {withStore} from "utils/withStore";
+import {registrationApi} from "./registrationAPI";
 
 interface FormRegistrationProps {
     text: string
 }
 
-export default class FormRegistration extends Block<Omit<FormRegistrationProps, "text">> {
+export class FormRegistration extends Block<Omit<FormRegistrationProps, "text">> {
     static componentName = "FormRegistration";
 
     constructor({text}: FormRegistrationProps) {
@@ -15,8 +18,12 @@ export default class FormRegistration extends Block<Omit<FormRegistrationProps, 
         })
     }
 
-    onButtonClick() {
-        new Validation().validForm(this.element as HTMLElement);
+    async onButtonClick() {
+        const data: RegistrationRequest | undefined = new Validation().validForm(this.element as HTMLElement);
+        if (data) {
+            const response = await registrationApi.registration(data);
+            console.log(response)
+        }
     }
 
     protected render(): string {
@@ -24,7 +31,7 @@ export default class FormRegistration extends Block<Omit<FormRegistrationProps, 
          <div class="registration">
             <div class="form-inner">
                 <div class="form-inner-header">
-                    <h2>{{ text }}</h2>
+                    <h2>Регистрация</h2>
                 </div>
                 <div class="form-inner-body">
                     <form class="form-login">
@@ -42,3 +49,5 @@ export default class FormRegistration extends Block<Omit<FormRegistrationProps, 
         `;
     }
 }
+
+export default withRouter(withStore(FormRegistration));
