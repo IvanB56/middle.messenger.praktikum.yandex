@@ -6,8 +6,9 @@ export default class Validation {
         this.checkField();
     }
 
-    validForm(parent: HTMLElement) {
+    validForm(parent: HTMLElement): RegistrationRequest | undefined {
         if (parent) {
+            const request: { [key: string]: string } = {};
             const form = parent.querySelector("form") as HTMLFormElement;
             let isFormValid = true;
             const fields = Array.from(form.querySelectorAll("[name]"));
@@ -22,8 +23,9 @@ export default class Validation {
             if (isFormValid) {
                 const formData = new FormData(form);
                 for (const formDataKey of formData.entries()) {
-                    console.log(`${formDataKey[0]}: ${formDataKey[1]}`)
+                    request[formDataKey[0]] = <string>formDataKey[1];
                 }
+                return request as RegistrationRequest;
             }
         }
     }

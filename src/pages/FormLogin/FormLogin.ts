@@ -1,17 +1,24 @@
 import Block from "core/Block";
 import Validation from "core/Validation";
+import {withStore} from "utils/withStore";
+import {withRouter} from "utils/withRouter";
+import {Router, Store} from "core";
+import {Routes} from "../../routes";
 
 interface FormLoginProps {
+    router: Router;
+    store: Store<AppState>;
     text: string
 }
 
-export default class FormLogin extends Block<FormLoginProps | object> {
+export class FormLogin extends Block<FormLoginProps | object> {
     static componentName = "FormLogin";
 
-    constructor({text}: FormLoginProps) {
-        super({text});
+    constructor({text, ...props}: FormLoginProps) {
+        super({text, ...props});
         this.setProps({
             onButtonClick: () => this.onButtonClick(),
+            onLinkClick: (e: Event) => this.onNavigateRegistration(e)
         })
     }
 
@@ -19,18 +26,25 @@ export default class FormLogin extends Block<FormLoginProps | object> {
         new Validation().validForm(this.element as HTMLElement);
     }
 
+    onNavigateRegistration(event: Event) {
+        event.preventDefault();
+        if ("router" in this.props) {
+            this.props.router.go(Routes.REGISTRATION);
+        }
+    }
+
     protected render(): string {
         return `
          <div class="login">
             <div class="form-inner">
                 <div class="form-inner-header">
-                    <h2>{{ text }}</h2>
+                    <h2>Авторизация</h2>
                 </div>
                 <div class="form-inner-body">
                     <form class="form-login">
                         {{{ FormInput type="text" label="Логин" inputName="login" }}}
                         {{{ FormInput type="password" inputName="password" label="Пароль" }}}
-                        {{{ Link text="Ещё не зарегистрированы?" href="/registration" }}}
+                        {{{ DefaultButton text="Ещё не зарегистрированы?" onClick=onLinkClick }}}
                         {{{ Button text="Войти" onClick=onButtonClick }}}
                     </form>
                 </div>
@@ -39,3 +53,5 @@ export default class FormLogin extends Block<FormLoginProps | object> {
         `;
     }
 }
+
+export default withRouter(withStore(FormLogin));
