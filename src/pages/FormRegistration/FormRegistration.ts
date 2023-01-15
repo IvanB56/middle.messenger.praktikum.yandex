@@ -3,12 +3,15 @@ import Validation from "core/Validation";
 import {withRouter} from "utils/withRouter";
 import {withStore} from "utils/withStore";
 import {registrationApi} from "./registrationAPI";
+import {Router, Store} from "../../core";
 
 interface FormRegistrationProps {
-    text: string
+    router: Router;
+    store: Store<AppState>;
+    text: string,
 }
 
-export class FormRegistration extends Block<Omit<FormRegistrationProps, "text">> {
+export class FormRegistration extends Block<FormRegistrationProps | object> {
     static componentName = "FormRegistration";
 
     constructor({text}: FormRegistrationProps) {
@@ -19,10 +22,9 @@ export class FormRegistration extends Block<Omit<FormRegistrationProps, "text">>
     }
 
     async onButtonClick() {
-        const data: RegistrationRequest | undefined = new Validation().validForm(this.element as HTMLElement);
+        const data: string | undefined = new Validation().validForm(this.element as HTMLElement);
         if (data) {
-            const response = await registrationApi.registration(data);
-            console.log(response)
+            await registrationApi.registration(data);
         }
     }
 
