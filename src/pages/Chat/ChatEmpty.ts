@@ -1,4 +1,6 @@
 import Block from "core/Block";
+import {withRouter} from "utils/withRouter";
+import {withStore} from "utils/withStore";
 
 interface ChatEmptyProps {
     profiles: profileProps[];
@@ -14,7 +16,7 @@ interface profileProps {
     messages: messageProps
 }
 
-export default class ChatEmpty extends Block<ChatEmptyProps | object> {
+export class ChatEmpty extends Block<ChatEmptyProps | object> {
     static componentName = "ChatEmpty";
 
     constructor({profiles, ...props}: ChatEmptyProps) {
@@ -30,3 +32,4 @@ export default class ChatEmpty extends Block<ChatEmptyProps | object> {
         `;
     }
 }
+export default withRouter(withStore(ChatEmpty));

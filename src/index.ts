@@ -14,7 +14,6 @@ import ChatMessages from "components/chatMessages/chatMessages";
 import MessageItem from "components/messageItem/messageItem";
 import FormInput from "components/formInput/formInput";
 import DefaultButton from "components/UI/defaultButton/defaultButton";
-import ChatEmpty from "pages/Chat/ChatEmpty";
 import ChatActive from "pages/Chat/ChatActive";
 import Error404 from "pages/Services/error404";
 import Error500 from "pages/Services/error500";
@@ -31,7 +30,6 @@ registerComponent(ChatMessages)
 registerComponent(MessageItem)
 registerComponent(FormInput)
 registerComponent(DefaultButton)
-registerComponent(ChatEmpty)
 registerComponent(ChatActive)
 registerComponent(Error404)
 registerComponent(Error500)
@@ -45,11 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderDOM(new StartPage({}));
     store.on('changed', (_, nextState) => {
         if (process.env.DEBUG) {
-            console.log(
-                '%cstore updated',
-                'background: #222; color: #bada55',
-                nextState,
-            );
+            console.log(nextState);
         }
     });
     initRouter(router, store);
