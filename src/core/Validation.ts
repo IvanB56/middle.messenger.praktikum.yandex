@@ -6,7 +6,7 @@ export default class Validation {
         this.checkField();
     }
 
-    validForm(parent: HTMLElement): RegistrationRequest | undefined {
+    validForm(parent: HTMLElement): string | undefined {
         if (parent) {
             const request: { [key: string]: string } = {};
             const form = parent.querySelector("form") as HTMLFormElement;
@@ -25,7 +25,7 @@ export default class Validation {
                 for (const formDataKey of formData.entries()) {
                     request[formDataKey[0]] = <string>formDataKey[1];
                 }
-                return request as RegistrationRequest;
+                return JSON.stringify(request);
             }
         }
     }

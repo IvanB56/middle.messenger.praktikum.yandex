@@ -10,7 +10,6 @@ export enum Screens {
 
 export interface BlockClass<P extends object> extends Function {
     new(props: P): P;
-
     componentName: string;
 }
 

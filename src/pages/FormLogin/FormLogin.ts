@@ -4,12 +4,15 @@ import {withStore} from "utils/withStore";
 import {withRouter} from "utils/withRouter";
 import {Router, Store} from "core";
 import {Routes} from "../../routes";
+import {loginApi} from "./loginApi";
 
 interface FormLoginProps {
     router: Router;
     store: Store<AppState>;
     text: string
 }
+
+
 
 export class FormLogin extends Block<FormLoginProps | object> {
     static componentName = "FormLogin";
@@ -22,8 +25,11 @@ export class FormLogin extends Block<FormLoginProps | object> {
         })
     }
 
-    onButtonClick() {
-        new Validation().validForm(this.element as HTMLElement);
+    async onButtonClick() {
+        const data: string | undefined = new Validation().validForm(this.element as HTMLElement);
+        if (data) {
+            await loginApi.login(data);
+        }
     }
 
     onNavigateRegistration(event: Event) {
