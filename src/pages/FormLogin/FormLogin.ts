@@ -13,7 +13,6 @@ interface FormLoginProps {
 }
 
 
-
 export class FormLogin extends Block<FormLoginProps | object> {
     static componentName = "FormLogin";
 
@@ -21,15 +20,34 @@ export class FormLogin extends Block<FormLoginProps | object> {
         super({text, ...props});
         this.setProps({
             onButtonClick: () => this.onButtonClick(),
-            onLinkClick: (e: Event) => this.onNavigateRegistration(e)
+            onLinkClick: (e: Event) => this.onNavigateRegistration(e),
+            errorOpacity: 0
         })
     }
 
     async onButtonClick() {
         const data: string | undefined = new Validation().validForm(this.element as HTMLElement);
         if (data) {
-            await loginApi.login(data);
+            const response = await loginApi.login(data);
+            if (response.reason) {
+                this.setProps({
+                    errorOpacity: 1,
+                    error: response.reason
+                });
+                setTimeout(() => this.hideError(), 2000);
+            } else {
+                if ("router" in this.props) {
+                    this.props.router.go(Routes.REGISTRATION);
+                }
+            }
         }
+    }
+
+    hideError() {
+        this.setProps({
+            errorOpacity: 0,
+            error: ''
+        })
     }
 
     onNavigateRegistration(event: Event) {
@@ -51,6 +69,7 @@ export class FormLogin extends Block<FormLoginProps | object> {
                         {{{ FormInput type="text" label="Логин" inputName="login" }}}
                         {{{ FormInput type="password" inputName="password" label="Пароль" }}}
                         {{{ DefaultButton text="Ещё не зарегистрированы?" onClick=onLinkClick }}}
+                        <span class="errorText" style="opacity: {{ errorOpacity }};">{{ error }}</span>
                         {{{ Button text="Войти" onClick=onButtonClick }}}
                     </form>
                 </div>

@@ -5,13 +5,14 @@ export enum Routes {
     MAIN = '/',
     LOGIN = '/login',
     REGISTRATION = '/registration',
+    AUTH = '/chat-empty',
 }
 
 const routes = [
     {
         path: Routes.MAIN,
-        block: Screens.LOGIN,
-        shouldAuthorized: false,
+        block: Screens.AUTH,
+        shouldAuthorized: true,
     },
     {
         path: Routes.LOGIN,
@@ -36,7 +37,7 @@ export function initRouter(router: Router, store: Store<AppState>) {
             }
 
             if (!currentScreen) {
-                store.dispatch({ screen: Screens.START });
+                store.dispatch({ screen: Screens.LOGIN });
             }
         });
     });
