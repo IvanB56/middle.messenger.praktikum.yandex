@@ -5,6 +5,11 @@ export const loginApi = {
         return Fetch.post('https://ya-praktikum.tech/api/v2/auth/signin', {
             data: data,
             headers: {'Content-Type': 'application/json'}
-        }).then(r => JSON.parse(r.responseText));
+        }).then(r => {
+            if (r.status === 200) {
+                return '';
+            }
+            return JSON.parse(r.responseText)
+        });
     }
 }

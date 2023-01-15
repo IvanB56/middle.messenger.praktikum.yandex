@@ -36,8 +36,10 @@ export class FormLogin extends Block<FormLoginProps | object> {
                 });
                 setTimeout(() => this.hideError(), 2000);
             } else {
+                debugger;
                 if ("router" in this.props) {
-                    this.props.router.go(Routes.REGISTRATION);
+                    console.log(Routes);
+                    this.props.router.go(Routes.MAIN);
                 }
             }
         }
@@ -68,7 +70,9 @@ export class FormLogin extends Block<FormLoginProps | object> {
                     <form class="form-login">
                         {{{ FormInput type="text" label="Логин" inputName="login" }}}
                         {{{ FormInput type="password" inputName="password" label="Пароль" }}}
-                        {{{ DefaultButton text="Ещё не зарегистрированы?" onClick=onLinkClick }}}
+                        <div>
+                            {{{ DefaultButton text="Ещё не зарегистрированы?" onClick=onLinkClick }}}
+                        </div>
                         <span class="errorText" style="opacity: {{ errorOpacity }};">{{ error }}</span>
                         {{{ Button text="Войти" onClick=onButtonClick }}}
                     </form>
