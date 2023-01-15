@@ -21,7 +21,7 @@ export class FormRegistration extends Block<Omit<FormRegistrationProps, "text">>
     async onButtonClick() {
         const data: RegistrationRequest | undefined = new Validation().validForm(this.element as HTMLElement);
         if (data) {
-            const response = await registrationApi.registration(JSON.stringify(data));
+            const response = await registrationApi.registration(data);
             console.log(response)
         }
     }

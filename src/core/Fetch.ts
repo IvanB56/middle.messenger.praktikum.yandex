@@ -49,6 +49,8 @@ class Fetch {
 
     private request(url: string | URL, options: Options, timeout = 5000): Promise<XMLHttpRequest> {
         const {method, headers = {}, data} = options;
+        console.log(typeof data);
+        console.log(data);
         return new Promise((resolve, reject) => {
             if (!method) {
                 reject('No method');
