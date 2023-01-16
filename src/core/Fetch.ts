@@ -60,6 +60,7 @@ class Fetch {
                 resolve(xhr);
             };
             xhr.timeout = timeout;
+            // xhr.withCredentials = true;
             xhr.onabort = reject;
             xhr.onerror = reject;
             xhr.ontimeout = reject;

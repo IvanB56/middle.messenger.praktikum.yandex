@@ -1,3 +1,3 @@
-export function apiHasError(response: object): boolean {
-    return (response && response.hasOwnProperty('reason'));
+export function apiHasError(response: UserRequest | undefined): boolean {
+    return <boolean>(response && response.hasOwnProperty('reason'));
 }

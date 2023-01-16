@@ -1,5 +1,4 @@
-import {Router} from "express";
-import {Store} from "../src/core";
+import {Router, Store} from "core";
 
 declare global {
     export type Nullable<T> = T | null;
@@ -35,6 +34,10 @@ declare global {
         phone: string;
         email: string;
     };
+    export type UserRequest = {
+        login: string;
+        password: string;
+    }
     export type RegistrationRequest = {
         first_name: string;
         second_name: string;

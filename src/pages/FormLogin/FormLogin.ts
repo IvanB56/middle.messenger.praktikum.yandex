@@ -1,10 +1,10 @@
-import Block from "core/Block";
 import Validation from "core/Validation";
 import {withStore} from "utils/withStore";
 import {withRouter} from "utils/withRouter";
-import {Router, Store} from "core";
+import {Router, Store, Block} from "core";
 import {Routes} from "../../routes";
 import {loginApi} from "./loginApi";
+import {transformUser} from "../../utils/transformUser";
 
 interface FormLoginProps {
     router: Router;
@@ -36,9 +36,8 @@ export class FormLogin extends Block<FormLoginProps | object> {
                 });
                 setTimeout(() => this.hideError(), 2000);
             } else {
-                debugger;
                 if ("router" in this.props) {
-                    console.log(Routes);
+                    this.props.store.dispatch({user: transformUser(response as unknown as UserDTO)});
                     this.props.router.go(Routes.MAIN);
                 }
             }
