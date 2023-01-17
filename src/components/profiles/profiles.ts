@@ -1,20 +1,21 @@
 import Block from "core/Block";
 
 interface ProfilesProps {
-    profiles: profileProps;
+    profiles: profileProps[] | [];
     user: UserDTO;
-}
-
-interface messageProps {
-    text: string
-    time: string
-    count: number
+    onClick?: () => void
 }
 
 interface profileProps {
-    name: string
-    active?: boolean
-    messages?: messageProps
+    "id": number,
+    "title": string,
+    "avatar": string,
+    "unread_count": number,
+    "last_message": {
+        "user": { [key: string]: any }
+    },
+    "time": string,
+    "content": string
 }
 
 export default class Profiles extends Block<ProfilesProps | object> {
@@ -22,7 +23,13 @@ export default class Profiles extends Block<ProfilesProps | object> {
 
     constructor({profiles, user, ...props}: ProfilesProps) {
         super({profiles, user, ...props});
-        console.log(this.props)
+        this.setProps({
+            onClick: () => this.createChat()
+        })
+    }
+
+    createChat() {
+        console.log('create chats');
     }
 
     protected render(): string {
@@ -34,11 +41,11 @@ export default class Profiles extends Block<ProfilesProps | object> {
                         <div class="profiles-top-info">
                             <div class="profiles-top-info-left">
                                 <div class="img">
-                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAQAAACQ9RH5AAAANklEQVR42u3NAQ0AAAgDIN8/oWk0hnODAqSnTkQsFovFYrFYLBaLxWKxWCwWi8VisVgsFn+KF/YRbt0rxAMbAAAAAElFTkSuQmCC" alt="Profile img"  width="60"  height="60">
+                                    <img src="{{ this.user.avatar }}" alt="Profile img"  width="60"  height="60" class="{{#unless this.user.avatar}}hidden{{/unless}}">
                                 </div>
                             </div>
                             <div class="profiles-top-info-left">
-                                <p class="profile-name">{{ this.user.name }}</p>
+                                <p class="profile-name">{{ this.user.first_name }}</p>
                                 <p class="profile-status">Без статуса</p>
                             </div>
                         </div>
@@ -51,9 +58,13 @@ export default class Profiles extends Block<ProfilesProps | object> {
                     </div>
                 </div>
                 <div class="profiles-body">
-                    {{#each this.profiles }}
-                        {{{ ProfileItem profile=this }}}
-                    {{/each }}
+                    {{#if this.profiles.length}}
+                        {{#each this.profiles }}
+                            {{{ ProfileItem profile=this }}}
+                        {{/each }}
+                    {{else}}
+                        {{{ DefaultButton text="Создать чат" className="text-center m-auto" onClick=onClick }}}
+                    {{/if}}
                 </div>
             </div>
         `;
