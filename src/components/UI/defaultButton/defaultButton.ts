@@ -9,11 +9,11 @@ interface DefaultButtonProps {
 export default class DefaultButton extends Block<DefaultButtonProps | object> {
     static componentName = "DefaultButton";
 
-    constructor({text, onClick}: DefaultButtonProps) {
-        super({text, events: {click: onClick}});
+    constructor({text, onClick, ...props}: DefaultButtonProps) {
+        super({text, events: {click: onClick}, ...props});
     }
 
     protected render(): string {
-        return `<button type="button" class="btn-default">{{ text }}</button>`;
+        return `<button type="button" class="btn-default {{ this.className }}">{{ text }}</button>`;
     }
 }
