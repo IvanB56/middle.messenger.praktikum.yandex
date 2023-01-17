@@ -4,7 +4,7 @@ import {withRouter} from "utils/withRouter";
 import {Router, Store, Block} from "core";
 import {Routes} from "../../routes";
 import {loginApi} from "./loginApi";
-import {transformUser} from "../../utils/transformUser";
+import {transformUser} from "utils/transformUser";
 
 interface FormLoginProps {
     router: Router;
@@ -36,8 +36,11 @@ export class FormLogin extends Block<FormLoginProps | object> {
                 });
                 setTimeout(() => this.hideError(), 2000);
             } else {
+                if ("store" in this.props) {
+                    const user = await loginApi.login(data);
+                    this.props.store.dispatch({user: transformUser(user as unknown as UserDTO)});
+                }
                 if ("router" in this.props) {
-                    this.props.store.dispatch({user: transformUser(response as unknown as UserDTO)});
                     this.props.router.go(Routes.MAIN);
                 }
             }
