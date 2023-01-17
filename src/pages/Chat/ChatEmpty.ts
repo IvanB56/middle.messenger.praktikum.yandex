@@ -3,7 +3,6 @@ import {withRouter} from "utils/withRouter";
 import {withStore} from "utils/withStore";
 import {Router, Store} from "core";
 import {authApi} from "../../api/authAPI";
-import {transformUser} from "utils/transformUser";
 import {chatApi} from "./chatApi";
 
 interface ChatEmptyProps {
@@ -13,14 +12,16 @@ interface ChatEmptyProps {
     user: UserDTO;
 }
 
-interface messageProps {
-    [key: string]: string | number
-}
-
 interface profileProps {
-    name: string
-    active?: boolean
-    messages: messageProps
+    "id": number,
+    "title": string,
+    "avatar": string,
+    "unread_count": number,
+    "last_message": {
+        "user": { [key: string]: any }
+    },
+    "time": string,
+    "content": string
 }
 
 export class ChatEmpty extends Block<ChatEmptyProps | object> {
