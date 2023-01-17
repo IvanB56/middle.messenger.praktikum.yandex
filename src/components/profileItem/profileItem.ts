@@ -7,7 +7,8 @@ interface BlockProps {
 interface ProfileItemProps {
     active?: boolean
     name: string,
-    message: messageProps
+    message: messageProps,
+    avatar: string,
 }
 
 interface messageProps {
@@ -26,7 +27,7 @@ export default class ProfileItem extends Block<BlockProps | object> {
         return `
             <div class="profile {{#if this.profile.active}}active{{/if}}">
                 <div class="img">
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAQAAACQ9RH5AAAANklEQVR42u3NAQ0AAAgDIN8/oWk0hnODAqSnTkQsFovFYrFYLBaLxWKxWCwWi8VisVgsFn+KF/YRbt0rxAMbAAAAAElFTkSuQmCC" alt="Profile name" width="60" height="60">
+                    <img src="{{ this.profile.avatar }}" alt="Profile name" width="60" height="60" class="{{#unless this.user.avatar}}hidden{{/unless}}">
                 </div>
                 <div class="info">
                     <p class="profile-name">{{ this.profile.name }}</p>
