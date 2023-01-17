@@ -2,6 +2,7 @@ import Block from "core/Block";
 
 interface ProfilesProps {
     profiles: profileProps;
+    user: UserDTO;
 }
 
 interface messageProps {
@@ -19,8 +20,9 @@ interface profileProps {
 export default class Profiles extends Block<ProfilesProps | object> {
     static componentName = "Profiles";
 
-    constructor({...props}: ProfilesProps) {
-        super({...props});
+    constructor({profiles, user, ...props}: ProfilesProps) {
+        super({profiles, user, ...props});
+        console.log(this.props)
     }
 
     protected render(): string {
@@ -36,7 +38,7 @@ export default class Profiles extends Block<ProfilesProps | object> {
                                 </div>
                             </div>
                             <div class="profiles-top-info-left">
-                                <p class="profile-name">Бурак Иван</p>
+                                <p class="profile-name">{{ this.user.name }}</p>
                                 <p class="profile-status">Без статуса</p>
                             </div>
                         </div>

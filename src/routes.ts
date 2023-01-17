@@ -1,5 +1,5 @@
-import { Store, renderDOM, Router } from 'core';
-import { getScreenComponent, Screens } from 'utils/getScreenComponent';
+import {Store, renderDOM, Router} from 'core';
+import {getScreenComponent, Screens} from 'utils/getScreenComponent';
 
 export enum Routes {
     MAIN = '/',
@@ -11,7 +11,7 @@ export enum Routes {
 const routes = [
     {
         path: Routes.MAIN,
-        block: Screens.AUTH,
+        block: Screens.MAIN,
         shouldAuthorized: true,
     },
     {
@@ -32,25 +32,26 @@ export function initRouter(router: Router, store: Store<AppState>) {
             const isAuthorized = Boolean(store.getState().user);
             const currentScreen = Boolean(store.getState().screen);
             if (isAuthorized || !route.shouldAuthorized) {
-                store.dispatch({ screen: route.block });
+                store.dispatch({screen: route.block});
                 return;
             }
-
             if (!currentScreen) {
-                store.dispatch({ screen: Screens.LOGIN });
+                store.dispatch({screen: Screens.LOGIN});
             }
         });
     });
 
-    store.on('changed', (prevState, nextState) => {
-        if (!prevState.appIsInited && nextState.appIsInited) {
-            router.start();
-        }
+    store.on('changed', (prevState, nextState): void => {
+        if (prevState && nextState) {
+            if (!prevState.appIsInited && nextState.appIsInited) {
+                router.start();
+            }
 
-        if (prevState.screen !== nextState.screen) {
-            const Page = getScreenComponent(nextState.screen);
-            renderDOM(new Page({}));
-            document.title = `App / ${Page.componentName}`;
+            if (prevState.screen !== nextState.screen) {
+                const Page = getScreenComponent(nextState.screen);
+                renderDOM(new Page({}));
+                document.title = `App / ${Page.componentName}`;
+            }
         }
     });
 }

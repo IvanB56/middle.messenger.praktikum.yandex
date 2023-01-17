@@ -1,13 +1,13 @@
 import FormLogin from "pages/FormLogin/FormLogin";
 import FormRegistration from "pages/FormRegistration/FormRegistration";
 import StartPage from "pages/StartPage/StartPage";
-import {ChatEmpty} from "../pages/Chat/ChatEmpty";
+import {ChatEmpty} from "pages/Chat/ChatEmpty";
 
 export enum Screens {
-    LOGIN = 'formLogin',
-    REGISTRATION = 'formRegistration',
+    LOGIN = 'Login',
+    REGISTRATION = 'Registration',
     START = 'StartPage',
-    AUTH = 'ChatEmpty',
+    MAIN = 'ChatEmpty',
 }
 
 export interface BlockClass<P extends object> extends Function {
@@ -20,7 +20,7 @@ const map: Record<Screens, BlockClass<any>> = {
     [Screens.LOGIN]: FormLogin,
     [Screens.REGISTRATION]: FormRegistration,
     [Screens.START]: StartPage,
-    [Screens.AUTH]: ChatEmpty
+    [Screens.MAIN]: ChatEmpty
 };
 
 export const getScreenComponent = (screen: Screens) => {
