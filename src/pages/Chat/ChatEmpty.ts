@@ -29,9 +29,6 @@ export class ChatEmpty extends Block<ChatEmptyProps | object> {
 
     constructor({profiles, user, ...props}: ChatEmptyProps) {
         super({profiles, user, ...props});
-        Promise.all([this.getProfiles(), this.getUser()]).then(([profiles, user]) => {
-            this.setProps({profiles, user});
-        });
     }
 
     getUser() {
