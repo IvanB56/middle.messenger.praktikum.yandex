@@ -25,8 +25,8 @@ interface profileProps {
 export class ChatEmpty extends Block<ChatEmptyProps | object> {
     static componentName = "ChatEmpty";
 
-    constructor({profiles, user, ...props}: ChatEmptyProps) {
-        super({profiles, user, ...props});
+    constructor(props: ChatEmptyProps) {
+        super(props);
         this.setProps({
             onClick: () => console.log(this.props)
         })
