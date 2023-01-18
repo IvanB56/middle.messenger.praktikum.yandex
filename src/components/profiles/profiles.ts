@@ -1,5 +1,4 @@
 import Block from "core/Block";
-import {logout} from "../../services/auth";
 
 interface ProfilesProps {
     profiles: profileProps[] | [];

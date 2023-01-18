@@ -2,10 +2,8 @@ import Block from "core/Block";
 import Validation from "core/Validation";
 import {withRouter} from "utils/withRouter";
 import {withStore} from "utils/withStore";
-import {registrationApi} from "./registrationAPI";
 import {Router, Store} from "core";
-import {transformUser} from "../../utils/transformUser";
-import {Routes} from "../../routes";
+import {create} from "../../services/auth";
 
 interface FormRegistrationProps {
     router: Router;
@@ -26,17 +24,25 @@ export class FormRegistration extends Block<FormRegistrationProps> {
     }
 
     async onButtonClick() {
-        const data: string | undefined = new Validation().validForm(this.element as HTMLElement);
+        const data: UserDTO | undefined = new Validation().validForm(this.element as HTMLElement);
         if (data) {
-            const response = await registrationApi.registration(data);
-            if (!response.reason) {
-                this.props.store.dispatch({user: transformUser(response as unknown as UserDTO)});
-                this.props.router.go(Routes.MAIN);
+            console.log(data)
+            const registrationData = {
+                "first_name": data['first_name'],
+                "second_name": data['second_name'],
+                "login": data['login'],
+                "email": data['email'],
+                "password": data['password'],
+                "phone": data['phone']
+            };
+            if ("store" in this.props) {
+                this.props.store.dispatch(create, registrationData);
             }
         }
     }
 
     protected render(): string {
+        console.log(this.props.store.getState())
         return `
          <div class="registration">
             <div class="form-inner">
@@ -51,6 +57,7 @@ export class FormRegistration extends Block<FormRegistrationProps> {
                         {{{ FormInput type="email"    inputName="email"       label="Ваша почта"  }}}
                         {{{ FormInput type="password" inputName="password"    label="Ваш пароль"  }}}
                         {{{ FormInput type="tel"      inputName="phone"       label="Телефон"     }}}
+                        <span class="errorText" style="opacity: {{ store.state.errorOpacity }};">{{ store.state.loginFormError }}</span>
                         {{{ Button text="Регистрация" onClick=onButtonClick }}}
                     </form>
                 </div>

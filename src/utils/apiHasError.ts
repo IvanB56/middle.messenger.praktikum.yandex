@@ -1,3 +1,3 @@
-export function apiHasError(response: UserRequest | undefined): boolean {
+export function apiHasError(response: XMLHttpRequest): boolean {
     return <boolean>(response && response.hasOwnProperty('reason'));
 }
