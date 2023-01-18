@@ -1,4 +1,5 @@
 import Block from "core/Block";
+import {logout} from "../../services/auth";
 
 interface ProfilesProps {
     profiles: profileProps[] | [];
@@ -29,7 +30,7 @@ export default class Profiles extends Block<ProfilesProps | object> {
     }
 
     createChat() {
-        console.log('create chats');
+        this.props.store.dispatch(logout, {});
     }
 
     protected render(): string {
@@ -63,7 +64,7 @@ export default class Profiles extends Block<ProfilesProps | object> {
                             {{{ ProfileItem profile=this }}}
                         {{/each }}
                     {{else}}
-                        {{{ DefaultButton text="Создать чат" className="text-center m-auto" onClick=onClick }}}
+                        {{{ DefaultButton text="Выйти" className="text-center m-auto" onClick=onClick }}}
                     {{/if}}
                 </div>
             </div>

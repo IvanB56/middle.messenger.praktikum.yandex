@@ -3,8 +3,7 @@ import {withStore} from "utils/withStore";
 import {withRouter} from "utils/withRouter";
 import {Router, Store, Block} from "core";
 import {Routes} from "../../routes";
-import {loginApi} from "./loginApi";
-import {transformUser} from "utils/transformUser";
+import {login} from "../../services/auth";
 
 interface FormLoginProps {
     router: Router;
@@ -21,37 +20,20 @@ export class FormLogin extends Block<FormLoginProps | object> {
         this.setProps({
             onButtonClick: () => this.onButtonClick(),
             onLinkClick: (e: Event) => this.onNavigateRegistration(e),
-            errorOpacity: 0
         })
     }
 
-    async onButtonClick() {
-        const data: string | undefined = new Validation().validForm(this.element as HTMLElement);
+    onButtonClick() {
+        const data: { login: string, password: string } = new Validation().validForm(this.element as HTMLElement);
         if (data) {
-            const response = await loginApi.login(data);
-            if (response.reason) {
-                this.setProps({
-                    errorOpacity: 1,
-                    error: response.reason
-                });
-                setTimeout(() => this.hideError(), 2000);
-            } else {
-                if ("store" in this.props) {
-                    const user = await loginApi.login(data);
-                    this.props.store.dispatch({user: transformUser(user as unknown as UserDTO)});
-                }
-                if ("router" in this.props) {
-                    this.props.router.go(Routes.MAIN);
-                }
+            const loginData = {
+                login: data.login,
+                password: data.password
+            };
+            if ("store" in this.props) {
+                this.props.store.dispatch(login, loginData);
             }
         }
-    }
-
-    hideError() {
-        this.setProps({
-            errorOpacity: 0,
-            error: ''
-        })
     }
 
     onNavigateRegistration(event: Event) {
@@ -75,7 +57,7 @@ export class FormLogin extends Block<FormLoginProps | object> {
                         <div>
                             {{{ DefaultButton text="Ещё не зарегистрированы?" onClick=onLinkClick }}}
                         </div>
-                        <span class="errorText" style="opacity: {{ errorOpacity }};">{{ error }}</span>
+                        <span class="errorText" style="opacity: {{ store.state.errorOpacity }};">{{ store.state.loginFormError }}</span>
                         {{{ Button text="Войти" onClick=onButtonClick }}}
                     </form>
                 </div>
