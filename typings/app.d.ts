@@ -7,7 +7,7 @@ declare global {
     export type AppState = {
         appIsInited: boolean;
         screen: Screens | null;
-        isLoading: boolean;
+        errorOpacity: number;
         loginFormError: string | null;
         user: User | null;
     };

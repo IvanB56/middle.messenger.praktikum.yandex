@@ -2,8 +2,6 @@ import Block from "core/Block";
 import {withRouter} from "utils/withRouter";
 import {withStore} from "utils/withStore";
 import {Router, Store} from "core";
-import {authApi} from "../../api/authAPI";
-import {chatApi} from "./chatApi";
 
 interface ChatEmptyProps {
     router: Router;
@@ -29,23 +27,15 @@ export class ChatEmpty extends Block<ChatEmptyProps | object> {
 
     constructor({profiles, user, ...props}: ChatEmptyProps) {
         super({profiles, user, ...props});
-        Promise.all([this.getProfiles(), this.getUser()]).then(([profiles, user]) => {
-            this.setProps({profiles, user});
-        });
-    }
-
-    getUser() {
-        return authApi.user().then(r => JSON.parse(r.responseText));
-    }
-
-    getProfiles() {
-        return chatApi.getProfiles().then(r => JSON.parse(r.responseText));
+        this.setProps({
+            onClick: () => console.log(this.props)
+        })
     }
 
     render() {
         return `
         <div class="chat">
-            {{{ Profiles profiles=this.profiles user=this.user }}}
+            {{{ Profiles profiles=this.profiles user=this.user onClick=onClick }}}
             {{{ NoSelect }}}
         </div>
         `;

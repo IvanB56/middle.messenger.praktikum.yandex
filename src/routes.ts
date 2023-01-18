@@ -30,6 +30,7 @@ export function initRouter(router: Router, store: Store<AppState>) {
     routes.forEach(route => {
         router.use(route.path, () => {
             const isAuthorized = Boolean(store.getState().user);
+            console.log(store.getState().user)
             const currentScreen = Boolean(store.getState().screen);
             if (isAuthorized || !route.shouldAuthorized) {
                 store.dispatch({screen: route.block});
