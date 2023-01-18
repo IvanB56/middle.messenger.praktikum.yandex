@@ -24,13 +24,6 @@ export default class Profiles extends Block<ProfilesProps | object> {
 
     constructor({profiles, user, ...props}: ProfilesProps) {
         super({profiles, user, ...props});
-        this.setProps({
-            onClick: () => this.createChat()
-        })
-    }
-
-    createChat() {
-        this.props.store.dispatch(logout, {});
     }
 
     protected render(): string {
