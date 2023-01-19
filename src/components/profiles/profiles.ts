@@ -1,4 +1,5 @@
 import Block from "core/Block";
+import {Routes} from "../../routes";
 
 interface ProfilesProps {
     profiles: profileProps[] | [];
@@ -23,6 +24,15 @@ export default class Profiles extends Block<ProfilesProps | object> {
 
     constructor({profiles, user, ...props}: ProfilesProps) {
         super({profiles, user, ...props});
+        this.setProps({
+            onButtonClick: (e: Event) => this.onButtonClick(e)
+        })
+    }
+
+    onButtonClick(event: Event) {
+        console.log(123)
+        event.preventDefault();
+        window.router.go(Routes.SETTINGS);
     }
 
     protected render(): string {
@@ -38,12 +48,11 @@ export default class Profiles extends Block<ProfilesProps | object> {
                                 </div>
                             </div>
                             <div class="profiles-top-info-left">
-                                <p class="profile-name">{{ this.user.first_name }}</p>
-                                <p class="profile-status">Без статуса</p>
+                                <p class="profile-name">{{ this.user.firstName }} {{ this.user.secondName }}</p>
                             </div>
                         </div>
                         <div class="profiles-settings">
-                            {{{ SettingsButtons }}}
+                            {{{ SettingsButtons onClick=onButtonClick }}}
                         </div>
                     </div>
                     <div class="profiles-search">

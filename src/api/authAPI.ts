@@ -16,7 +16,7 @@ export const authApi = {
         return Fetch.get('https://ya-praktikum.tech/api/v2/auth/user', {});
     },
     logout(){
-        return Fetch.get('https://ya-praktikum.tech/api/v2/auth/logout', {});
+        return Fetch.post('https://ya-praktikum.tech/api/v2/auth/logout', {});
     },
     create(data: UserDTO): Promise<XMLHttpRequest> {
         return Fetch.post('https://ya-praktikum.tech/api/v2/auth/signup', {

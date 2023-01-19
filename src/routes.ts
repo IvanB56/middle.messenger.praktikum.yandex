@@ -6,13 +6,14 @@ export enum Routes {
     LOGIN = '/login',
     REGISTRATION = '/registration',
     AUTH = '/chat-empty',
+    SETTINGS = '/settings',
 }
 
 const routes = [
     {
         path: Routes.MAIN,
         block: Screens.MAIN,
-        shouldAuthorized: false,
+        shouldAuthorized: true,
     },
     {
         path: Routes.LOGIN,
@@ -24,6 +25,11 @@ const routes = [
         block: Screens.REGISTRATION,
         shouldAuthorized: false,
     },
+    {
+        path: Routes.SETTINGS,
+        block: Screens.SETTINGS,
+        shouldAuthorized: true,
+    }
 ];
 
 export function initRouter(router: Router, store: Store<AppState>) {

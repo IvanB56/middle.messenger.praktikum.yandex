@@ -1,7 +1,10 @@
 import Block from "core/Block";
+import {withRouter} from "utils/withRouter";
+import {withStore} from "utils/withStore";
 
-export default class ProfileInfo extends Block<object> {
+export class ProfileInfo extends Block<object> {
     protected render(): string {
+        console.log(this.props.store)
         return `
             <div class="profile-info">
                 <div class="inner">
@@ -15,27 +18,27 @@ export default class ProfileInfo extends Block<object> {
                         </div>
                         <div class="row">
                             <span>Почта</span>
-                            <span>pochta@yandex.ru</span>
+                            <span>{{ store.state.user.email }}</span>
                         </div>
                         <div class="row">
                             <span>Логин</span>
-                            <span>Ivan Ivanov</span>
+                            <span>{{ store.state.user.login }}</span>
                         </div>
                         <div class="row">
                             <span>Имя</span>
-                            <span>Иван</span>
+                            <span>{{ store.state.user.firstName }}</span>
                         </div>
                         <div class="row">
                             <span>Фамилия</span>
-                            <span>Бурак</span>
+                            <span>{{ store.state.user.secondName }}</span>
                         </div>
                         <div class="row">
                             <span>Имя в чате</span>
-                            <span>Иван</span>
+                            <span>{{ store.state.user.displayName }}</span>
                         </div>
                         <div class="row">
                             <span>Телефон</span>
-                            <span>+7 (909) 967 30 30</span>
+                            <span>{{ store.state.user.phone }}</span>
                         </div>
                         <div class="change-data">
                             <a href="#">Изменить данные</a>
@@ -53,3 +56,5 @@ export default class ProfileInfo extends Block<object> {
         `;
     }
 }
+
+export default withRouter(withStore(ProfileInfo));

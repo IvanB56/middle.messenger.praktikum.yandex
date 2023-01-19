@@ -2,6 +2,7 @@ import Block from "core/Block";
 import {withRouter} from "utils/withRouter";
 import {withStore} from "utils/withStore";
 import {Router, Store} from "core";
+import {logout} from "../../services/auth";
 
 interface ChatEmptyProps {
     router: Router;
@@ -28,9 +29,17 @@ export class ChatEmpty extends Block<ChatEmptyProps | object> {
     constructor(props: ChatEmptyProps) {
         super(props);
         this.setProps({
-            onClick: () => console.log(this.props)
+            onClick: () => this.logout(),
+            user: this.props.store?.getState().user
         })
     }
+
+    logout() {
+        if ("store" in this.props) {
+            this.props.store.dispatch(logout);
+        }
+    }
+
 
     render() {
         return `
