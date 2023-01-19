@@ -22,7 +22,7 @@ export default class Input extends Block<object> {
 
     inputFocus() {
         const nextElement = (this.element as HTMLElement).nextElementSibling as HTMLElement;
-        if (this.element) {
+        if (this.element && nextElement) {
             nextElement.textContent = '';
             this.element.removeAttribute('data-is-valid');
         }

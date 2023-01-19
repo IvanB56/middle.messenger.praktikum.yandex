@@ -7,7 +7,7 @@ import {authApi} from "../api/authAPI";
 export async function initApp(dispatch: Dispatch<AppState>) {
     await new Promise(r => setTimeout(r, 700));
     try {
-        const user = await authApi.user();
+        const user = await authApi.user().then(r => JSON.parse(r.responseText));
         if (apiHasError(user)) {
             return;
         }

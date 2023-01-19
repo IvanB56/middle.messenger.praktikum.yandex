@@ -49,7 +49,7 @@ export async function create(dispatch: Dispatch<AppState>, _state: AppState, act
 }
 
 export async function logout(dispatch: Dispatch<AppState>) {
-    await authApi.logout().then(r => JSON.parse(r.responseText));
+    await authApi.logout().then(r => r.responseText);
     dispatch({user: null});
     window.router.go(Routes.MAIN);
 }
