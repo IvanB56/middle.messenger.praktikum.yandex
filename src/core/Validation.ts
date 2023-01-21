@@ -46,6 +46,8 @@ export default class Validation {
                 isValid = this.validateEmail();
                 break;
             case "password":
+            case "newPassword":
+            case "oldPassword":
                 isValid = this.validatePassword();
                 break;
             case "phone":

@@ -1,10 +1,58 @@
 import Block from "core/Block";
 import {withRouter} from "utils/withRouter";
 import {withStore} from "utils/withStore";
+import {logout} from "../../services/auth";
+import {Router, Store} from "../../core";
+import {Routes} from "../../routes";
 
-export class ProfileInfo extends Block<object> {
+interface ProfileInfoProps {
+    router: Router;
+    store: Store<AppState>;
+}
+
+export class ProfileInfo extends Block<ProfileInfoProps | object> {
+    constructor(props: ProfileInfoProps) {
+        super(props);
+        if ("store" in this.props) {
+            this.setProps({
+                avatar: `https://ya-praktikum.tech/api/v2/resources/${this.props.store.getState().user?.avatar}`,
+                onClick: () => this.logout(),
+                backToMain: () => this.toMain(),
+                toPassword: () => this.toPassword(),
+                toData: () => this.toData(),
+            })
+        }
+    }
+
+    logout() {
+        if ("store" in this.props) {
+            this.props.store.dispatch(logout);
+        }
+    }
+
+    toMain() {
+        if ("router" in this.props) {
+            this.props.router.go(Routes.MAIN);
+        }
+    }
+
+    toPassword() {
+        if ("router" in this.props) {
+            this.props.router.go(Routes.PASSWORD);
+        }
+    }
+
+    toData() {
+        if ("router" in this.props) {
+            this.props.router.go(Routes.EDIT);
+        }
+    }
+
+    avatarChange(e: Event) {
+        console.log(e)
+    }
+
     protected render(): string {
-        console.log(this.props.store)
         return `
             <div class="profile-info">
                 <div class="inner">
@@ -12,9 +60,16 @@ export class ProfileInfo extends Block<object> {
                         <h2>Профиль</h2>
                     </div>
                     <div class="inner-body">
-                        <div class="change-avatar">
-                            <i class="fa fa-file-image-o" aria-hidden="true"></i>
-                            <div class="change-avatar-text"><span>Поменять аватар</span></div>
+                        <div class="avatar">
+                            {{#if store.state.user.avatar}}
+                                <img src="{{ this.avatar }}" alt="">
+                            {{else}}
+                                <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                            {{/if}}
+                            <div class="change-avatar-text">
+                                <span>Поменять аватар</span>
+                                {{{ Input type="file" inputName="avatar" }}}
+                            </div>
                         </div>
                         <div class="row">
                             <span>Почта</span>
@@ -40,16 +95,16 @@ export class ProfileInfo extends Block<object> {
                             <span>Телефон</span>
                             <span>{{ store.state.user.phone }}</span>
                         </div>
-                        <div class="change-data">
-                            <a href="#">Изменить данные</a>
+                        <div class="changeData">
+                            {{{ DefaultButton text="Изменить данные" className='changeData-btn' onClick=toData }}}
                         </div>
-                        <div class="change-password">
-                            <a href="#">Изменить пароль</a>
+                        <div class="changePassword">
+                            {{{ DefaultButton text="Изменить пароль" className='changePassword-btn' onClick=toPassword }}}
                         </div>
                         <div class="button-exit">
-                             {{{ DefaultButton text="Выйти" }}}
+                             {{{ DefaultButton text="Выйти"  onClick=onClick }}}
                         </div>
-                        {{{ Button text="Закрыть" }}}
+                        {{{ Button text="Закрыть" onClick=backToMain }}}
                     </div>
                 </div>
             </div>

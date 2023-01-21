@@ -43,7 +43,7 @@ class Fetch {
         return this.request(url, {...options, method: Methods.PUT}, options.timeout);
     }
 
-    delete(url: string | URL, options: Options) {
+    delete(url: string | URL, options: OptionsWithoutMethod) {
         return this.request(url, {...options, method: Methods.DELETE}, options.timeout);
     }
 

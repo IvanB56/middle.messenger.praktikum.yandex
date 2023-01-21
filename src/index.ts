@@ -6,34 +6,32 @@ import {initRouter} from './routes';
 import Input from "components/UI/input/input";
 import Button from "components/UI/button/button";
 import Link from "components/UI/link/link";
-import Profiles from "components/profiles/profiles";
 import SettingsButtons from "components/UI/settingsButtons/settingsButtons";
-import ProfileItem from "components/profileItem/profileItem";
+import ChatItem from "components/chatItem/chatItem";
 import NoSelect from "components/noSelect/noSelect";
 import ChatMessages from "components/chatMessages/chatMessages";
 import MessageItem from "components/messageItem/messageItem";
 import FormInput from "components/formInput/formInput";
 import DefaultButton from "components/UI/defaultButton/defaultButton";
-import ChatActive from "pages/Chat/ChatActive";
-import Error404 from "pages/Services/error404";
 import Error500 from "pages/Services/error500";
 import StartPage from "pages/StartPage/StartPage";
+
+import Chats from "components/chats/chats";
 
 registerComponent(Input)
 registerComponent(Button)
 registerComponent(Link)
-registerComponent(Profiles)
 registerComponent(SettingsButtons)
-registerComponent(ProfileItem)
+registerComponent(ChatItem)
 registerComponent(NoSelect)
 registerComponent(ChatMessages)
 registerComponent(MessageItem)
 registerComponent(FormInput)
 registerComponent(DefaultButton)
-registerComponent(ChatActive)
-registerComponent(Error404)
 registerComponent(Error500)
 registerComponent(StartPage)
+
+registerComponent(Chats)
 
 document.addEventListener('DOMContentLoaded', () => {
     const store = new Store<AppState>(defaultState);

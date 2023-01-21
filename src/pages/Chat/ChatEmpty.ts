@@ -2,50 +2,48 @@ import Block from "core/Block";
 import {withRouter} from "utils/withRouter";
 import {withStore} from "utils/withStore";
 import {Router, Store} from "core";
-import {logout} from "../../services/auth";
+import {createChat} from "../../services/chats";
 
 interface ChatEmptyProps {
     router: Router;
     store: Store<AppState>;
-    profiles: profileProps[];
+    chats: ChatDTO[];
     user: UserDTO;
-}
-
-interface profileProps {
-    "id": number,
-    "title": string,
-    "avatar": string,
-    "unread_count": number,
-    "last_message": {
-        "user": { [key: string]: any }
-    },
-    "time": string,
-    "content": string
 }
 
 export class ChatEmpty extends Block<ChatEmptyProps | object> {
     static componentName = "ChatEmpty";
 
-    constructor(props: ChatEmptyProps) {
-        super(props);
-        this.setProps({
-            onClick: () => this.logout(),
-            user: this.props.store?.getState().user
-        })
-    }
-
-    logout() {
+    constructor({chats, store, ...props}: ChatEmptyProps) {
+        super({chats, store, ...props});
         if ("store" in this.props) {
-            this.props.store.dispatch(logout);
+            this.setProps({
+                onClick: () => this.createChat(),
+                user: this.props.store.getState().user,
+                chats: this.props.store.getState().chats,
+                avatar: `https://ya-praktikum.tech/api/v2/resources/${this.props.store.getState().user?.avatar}`,
+            })
         }
     }
 
+    createChat() {
+        const chatName: string = (document.querySelector('[name=createChat]') as HTMLInputElement).value as string;
+        window.store.dispatch(createChat, {title: `Чат: ${chatName}`});
+        setTimeout(() => {
+            if ("store" in this.props) {
+                this.setProps({
+                    chats: this.props.store.getState().chats,
+                })
+            }
+        }, 300);
+    }
 
     render() {
         return `
         <div class="chat">
-            {{{ Profiles profiles=this.profiles user=this.user onClick=onClick }}}
+            {{{ Chats chats=this.chats user=this.user avatar=this.avatar onClick=onClick }}}
             {{{ NoSelect }}}
+<!--            {{{ ChatMessages }}}-->
         </div>
         `;
     }
