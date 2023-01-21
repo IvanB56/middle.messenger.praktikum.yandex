@@ -3,6 +3,10 @@ import FormRegistration from "pages/FormRegistration/FormRegistration";
 import StartPage from "pages/StartPage/StartPage";
 import ChatEmpty from "pages/Chat/ChatEmpty";
 import ProfileInfo from "pages/ProfileInfo/ProfileInfo";
+import Error404 from "pages/Services/error404";
+import ChangePassword from "pages/ChangePassword/ChangePassword";
+import ProfileEdit from "../pages/ProfileEdit/ProfileEdit";
+
 
 export enum Screens {
     LOGIN = 'Login',
@@ -10,6 +14,9 @@ export enum Screens {
     START = 'StartPage',
     MAIN = 'ChatEmpty',
     SETTINGS = 'ProfileInfo',
+    NOTFOUND = 'error404',
+    PASSWORD = 'ChangePassword',
+    EDIT = 'ProfileEdit',
 }
 
 export interface BlockClass<P extends object> extends Function {
@@ -23,7 +30,10 @@ const map: Record<Screens, BlockClass<any>> = {
     [Screens.REGISTRATION]: FormRegistration,
     [Screens.START]: StartPage,
     [Screens.MAIN]: ChatEmpty,
-    [Screens.SETTINGS]: ProfileInfo
+    [Screens.SETTINGS]: ProfileInfo,
+    [Screens.NOTFOUND]: Error404,
+    [Screens.PASSWORD]: ChangePassword,
+    [Screens.EDIT]: ProfileEdit,
 };
 
 export const getScreenComponent = (screen: Screens) => {

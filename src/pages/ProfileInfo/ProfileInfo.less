@@ -52,11 +52,15 @@
       flex-direction: column;
     }
 
-    .change-data, .change-password {
+    .changeData, .changePassword {
       margin-top: 20px;
     }
 
-    .change-avatar {
+    .changePassword-btn, .changeData-btn {
+      text-decoration: underline;
+    }
+
+    .avatar {
       width: 150px;
       height: 150px;
       border: 1px solid @border-color;
@@ -89,6 +93,21 @@
           width: 70%;
           text-align: center;
         }
+
+        input {
+          opacity: 0;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
+        }
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        top: 0;
+        position: absolute;
       }
 
       i {

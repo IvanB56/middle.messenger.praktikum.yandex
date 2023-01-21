@@ -2,6 +2,7 @@ import type {Dispatch} from 'core';
 import {transformUser} from 'utils/transformUser';
 import {apiHasError} from 'utils/apiHasError';
 import {authApi} from "../api/authAPI";
+import {chatsAPI} from "../api/chatsAPI";
 
 
 export async function initApp(dispatch: Dispatch<AppState>) {
@@ -11,10 +12,17 @@ export async function initApp(dispatch: Dispatch<AppState>) {
         if (apiHasError(user)) {
             return;
         }
-       dispatch({user: transformUser(user as unknown as UserDTO)});
+        const chats = await chatsAPI.get().then(r => {
+            if (apiHasError(r)) {
+                return [];
+            }
+            return JSON.parse(r.responseText);
+        });
+
+        dispatch({user: transformUser(user as unknown as UserDTO), chats});
     } catch (err) {
         console.error(err);
     } finally {
-       dispatch({appIsInited: true});
+        dispatch({appIsInited: true});
     }
 }

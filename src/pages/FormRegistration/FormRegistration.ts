@@ -26,7 +26,6 @@ export class FormRegistration extends Block<FormRegistrationProps> {
     async onButtonClick() {
         const data: UserDTO | undefined = new Validation().validForm(this.element as HTMLElement);
         if (data) {
-            console.log(data)
             const registrationData = {
                 "first_name": data['first_name'],
                 "second_name": data['second_name'],
@@ -42,7 +41,6 @@ export class FormRegistration extends Block<FormRegistrationProps> {
     }
 
     protected render(): string {
-        console.log(this.props.store.getState())
         return `
          <div class="registration">
             <div class="form-inner">

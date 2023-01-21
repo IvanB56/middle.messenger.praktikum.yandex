@@ -7,6 +7,8 @@ export enum Routes {
     REGISTRATION = '/registration',
     AUTH = '/chat-empty',
     SETTINGS = '/settings',
+    PASSWORD = '/change-pass',
+    EDIT = '/edit',
 }
 
 const routes = [
@@ -29,6 +31,20 @@ const routes = [
         path: Routes.SETTINGS,
         block: Screens.SETTINGS,
         shouldAuthorized: true,
+    },
+    {
+        path: Routes.PASSWORD,
+        block: Screens.PASSWORD,
+        shouldAuthorized: true,
+    },
+    {
+        path: Routes.EDIT,
+        block: Screens.EDIT,
+        shouldAuthorized: true,
+    },
+    {
+        path: '*',
+        block: Screens.NOTFOUND
     }
 ];
 
@@ -55,8 +71,10 @@ export function initRouter(router: Router, store: Store<AppState>) {
 
             if (prevState.screen !== nextState.screen) {
                 const Page = getScreenComponent(nextState.screen);
-                renderDOM(new Page({}));
-                document.title = `App / ${Page.componentName}`;
+                if (Page) {
+                    renderDOM(new Page({}));
+                    document.title = `App / ${Page.componentName}`;
+                }
             }
         }
     });

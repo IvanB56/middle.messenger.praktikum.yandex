@@ -10,9 +10,21 @@ declare global {
         errorOpacity: number;
         loginFormError: string | null;
         user: User | null;
+        chats: ChatDTO[] | null;
     };
     export type APIError = {
         reason: string;
+    };
+    export type ChatDTO = {
+        id: number;
+        title: string;
+        avatar: string;
+        unread_count: number;
+        last_message: {
+            user: UserDTO,
+            time: string,
+            content: string,
+        }
     };
     export type UserDTO = {
         id: number;
@@ -24,7 +36,7 @@ declare global {
         phone: string;
         email: string;
         password?: string;
-    }
+    };
     export type User = {
         id: number;
         login: string;
