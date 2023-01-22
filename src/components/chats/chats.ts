@@ -32,7 +32,7 @@ export default class Chats extends Block<ChatsProps | object> {
                         <div class="chats-top-info">
                             <div class="chats-top-info-left">
                                 <div class="img">
-                                    <img src="{{ this.avatar }}" alt="Profile img"  width="60"  class="{{#unless this.avatar}}hidden{{/unless}}">
+                                    <img src="${this.props.avatar && this.props.avatar()}" alt="Profile img"  width="60"  class="{{#unless this.avatar}}hidden{{/unless}}">
                                 </div>
                             </div>
                             <div class="chats-top-info-left">

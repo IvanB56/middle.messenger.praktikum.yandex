@@ -21,14 +21,14 @@ export class ChatEmpty extends Block<ChatEmptyProps | object> {
                 onClick: () => this.createChat(),
                 user: this.props.store.getState().user,
                 chats: this.props.store.getState().chats,
-                avatar: `https://ya-praktikum.tech/api/v2/resources/${this.props.store.getState().user?.avatar}`,
+                avatar: () => `https://ya-praktikum.tech/api/v2/resources${this.props.store.getState().user?.avatar}`,
             })
         }
     }
 
-    createChat() {
+    async createChat() {
         const chatName: string = (document.querySelector('[name=createChat]') as HTMLInputElement).value as string;
-        window.store.dispatch(createChat, {title: `Чат: ${chatName}`});
+        await window.store.dispatch(createChat, {title: `Чат: ${chatName}`});
         setTimeout(() => {
             if ("store" in this.props) {
                 this.setProps({

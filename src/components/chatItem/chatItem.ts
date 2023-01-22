@@ -32,7 +32,7 @@ export default class ChatItem extends Block<BlockProps | object> {
         let id: number | undefined;
         if (item.dataset.id) {
             id = parseInt(item.dataset.id);
-            await window.store.dispatch(deleteChat, {chatId: id});
+            window.store.dispatch(deleteChat, {chatId: id});
         }
     }
 

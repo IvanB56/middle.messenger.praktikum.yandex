@@ -15,7 +15,7 @@ export class ProfileInfo extends Block<ProfileInfoProps | object> {
         super(props);
         if ("store" in this.props) {
             this.setProps({
-                avatar: `https://ya-praktikum.tech/api/v2/resources/${this.props.store.getState().user?.avatar}`,
+                avatar: () => `https://ya-praktikum.tech/api/v2/resources${this.props.store.getState().user?.avatar}`,
                 onClick: () => this.logout(),
                 backToMain: () => this.toMain(),
                 toPassword: () => this.toPassword(),
@@ -62,7 +62,7 @@ export class ProfileInfo extends Block<ProfileInfoProps | object> {
                     <div class="inner-body">
                         <div class="avatar">
                             {{#if store.state.user.avatar}}
-                                <img src="{{ this.avatar }}" alt="">
+                                <img src="${this.props.avatar && this.props.avatar()}" alt="">
                             {{else}}
                                 <i class="fa fa-file-image-o" aria-hidden="true"></i>
                             {{/if}}
