@@ -41,6 +41,7 @@
     flex-grow: 1;
     border-bottom: 1px solid rgba(73, 12, 102, 0.3);
     position: relative;
+    overflow: hidden;
   }
 
   .chat-message-send {
@@ -90,20 +91,21 @@
     }
   }
 
-  .input_file {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-
   .form-input {
     margin-bottom: 0;
   }
 
-  label {
-    display: flex;
-    align-items: center;
+  .chat-message-profile_add {
+    position: relative;
+  }
+  .addUser {
+    color: #999;
+    font-size: 28px;
+    font-weight: 100;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -16px;
   }
 }
 

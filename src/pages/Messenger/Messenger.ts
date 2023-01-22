@@ -4,17 +4,19 @@ import {withStore} from "utils/withStore";
 import {Router, Store} from "core";
 import {createChat} from "../../services/chats";
 
-interface ChatEmptyProps {
+interface MessengerProps {
     router: Router;
     store: Store<AppState>;
     chats: ChatDTO[];
     user: UserDTO;
+    isSelectedChat: ()=>void;
 }
 
-export class Messenger extends Block<ChatEmptyProps | object> {
-    static componentName = "ChatEmpty";
+export class Messenger extends Block<MessengerProps | object> {
+    static componentName = "Messenger";
+    private store: Store<AppState> | undefined;
 
-    constructor({chats, store, ...props}: ChatEmptyProps) {
+    constructor({chats, store, ...props}: MessengerProps) {
         super({chats, store, ...props});
         if ("store" in this.props) {
             this.setProps({
@@ -22,6 +24,7 @@ export class Messenger extends Block<ChatEmptyProps | object> {
                 user: this.props.store.getState().user,
                 chats: this.props.store.getState().chats,
                 avatar: () => `https://ya-praktikum.tech/api/v2/resources${this.props.store.getState().user?.avatar}`,
+                isSelectedChat: () => this.props.store.getState().isSelectedChat
             })
         }
     }
@@ -42,8 +45,11 @@ export class Messenger extends Block<ChatEmptyProps | object> {
         return `
         <div class="chat">
             {{{ Chats chats=this.chats user=this.user avatar=this.avatar onClick=onClick }}}
-            {{{ NoSelect }}}
-<!--            {{{ ChatMessages }}}-->
+            {{#if ${"isSelectedChat" in this.props && this.props.isSelectedChat()}}}
+                {{{ ChatMessages }}}
+            {{else}}
+                {{{ NoSelect }}}
+            {{/if}}
         </div>
         `;
     }

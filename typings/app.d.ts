@@ -11,6 +11,8 @@ declare global {
         loginFormError: string | null;
         user: User | null;
         chats: ChatDTO[] | null;
+        isSelectedChat: boolean;
+        activeChat: string | number | null;
     };
     export type APIError = {
         reason: string;
@@ -20,6 +22,7 @@ declare global {
         title: string;
         avatar: string;
         unread_count: number;
+        active: boolean;
         last_message: {
             user: UserDTO,
             time: string,
