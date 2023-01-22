@@ -4,8 +4,8 @@ import {getScreenComponent, Screens} from 'utils/getScreenComponent';
 export enum Routes {
     MAIN = '/',
     LOGIN = '/login',
-    REGISTRATION = '/registration',
-    AUTH = '/chat-empty',
+    REGISTRATION = '/sign-up',
+    AUTH = '/messenger',
     SETTINGS = '/settings',
     PASSWORD = '/change-pass',
     EDIT = '/edit',
@@ -52,14 +52,11 @@ export function initRouter(router: Router, store: Store<AppState>) {
     routes.forEach(route => {
         router.use(route.path, () => {
             const isAuthorized = Boolean(store.getState().user);
-            const currentScreen = Boolean(store.getState().screen);
             if (isAuthorized || !route.shouldAuthorized) {
                 store.dispatch({screen: route.block});
                 return;
             }
-            if (!currentScreen) {
-                store.dispatch({screen: Screens.LOGIN});
-            }
+            store.dispatch({screen: Screens.LOGIN});
         });
     });
 

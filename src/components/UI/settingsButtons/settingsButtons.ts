@@ -5,6 +5,8 @@ interface SettingsButtonsProps {
 }
 
 export default class SettingsButtons extends Block<SettingsButtonsProps | object> {
+    static componentName = 'SettingsButtons'
+
     constructor({onClick, ...props}: SettingsButtonsProps) {
         super({events: {click: onClick}, ...props});
     }
