@@ -11,7 +11,7 @@ interface ChatEmptyProps {
     user: UserDTO;
 }
 
-export class ChatEmpty extends Block<ChatEmptyProps | object> {
+export class Messenger extends Block<ChatEmptyProps | object> {
     static componentName = "ChatEmpty";
 
     constructor({chats, store, ...props}: ChatEmptyProps) {
@@ -49,4 +49,4 @@ export class ChatEmpty extends Block<ChatEmptyProps | object> {
     }
 }
 
-export default withRouter(withStore(ChatEmpty));
+export default withRouter(withStore(Messenger));

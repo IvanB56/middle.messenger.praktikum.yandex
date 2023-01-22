@@ -1,7 +1,7 @@
 import FormLogin from "pages/FormLogin/FormLogin";
 import FormRegistration from "pages/FormRegistration/FormRegistration";
 import StartPage from "pages/StartPage/StartPage";
-import ChatEmpty from "pages/Chat/ChatEmpty";
+import Messenger from "pages/Messenger/Messenger";
 import ProfileInfo from "pages/ProfileInfo/ProfileInfo";
 import Error404 from "pages/Services/error404";
 import ChangePassword from "pages/ChangePassword/ChangePassword";
@@ -12,7 +12,7 @@ export enum Screens {
     LOGIN = 'Login',
     REGISTRATION = 'Registration',
     START = 'StartPage',
-    MAIN = 'ChatEmpty',
+    MAIN = 'Messenger',
     SETTINGS = 'ProfileInfo',
     NOTFOUND = 'error404',
     PASSWORD = 'ChangePassword',
@@ -29,7 +29,7 @@ const map: Record<Screens, BlockClass<any>> = {
     [Screens.LOGIN]: FormLogin,
     [Screens.REGISTRATION]: FormRegistration,
     [Screens.START]: StartPage,
-    [Screens.MAIN]: ChatEmpty,
+    [Screens.MAIN]: Messenger,
     [Screens.SETTINGS]: ProfileInfo,
     [Screens.NOTFOUND]: Error404,
     [Screens.PASSWORD]: ChangePassword,
