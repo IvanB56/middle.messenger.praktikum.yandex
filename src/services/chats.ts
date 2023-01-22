@@ -22,10 +22,10 @@ export async function createChat(dispatch: Dispatch<AppState>, _state: AppState,
     dispatch(getChat);
 }
 
-export async function deleteChat(dispatch: Dispatch<AppState>, state: AppState, action: { chatId: number }) {
+export async function deleteChat(dispatch: Dispatch<AppState>, _state: AppState, action: { chatId: number }) {
     const response = await chatsAPI.deleteChat(JSON.stringify(action)).then(r => JSON.parse(r.responseText));
     if (apiHasError(response)) {
         return;
     }
-    getChat(dispatch, state);
+    await dispatch(getChat);
 }

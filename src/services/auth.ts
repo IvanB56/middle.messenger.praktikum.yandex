@@ -27,10 +27,10 @@ export async function login(dispatch: Dispatch<AppState>, _state: AppState, acti
         dispatch(logout);
         return;
     }
-    const chats: ChatDTO[] = window.store.getState().chats || [];
+    let chats: ChatDTO[] = window.store.getState().chats || [];
     const responseChats = await chatsAPI.get().then(r => JSON.parse(r.responseText));
     if (!apiHasError(response)) {
-        chats.push(responseChats);
+        chats = responseChats;
     }
     dispatch({user: transformUser(responseUser as UserDTO), chats});
     window.router.go(Routes.MAIN);
@@ -75,11 +75,8 @@ export async function changeAvatar(dispatch: Dispatch<AppState>, _state: AppStat
         dispatch({errorOpacity: 1, loginFormError: response.reason});
         return;
     }
-    console.log(response);
     const user = transformUser(response as UserDTO);
-    await authApi.getSource(response.avatar).then(() => {
-        user.avatar = `https://ya-praktikum.tech/api/v2/resources/${response.avatar}`;
-    });
+    await authApi.getSource(response.avatar).then(() => {});
 
     dispatch({user});
 }
