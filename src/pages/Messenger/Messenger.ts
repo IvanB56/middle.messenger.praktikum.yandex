@@ -9,6 +9,7 @@ interface MessengerProps {
     store: Store<AppState>;
     chats: ChatDTO[];
     user: UserDTO;
+    isSelectedChat: ()=>void;
 }
 
 export class Messenger extends Block<MessengerProps | object> {
@@ -18,24 +19,25 @@ export class Messenger extends Block<MessengerProps | object> {
     constructor({chats, store, ...props}: MessengerProps) {
         super({chats, store, ...props});
         if ("store" in this.props) {
-            this.store = this.props.store;
+            this.setProps({
+                onClick: () => this.createChat(),
+                user: this.props.store.getState().user,
+                chats: this.props.store.getState().chats,
+                avatar: () => `https://ya-praktikum.tech/api/v2/resources${this.props.store.getState().user?.avatar}`,
+                isSelectedChat: () => this.props.store.getState().isSelectedChat
+            })
         }
-        this.setProps({
-            onClick: () => this.createChat(),
-            user: this.store?.getState().user,
-            chats: this.store?.getState().chats,
-            avatar: () => `https://ya-praktikum.tech/api/v2/resources${this.store?.getState().user?.avatar}`,
-            isSelectedChat: false
-        })
     }
 
     async createChat() {
         const chatName: string = (document.querySelector('[name=createChat]') as HTMLInputElement).value as string;
         await window.store.dispatch(createChat, {title: `Чат: ${chatName}`});
         setTimeout(() => {
-            this.setProps({
-                chats: this.store?.getState().chats,
-            })
+            if ("store" in this.props) {
+                this.setProps({
+                    chats: this.props.store.getState().chats,
+                })
+            }
         }, 300);
     }
 
@@ -43,7 +45,7 @@ export class Messenger extends Block<MessengerProps | object> {
         return `
         <div class="chat">
             {{{ Chats chats=this.chats user=this.user avatar=this.avatar onClick=onClick }}}
-            {{#if isSelectedChat}}
+            {{#if ${"isSelectedChat" in this.props && this.props.isSelectedChat()}}}
                 {{{ ChatMessages }}}
             {{else}}
                 {{{ NoSelect }}}

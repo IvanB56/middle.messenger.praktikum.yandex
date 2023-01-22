@@ -29,3 +29,7 @@ export async function deleteChat(dispatch: Dispatch<AppState>, _state: AppState,
     }
     await dispatch(getChat);
 }
+
+export async function addUserChat(_dispatch: Dispatch<AppState>, _state: AppState, action: { chatId: number | string, userId: number | string }) {
+    await chatsAPI.addUser(action).then(r => console.log(r));
+}

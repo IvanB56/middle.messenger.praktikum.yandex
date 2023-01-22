@@ -1,5 +1,4 @@
 import Block from "core/Block";
-import {deleteChat} from "../../services/chats";
 import {getMessages} from "../../services/messages";
 
 interface BlockProps {
@@ -23,7 +22,6 @@ export default class ChatItem extends Block<BlockProps | object> {
     constructor({...props}: BlockProps) {
         super({...props});
         this.setProps({
-            removeChat: (e: Event) => this.removeChat(e),
             events: {
                 click: this.onClickChat
             }
@@ -37,20 +35,11 @@ export default class ChatItem extends Block<BlockProps | object> {
             id = <string>chatItem.dataset.id;
             await window.store.dispatch(getMessages, id);
             const chats = window.store.getState().chats;
+            window.store.set({'activeChat': id});
             chats?.map((chat) => {
                 chat.active = chat.id === parseInt(id);
                 return chat;
             })
-        }
-    }
-
-    async removeChat(e: Event) {
-        e.preventDefault();
-        const item = (e.target as HTMLButtonElement).closest('.chatItem') as HTMLElement;
-        let id: number | undefined;
-        if (item.dataset.id) {
-            id = parseInt(item.dataset.id);
-            window.store.dispatch(deleteChat, {chatId: id});
         }
     }
 
@@ -66,10 +55,13 @@ export default class ChatItem extends Block<BlockProps | object> {
                     <p class="chatItem-message_preview">{{ this.chat.last_message.content }}</p>
                 </div>
                 <div class="other">
-                    {{{ DefaultButton className="removeChat" onClick=removeChat text='×' }}}
                     {{#if this.chat.messages.count}}
                         <span class="chatItem-message-count">{{ this.chat.unread_count }}</span>
                     {{/if}}
+                </div>
+
+                <div class="setting-chat">
+                    
                 </div>
             </div>
         `;

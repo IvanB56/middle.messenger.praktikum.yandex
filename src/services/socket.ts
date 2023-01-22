@@ -1,22 +1,22 @@
 export class Socket {
-    private api: string;
-    private socket: WebSocket;
+    private static sockets: { [x: string]: WebSocket; } = {};
 
-    constructor(api: string) {
-        this.api = api;
-        this.socket = new WebSocket(api);
-        this.addEvents();
+    static open(name: string, api: string) {
+        if (this.sockets[name]) {
+            return this.sockets[name];
+        }
+        const newSocket = new WebSocket(api);
+        this.sockets[name] = newSocket;
+        return newSocket;
     }
 
-    addEvents() {
-        this.socket.addEventListener('open', () => {
-            console.log('Соединение установлено');
-            this.socket.send(JSON.stringify({
-                content: 'Моё первое сообщение миру!',
+    static events(socket: WebSocket) {
+        socket.addEventListener('open', () => {
+            socket.send(JSON.stringify({
                 type: 'message',
             }));
         });
-        this.socket.addEventListener('close', event => {
+        socket.addEventListener('close', event => {
             if (event.wasClean) {
                 console.log('Соединение закрыто чисто');
             } else {
@@ -24,11 +24,17 @@ export class Socket {
             }
             console.log(`Код: ${event.code} | Причина: ${event.reason}`);
         });
-        this.socket.addEventListener('message', event => {
-            console.log('Получены данные', event.data);
+        socket.addEventListener('message', event => {
+            if (event.data.type === "message") {
+                console.log('message')
+            }
         });
-        this.socket.addEventListener('error', event => {
+        socket.addEventListener('error', event => {
             console.log('Ошибка', event.message);
         });
+    }
+
+    static send(name: string, message: string){
+        this.sockets[name].send(message);
     }
 }

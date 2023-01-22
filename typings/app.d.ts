@@ -12,6 +12,7 @@ declare global {
         user: User | null;
         chats: ChatDTO[] | null;
         isSelectedChat: boolean;
+        activeChat: string | number | null;
     };
     export type APIError = {
         reason: string;
