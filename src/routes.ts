@@ -60,6 +60,7 @@ export function initRouter(router: Router, store: Store<AppState>) {
         });
     });
 
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     store.on('changed', (prevState: any, nextState: any): void => {
         if (prevState && nextState) {
             if (!prevState.appIsInited && nextState.appIsInited) {

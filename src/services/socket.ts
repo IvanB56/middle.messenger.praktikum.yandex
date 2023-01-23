@@ -34,11 +34,12 @@ export class Socket {
                     chatMessages[key].time = new Intl.DateTimeFormat("ru-RU", {}).format(new Date(chatMessages[key].time))
                 }
                 messages[name] = chatMessages;
-            }
-            if (chatMessages.type === "message") {
+            } else if (chatMessages.type === "message") {
                 chatMessages.from_me = chatMessages.user_id === window.store.getState().user?.id;
                 chatMessages.time = new Intl.DateTimeFormat("ru-RU", {}).format(new Date(chatMessages.time))
                 messages[name].push(chatMessages);
+            } else {
+                return;
             }
             window.store.dispatch({messages});
         });

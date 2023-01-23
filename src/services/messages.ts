@@ -9,7 +9,7 @@ export async function getMessages(dispatch: Dispatch<AppState>, state: AppState,
         return;
     }
     dispatch({isSelectedChat: true})
-    const userId = window.store.getState().user!.id;
+    const userId = window.store.getState().user?.id ?? null;
     const socket = Socket.open(chatId, `wss://ya-praktikum.tech/ws/chats/${userId}/${chatId}/${response.token}`)
     Socket.events(chatId, socket);
     setInterval(() => {

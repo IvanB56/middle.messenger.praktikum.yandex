@@ -1,5 +1,5 @@
 import EventBus from "./event-bus";
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export type Dispatch<State> = (
     nextStateOrAction: Partial<State> | Action<State>,
     payload?: any,

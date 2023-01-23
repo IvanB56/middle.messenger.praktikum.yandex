@@ -6,7 +6,7 @@ interface ChatProps {
     title: string,
 }
 
-export async function getChat(dispatch: Dispatch<AppState>, _state: AppState) {
+export async function getChat(dispatch: Dispatch<AppState>) {
     const response = await chatsAPI.get().then(r => JSON.parse(r.responseText));
     if (apiHasError(response)) {
         return;

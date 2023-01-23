@@ -6,6 +6,7 @@ export default class Validation {
         this.checkField();
     }
 
+    /* eslint-disable @typescript-eslint/no-explicit-any */
     validForm(parent: HTMLElement): any {
         if (parent) {
             const request: { [key: string]: string } = {};
@@ -76,7 +77,7 @@ export default class Validation {
 
     validatePassword(): boolean {
         const child = this.element?.nextElementSibling as HTMLElement;
-        let value: string = (this.element as HTMLInputElement).value;
+        const value: string = (this.element as HTMLInputElement).value;
         const regexp = new RegExp(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z]))/);
         child.textContent = "";
         if  (value.length < 8 || value.length > 40) {

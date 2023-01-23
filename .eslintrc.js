@@ -19,7 +19,7 @@ module.exports = {
     ],
     "rules": {
         "quotes": 0,
-        "max-len": [1, 150],
+        "max-len": [1, 200],
         "max-params": [2, 3],
         "no-use-before-define": "off",
         "@typescript-eslint/no-unused-vars": "warn"

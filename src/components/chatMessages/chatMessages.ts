@@ -27,7 +27,7 @@ export default class ChatMessages extends Block<ChatProps> {
     }
 
     async addUser() {
-        const userId: string = (document.querySelector('input[name=addProfile]') as HTMLInputElement).value!;
+        const userId: string = (document.querySelector('input[name=addProfile]') as HTMLInputElement).value ?? null;
         const chatId = window.store.getState().activeChat;
         window.store.dispatch(addUserChat, {chatId: chatId, userId: userId});
     }

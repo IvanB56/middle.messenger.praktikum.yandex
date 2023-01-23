@@ -1,4 +1,6 @@
 export default class PathRouter {
+
+    /* eslint-disable-next-line @typescript-eslint/ban-types */
     private routes: Record<string, Function> = {};
     private isStarted = false;
 
@@ -25,7 +27,7 @@ export default class PathRouter {
             this.routes['*']();
         }
     }
-
+    /* eslint-disable-next-line @typescript-eslint/ban-types */
     use(hash: string, callback: Function) {
         this.routes[hash] = callback;
         return this;

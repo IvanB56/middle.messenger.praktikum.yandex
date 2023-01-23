@@ -76,7 +76,7 @@ export async function changeAvatar(dispatch: Dispatch<AppState>, _state: AppStat
         return;
     }
     const user = transformUser(response as UserDTO);
-    await authApi.getSource(response.avatar).then(() => {});
+    await authApi.getSource(response.avatar);
 
     dispatch({user});
 }

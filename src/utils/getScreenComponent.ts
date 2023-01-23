@@ -24,7 +24,7 @@ export interface BlockClass<P extends object> extends Function {
 
     componentName: string;
 }
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const map: Record<Screens, BlockClass<any>> = {
     [Screens.LOGIN]: FormLogin,
     [Screens.REGISTRATION]: FormRegistration,
