@@ -3,7 +3,7 @@ import {messagesAPI} from "../api/messages";
 import {apiHasError} from "../utils/apiHasError";
 import {Socket} from "./socket";
 
-export async function getMessages(dispatch: Dispatch<AppState>, _state: AppState, action: string) {
+export async function getMessages(dispatch: Dispatch<AppState>, state: AppState, action: string) {
     const response = await messagesAPI.getMessages(action).then(r => JSON.parse(r.responseText));
     if (apiHasError(response)) {
         return;
@@ -13,7 +13,6 @@ export async function getMessages(dispatch: Dispatch<AppState>, _state: AppState
     const socket = Socket.open(action,`wss://ya-praktikum.tech/ws/chats/${userId}/${action}/${response.token}`)
     Socket.events(socket);
     const intervalId = setInterval(() => {
-        console.log(123)
         Socket.send(action, JSON.stringify({
             type: "ping"
         }))

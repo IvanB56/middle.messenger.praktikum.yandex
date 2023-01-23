@@ -14,7 +14,6 @@ interface MessengerProps {
 
 export class Messenger extends Block<MessengerProps | object> {
     static componentName = "Messenger";
-    private store: Store<AppState> | undefined;
 
     constructor({chats, store, ...props}: MessengerProps) {
         super({chats, store, ...props});
