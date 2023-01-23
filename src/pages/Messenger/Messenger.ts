@@ -7,9 +7,11 @@ import {createChat} from "../../services/chats";
 interface MessengerProps {
     router: Router;
     store: Store<AppState>;
-    chats: ChatDTO[];
-    user: UserDTO;
-    isSelectedChat: ()=>void;
+    chats: ChatDTO[] | null;
+    user: User | null;
+    isSelectedChat: () => void;
+    onClick: () => void;
+    avatar: () => void;
 }
 
 export class Messenger extends Block<MessengerProps | object> {
@@ -23,7 +25,7 @@ export class Messenger extends Block<MessengerProps | object> {
                 user: this.props.store.getState().user,
                 chats: this.props.store.getState().chats,
                 avatar: () => `https://ya-praktikum.tech/api/v2/resources${this.props.store.getState().user?.avatar}`,
-                isSelectedChat: () => this.props.store.getState().isSelectedChat
+                isSelectedChat: () => this.props.store.getState().isSelectedChat,
             })
         }
     }

@@ -4,25 +4,29 @@ import {addUserChat} from "../../services/chats";
 import {sendMessage} from "../../services/messages";
 
 interface ChatProps {
-    date: string
-    message: string
-    from: string
-    to: string
-    "from_me"?: boolean
+    onClick?: () => void;
+    addUser?: () => void;
+    messages?: [];
 }
 
-export default class ChatMessages extends Block<ChatProps[] | object> {
+export default class ChatMessages extends Block<ChatProps> {
     static componentName = "ChatMessages";
 
     constructor(props: ChatProps) {
         super(props);
         this.setProps({
             onClick: () => this.sendMessage(),
-            addUser: (e: Event) => this.addUser(e)
+            addUser: () => this.addUser(),
         })
+
+        if (window.store.getState().activeChat && window.store.getState().messages) {
+            this.setProps({
+                messages: window.store.getState().messages[window.store.getState().activeChat],
+            })
+        }
     }
 
-    async addUser(e: Event) {
+    async addUser() {
         const userId: string = (document.querySelector('input[name=addProfile]') as HTMLInputElement).value!;
         const chatId = window.store.getState().activeChat;
         window.store.dispatch(addUserChat, {chatId: chatId, userId: userId});
@@ -42,7 +46,7 @@ export default class ChatMessages extends Block<ChatProps[] | object> {
                 {{{ Input type="text" inputName="addProfile" placeholder="Введите ID профиля" }}}
             </div>
             <div class="chat-message-items">
-                {{#each this.data}}
+                {{#each this.messages }}
                     {{{ MessageItem messageData=this }}}
                 {{/each}}
             </div>

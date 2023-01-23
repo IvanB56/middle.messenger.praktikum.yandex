@@ -10,10 +10,11 @@ export class Socket {
         return newSocket;
     }
 
-    static events(socket: WebSocket) {
+    static events(name: string, socket: WebSocket) {
         socket.addEventListener('open', () => {
             socket.send(JSON.stringify({
-                type: 'message',
+                type: "get old",
+                content: "0"
             }));
         });
         socket.addEventListener('close', event => {
@@ -25,17 +26,28 @@ export class Socket {
             console.log(`Код: ${event.code} | Причина: ${event.reason}`);
         });
         socket.addEventListener('message', event => {
-            const messages = JSON.parse(event.data)
-            if (messages.type === "message") {
-                console.log('message')
+            const chatMessages = JSON.parse(event.data);
+            const messages = {...window.store.getState().messages};
+            if (Array.isArray(chatMessages)) {
+                for (const key in chatMessages) {
+                    chatMessages[key].from_me = chatMessages[key].user_id === window.store.getState().user?.id;
+                    chatMessages[key].time = new Intl.DateTimeFormat("ru-RU", {}).format(new Date(chatMessages[key].time))
+                }
+                messages[name] = chatMessages;
             }
+            if (chatMessages.type === "message") {
+                chatMessages.from_me = chatMessages.user_id === window.store.getState().user?.id;
+                chatMessages.time = new Intl.DateTimeFormat("ru-RU", {}).format(new Date(chatMessages.time))
+                messages[name].push(chatMessages);
+            }
+            window.store.dispatch({messages});
         });
-        socket.addEventListener('error', event => {
-            console.log('Ошибка', event.message);
+        socket.addEventListener('error', () => {
+            // console.log('Ошибка', event.message);
         });
     }
 
-    static send(name: string, message: string){
-        this.sockets[name].send(message);
+    static send(name: string, message: string) {
+        Socket.sockets[name].send(message);
     }
 }

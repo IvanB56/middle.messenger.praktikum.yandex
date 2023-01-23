@@ -3,17 +3,17 @@ import {messagesAPI} from "../api/messages";
 import {apiHasError} from "../utils/apiHasError";
 import {Socket} from "./socket";
 
-export async function getMessages(dispatch: Dispatch<AppState>, state: AppState, action: string) {
-    const response = await messagesAPI.getMessages(action).then(r => JSON.parse(r.responseText));
+export async function getMessages(dispatch: Dispatch<AppState>, state: AppState, chatId: string) {
+    const response = await messagesAPI.getMessages(chatId).then(r => JSON.parse(r.responseText));
     if (apiHasError(response)) {
         return;
     }
     dispatch({isSelectedChat: true})
     const userId = window.store.getState().user!.id;
-    const socket = Socket.open(action,`wss://ya-praktikum.tech/ws/chats/${userId}/${action}/${response.token}`)
-    Socket.events(socket);
-    const intervalId = setInterval(() => {
-        Socket.send(action, JSON.stringify({
+    const socket = Socket.open(chatId, `wss://ya-praktikum.tech/ws/chats/${userId}/${chatId}/${response.token}`)
+    Socket.events(chatId, socket);
+    setInterval(() => {
+        Socket.send(chatId, JSON.stringify({
             type: "ping"
         }))
     }, 10000)

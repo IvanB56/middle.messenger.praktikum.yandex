@@ -8,11 +8,13 @@ import {login} from "../../services/auth";
 interface FormLoginProps {
     router: Router;
     store: Store<AppState>;
-    text: string
+    text: string;
+    onButtonClick: () => void;
+    onLinkClick: () => void;
 }
 
 
-export class FormLogin extends Block<FormLoginProps | object> {
+export class FormLogin extends Block<FormLoginProps> {
     static componentName = "FormLogin";
 
     constructor({text, ...props}: FormLoginProps) {

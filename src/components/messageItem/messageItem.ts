@@ -1,14 +1,10 @@
 import Block from "core/Block";
 
 interface MessageProps {
-    date: string
-    message: string
-    from: string
-    to: string
-    "from_me"?: boolean
+    [key: string]: MessageDTO
 }
 
-export default class MessageItem extends Block<MessageProps | object> {
+export default class MessageItem extends Block<MessageProps> {
     static componentName = "MessageItem";
 
     constructor(props: MessageProps) {
@@ -18,8 +14,8 @@ export default class MessageItem extends Block<MessageProps | object> {
     render() {
         return `
             <div class="message-item {{#if this.messageData.from_me}}my-message{{/if}}">
-                <p>{{ this.messageData.message }}</p>
-                <span class="message-item-date">{{ this.messageData.date }}</span>
+                <p>{{ this.messageData.content }}</p>
+                <span class="message-item-date">{{ this.messageData.time }}</span>
             </div>
         `;
     }
