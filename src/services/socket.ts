@@ -25,7 +25,8 @@ export class Socket {
             console.log(`Код: ${event.code} | Причина: ${event.reason}`);
         });
         socket.addEventListener('message', event => {
-            if (event.data.type === "message") {
+            const messages = JSON.parse(event.data)
+            if (messages.type === "message") {
                 console.log('message')
             }
         });
