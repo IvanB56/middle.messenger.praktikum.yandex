@@ -12,7 +12,7 @@ export const changePassword: DispatchStateHandler<PasswordProps> = async (dispat
             return '';
         }
         return JSON.parse(r.responseText)
-    });
+    }).catch(err => console.log(err));
     if (apiHasError(response)) {
         dispatch({errorOpacity: 1, loginFormError: response.reason});
         setTimeout(() => dispatch({errorOpacity: 0, loginFormError: ''}), 2000);

@@ -3,7 +3,7 @@ import {apiHasError} from "../utils/apiHasError";
 import {Socket} from "./socket";
 
 export const getMessages: DispatchStateHandler<string> = async (dispatch, _state, action) => {
-    const response = await messagesAPI.getMessages(action).then(r => JSON.parse(r.responseText));
+    const response = await messagesAPI.getMessages(action).then(r => JSON.parse(r.responseText)).catch(err => console.log(err));
     if (apiHasError(response)) {
         return;
     }

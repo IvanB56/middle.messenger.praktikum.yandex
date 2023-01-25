@@ -7,7 +7,7 @@ interface ChatProps {
 }
 
 export const getChat: DispatchStateHandler<undefined> = async (dispatch: Dispatch<AppState>) => {
-    const response = await chatsAPI.get().then(r => JSON.parse(r.responseText));
+    const response = await chatsAPI.get().then(r => JSON.parse(r.responseText)).catch(err => console.log(err));
     if (apiHasError(response)) {
         return;
     }
@@ -15,7 +15,7 @@ export const getChat: DispatchStateHandler<undefined> = async (dispatch: Dispatc
 }
 
 export const createChat: DispatchStateHandler<ChatProps> = async (dispatch, _state, action) => {
-    const chat = await chatsAPI.create(action).then(r => JSON.parse(r.responseText));
+    const chat = await chatsAPI.create(action).then(r => JSON.parse(r.responseText)).catch(err => console.log(err));
     if (apiHasError(chat)) {
         return;
     }
@@ -23,7 +23,7 @@ export const createChat: DispatchStateHandler<ChatProps> = async (dispatch, _sta
 }
 
 export const deleteChat: DispatchStateHandler<{ chatId: number }> = async (dispatch, _state, action) => {
-    const response = await chatsAPI.deleteChat(JSON.stringify(action)).then(r => JSON.parse(r.responseText));
+    const response = await chatsAPI.deleteChat(JSON.stringify(action)).then(r => JSON.parse(r.responseText)).catch(err => console.log(err));
     if (apiHasError(response)) {
         return;
     }
@@ -31,5 +31,5 @@ export const deleteChat: DispatchStateHandler<{ chatId: number }> = async (dispa
 }
 
 export const addUserChat: DispatchStateHandler<{ chatId: number | string, userId: number | string }> = async (_dispatch, _state, action) => {
-    await chatsAPI.addUser(action).then(r => console.log(r));
+    await chatsAPI.addUser(action).then(r => console.log(r)).catch(err => console.log(err));
 }

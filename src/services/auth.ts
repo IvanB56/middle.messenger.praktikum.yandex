@@ -15,19 +15,19 @@ export const login: DispatchStateHandler<LoginPayload> = async (dispatch, _state
             return '';
         }
         return JSON.parse(r.responseText)
-    });
+    }).catch(err => console.log(err));
     if (apiHasError(response)) {
         dispatch({errorOpacity: 1, loginFormError: response.reason});
         return;
     }
-    const responseUser = await authApi.user().then(r => JSON.parse(r.responseText));
+    const responseUser = await authApi.user().then(r => JSON.parse(r.responseText)).catch(err => console.log(err));
     dispatch({errorOpacity: 0, loginFormError: null});
     if (apiHasError(response)) {
         dispatch(logout);
         return;
     }
     let chats: ChatDTO[] = window.store.getState().chats || [];
-    const responseChats = await chatsAPI.get().then(r => JSON.parse(r.responseText));
+    const responseChats = await chatsAPI.get().then(r => JSON.parse(r.responseText)).catch(err => console.log(err));
     if (!apiHasError(response)) {
         chats = responseChats;
     }
@@ -36,14 +36,14 @@ export const login: DispatchStateHandler<LoginPayload> = async (dispatch, _state
 }
 
 export const create: DispatchStateHandler<UserDTO> = async (dispatch, _state, action) => {
-    const response = await authApi.create(action).then(r => {
-        return JSON.parse(r.responseText)
-    });
+    const response = await authApi.create(action)
+        .then(r => JSON.parse(r.responseText))
+        .catch(err => console.log(err));
     if (apiHasError(response)) {
         dispatch({errorOpacity: 1, loginFormError: response.reason});
         return;
     }
-    const responseUser = await authApi.user().then(r => JSON.parse(r.responseText));
+    const responseUser = await authApi.user().then(r => JSON.parse(r.responseText)).catch(err => console.log(err));
     if (apiHasError(response)) {
         dispatch(logout);
         return;
@@ -53,13 +53,13 @@ export const create: DispatchStateHandler<UserDTO> = async (dispatch, _state, ac
 }
 
 export const logout: DispatchStateHandler<undefined> = async (dispatch) => {
-    await authApi.logout().then(r => r.responseText);
+    await authApi.logout().then(r => r.responseText).catch(err => console.log(err));
     dispatch({user: null, chats: null});
     window.router.go(Routes.LOGIN);
 }
 
 export const change: DispatchStateHandler<UserDTO> = async (dispatch, _state, action) => {
-    const response = await authApi.change(action).then(r => JSON.parse(r.responseText));
+    const response = await authApi.change(action).then(r => JSON.parse(r.responseText)).catch(err => console.log(err));
     if (apiHasError(response)) {
         dispatch({errorOpacity: 1, loginFormError: response.reason});
         return;
@@ -69,7 +69,7 @@ export const change: DispatchStateHandler<UserDTO> = async (dispatch, _state, ac
 }
 
 export const changeAvatar: DispatchStateHandler<FormData> = async (dispatch, _state, action) => {
-    const response = await authApi.changeAvatar(action).then(r => JSON.parse(r.responseText));
+    const response = await authApi.changeAvatar(action).then(r => JSON.parse(r.responseText)).catch(err => console.log(err));
     if (apiHasError(response)) {
         dispatch({errorOpacity: 1, loginFormError: response.reason});
         return;

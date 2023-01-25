@@ -7,7 +7,7 @@ import {chatsAPI} from "../api/chatsAPI";
 export const initApp: DispatchStateHandler<undefined> = async (dispatch) => {
     await new Promise(r => setTimeout(r, 700));
     try {
-        const user = await authApi.user().then(r => JSON.parse(r.responseText));
+        const user = await authApi.user().then(r => JSON.parse(r.responseText)).catch(err => console.log(err));
         if (apiHasError(user)) {
             return;
         }
@@ -16,7 +16,7 @@ export const initApp: DispatchStateHandler<undefined> = async (dispatch) => {
                 return [];
             }
             return JSON.parse(r.responseText);
-        });
+        }).catch(err => console.log(err));
 
         dispatch({user: transformUser(user as unknown as UserDTO), chats});
     } catch (err) {
