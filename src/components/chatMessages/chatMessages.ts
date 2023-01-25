@@ -34,7 +34,9 @@ export default class ChatMessages extends Block<ChatProps> {
 
     sendMessage() {
         const data: { message: string } = new Validation().validForm(this.element as HTMLElement);
-        window.store.dispatch(sendMessage, data);
+        if (data) {
+            window.store.dispatch(sendMessage, data);
+        }
     }
 
     protected render(): string {
@@ -52,7 +54,7 @@ export default class ChatMessages extends Block<ChatProps> {
             </div>
             <form class="chat-message-send">
                 <label for="chat-message-text"></label>
-                {{{ FormInput type="text" placeholder="Введите текст" inputName="message"}}}
+                {{{ FormInput type="text" placeholder="Введите текст" inputName="message" }}}
                 {{{ Button text="Отправить" className="send-button" onClick=onClick }}}
             </form>
         </div>

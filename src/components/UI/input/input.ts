@@ -17,9 +17,17 @@ export default class Input extends Block<object> {
             events: {
                 focus: () => this.inputFocus(),
                 blur: () => this.validateField(),
-                change: () => this.changeAvatar()
+                change: () => this.changeAvatar(),
+                keydown: (e: KeyboardEvent) => this.keyUp(e, this)
             }
         })
+    }
+
+    keyUp(e: KeyboardEvent, self: this) {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            self.validateField();
+        }
     }
 
     inputFocus() {
