@@ -30,20 +30,22 @@ type Options = {
 
 type OptionsWithoutMethod = Omit<Options, 'method'>;
 
+type HTTPMethod = (url: string, options?: OptionsWithoutMethod) => Promise<XMLHttpRequest>;
+
 class Fetch {
-    get(url: string | URL, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    get: HTTPMethod = (url, options = {}) => {
         return this.request(url + queryStringify(options.data), {...options, method: Methods.GET}, options.timeout);
     }
 
-    post(url: string | URL, options: OptionsWithoutMethod = {}) {
+    post: HTTPMethod = (url, options = {}) => {
         return this.request(url, {...options, method: Methods.POST}, options.timeout);
     }
 
-    put(url: string | URL, options: OptionsWithoutMethod = {}) {
+    put: HTTPMethod = (url, options = {}) => {
         return this.request(url, {...options, method: Methods.PUT}, options.timeout);
     }
 
-    delete(url: string | URL, options: OptionsWithoutMethod) {
+    delete: HTTPMethod = (url, options = {}) => {
         return this.request(url, {...options, method: Methods.DELETE}, options.timeout);
     }
 
