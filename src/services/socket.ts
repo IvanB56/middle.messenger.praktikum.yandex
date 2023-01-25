@@ -26,7 +26,13 @@ export class Socket {
             console.log(`Код: ${event.code} | Причина: ${event.reason}`);
         });
         socket.addEventListener('message', event => {
-            const chatMessages = JSON.parse(event.data);
+            let chatMessages;
+            try {
+                chatMessages = JSON.parse(event.data);
+            } catch (err) {
+                console.log(err);
+                return;
+            }
             const messages = {...window.store.getState().messages};
             if (Array.isArray(chatMessages)) {
                 for (const key in chatMessages) {
