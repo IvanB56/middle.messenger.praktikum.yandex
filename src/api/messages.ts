@@ -1,7 +1,8 @@
 import Fetch from "core/Fetch";
+import {BASE_URL} from "./baseURL";
 
 export const messagesAPI = {
     getMessages(chatID: string): Promise<XMLHttpRequest> {
-        return Fetch.post(`https://ya-praktikum.tech/api/v2/chats/token/${chatID}`, {});
+        return Fetch.post(`${BASE_URL}/chats/token/${chatID}`, {});
     }
 }

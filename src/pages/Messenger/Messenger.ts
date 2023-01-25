@@ -3,6 +3,7 @@ import {withRouter} from "utils/withRouter";
 import {withStore} from "utils/withStore";
 import {Router, Store} from "core";
 import {createChat} from "../../services/chats";
+import {BASE_URL} from "../../api/baseURL";
 
 interface MessengerProps {
     router: Router;
@@ -24,7 +25,7 @@ export class Messenger extends Block<MessengerProps | object> {
                 onClick: () => this.createChat(),
                 user: this.props.store.getState().user,
                 chats: this.props.store.getState().chats,
-                avatar: () => `https://ya-praktikum.tech/api/v2/resources${this.props.store.getState().user?.avatar}`,
+                avatar: () => `${BASE_URL}/resources${this.props.store.getState().user?.avatar}`,
                 isSelectedChat: () => this.props.store.getState().isSelectedChat,
             })
         }

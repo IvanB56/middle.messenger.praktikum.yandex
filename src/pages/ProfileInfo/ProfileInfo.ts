@@ -4,6 +4,7 @@ import {withStore} from "utils/withStore";
 import {logout} from "../../services/auth";
 import {Router, Store} from "../../core";
 import {Routes} from "../../routes";
+import {BASE_URL} from "../../api/baseURL";
 
 interface ProfileInfoProps {
     router: Router;
@@ -15,7 +16,7 @@ export class ProfileInfo extends Block<ProfileInfoProps | object> {
         super(props);
         if ("store" in this.props) {
             this.setProps({
-                avatar: () => `https://ya-praktikum.tech/api/v2/resources${this.props.store.getState().user?.avatar}`,
+                avatar: () => `${BASE_URL}/resources${this.props.store.getState().user?.avatar}`,
                 onClick: () => this.logout(),
                 backToMain: () => this.toMain(),
                 toPassword: () => this.toPassword(),
