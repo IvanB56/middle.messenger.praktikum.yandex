@@ -6,7 +6,7 @@ interface ChatProps {
     title: string,
 }
 
-export async function getChat(dispatch: Dispatch<AppState>) {
+export const getChat: DispatchStateHandler<undefined> = async (dispatch: Dispatch<AppState>) => {
     const response = await chatsAPI.get().then(r => JSON.parse(r.responseText));
     if (apiHasError(response)) {
         return;
@@ -14,7 +14,7 @@ export async function getChat(dispatch: Dispatch<AppState>) {
     dispatch({chats: response});
 }
 
-export async function createChat(dispatch: Dispatch<AppState>, _state: AppState, action: ChatProps) {
+export const createChat: DispatchStateHandler<ChatProps> = async (dispatch, _state, action) => {
     const chat = await chatsAPI.create(action).then(r => JSON.parse(r.responseText));
     if (apiHasError(chat)) {
         return;
@@ -22,7 +22,7 @@ export async function createChat(dispatch: Dispatch<AppState>, _state: AppState,
     dispatch(getChat);
 }
 
-export async function deleteChat(dispatch: Dispatch<AppState>, _state: AppState, action: { chatId: number }) {
+export const deleteChat: DispatchStateHandler<{ chatId: number }> = async (dispatch, _state, action) => {
     const response = await chatsAPI.deleteChat(JSON.stringify(action)).then(r => JSON.parse(r.responseText));
     if (apiHasError(response)) {
         return;
@@ -30,6 +30,6 @@ export async function deleteChat(dispatch: Dispatch<AppState>, _state: AppState,
     await dispatch(getChat);
 }
 
-export async function addUserChat(_dispatch: Dispatch<AppState>, _state: AppState, action: { chatId: number | string, userId: number | string }) {
+export const addUserChat: DispatchStateHandler<{ chatId: number | string, userId: number | string }> = async (_dispatch, _state, action) => {
     await chatsAPI.addUser(action).then(r => console.log(r));
 }

@@ -1,4 +1,3 @@
-import {Dispatch} from "../core";
 import {apiHasError} from "../utils/apiHasError";
 import {settingsAPI} from "../api/settingsApi";
 
@@ -7,7 +6,7 @@ export interface PasswordProps {
     newPassword: string
 }
 
-export async function changePassword(dispatch: Dispatch<AppState>, _state: AppState, action: PasswordProps) {
+export const changePassword: DispatchStateHandler<PasswordProps> = async (dispatch, _state, action) => {
     const response = await settingsAPI.changePassword(action).then(r => {
         if (r.status === 200) {
             return '';

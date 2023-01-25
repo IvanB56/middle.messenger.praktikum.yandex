@@ -1,4 +1,3 @@
-import type {Dispatch} from 'core';
 import {transformUser} from 'utils/transformUser';
 import {apiHasError} from 'utils/apiHasError';
 import {authApi} from "../api/authAPI";
@@ -10,7 +9,7 @@ interface LoginPayload {
     password: string;
 }
 
-export async function login(dispatch: Dispatch<AppState>, _state: AppState, action: LoginPayload) {
+export const login: DispatchStateHandler<LoginPayload> = async (dispatch, _state, action) => {
     const response = await authApi.login(action).then(r => {
         if (r.status === 200) {
             return '';
@@ -36,7 +35,7 @@ export async function login(dispatch: Dispatch<AppState>, _state: AppState, acti
     window.router.go(Routes.MAIN);
 }
 
-export async function create(dispatch: Dispatch<AppState>, _state: AppState, action: UserDTO) {
+export const create: DispatchStateHandler<UserDTO> = async (dispatch, _state, action) => {
     const response = await authApi.create(action).then(r => {
         return JSON.parse(r.responseText)
     });
@@ -53,13 +52,13 @@ export async function create(dispatch: Dispatch<AppState>, _state: AppState, act
     window.router.go(Routes.MAIN);
 }
 
-export async function logout(dispatch: Dispatch<AppState>) {
+export const logout: DispatchStateHandler<undefined> = async (dispatch) => {
     await authApi.logout().then(r => r.responseText);
     dispatch({user: null, chats: null});
     window.router.go(Routes.LOGIN);
 }
 
-export async function change(dispatch: Dispatch<AppState>, _state: AppState, action: UserDTO) {
+export const change: DispatchStateHandler<UserDTO> = async (dispatch, _state, action) => {
     const response = await authApi.change(action).then(r => JSON.parse(r.responseText));
     if (apiHasError(response)) {
         dispatch({errorOpacity: 1, loginFormError: response.reason});
@@ -69,7 +68,7 @@ export async function change(dispatch: Dispatch<AppState>, _state: AppState, act
     window.router.go(Routes.SETTINGS);
 }
 
-export async function changeAvatar(dispatch: Dispatch<AppState>, _state: AppState, action: FormData) {
+export const changeAvatar: DispatchStateHandler<FormData> = async (dispatch, _state, action) => {
     const response = await authApi.changeAvatar(action).then(r => JSON.parse(r.responseText));
     if (apiHasError(response)) {
         dispatch({errorOpacity: 1, loginFormError: response.reason});

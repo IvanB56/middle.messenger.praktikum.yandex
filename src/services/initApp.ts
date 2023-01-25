@@ -1,11 +1,10 @@
-import type {Dispatch} from 'core';
 import {transformUser} from 'utils/transformUser';
 import {apiHasError} from 'utils/apiHasError';
 import {authApi} from "../api/authAPI";
 import {chatsAPI} from "../api/chatsAPI";
 
 
-export async function initApp(dispatch: Dispatch<AppState>) {
+export const initApp: DispatchStateHandler<undefined> = async (dispatch) => {
     await new Promise(r => setTimeout(r, 700));
     try {
         const user = await authApi.user().then(r => JSON.parse(r.responseText));
