@@ -29,5 +29,8 @@ export const chatsAPI = {
             }),
             headers: {'Content-Type': 'application/json'}
         })
+    },
+    getAvatar(data: {path: string | number}): Promise<XMLHttpRequest> {
+        return Fetch.get(`${BASE_URL}/resources/${data.path}`, {})
     }
 }

@@ -22,14 +22,16 @@ export const createChat: DispatchStateHandler<ChatProps> = async (dispatch, _sta
     dispatch(getChat);
 }
 
-export const deleteChat: DispatchStateHandler<{ chatId: number }> = async (dispatch, _state, action) => {
-    const response = await chatsAPI.deleteChat(JSON.stringify(action)).then(r => JSON.parse(r.responseText)).catch(err => console.log(err));
-    if (apiHasError(response)) {
-        return;
-    }
-    await dispatch(getChat);
+export const deleteChat: DispatchStateHandler<{ chatId: number, item: HTMLElement }> = async (_dispatch, _state, action) => {
+    const { item } = action;
+    chatsAPI.deleteChat(JSON.stringify(action)).catch(err => console.log(err));
+    item.remove();
 }
 
 export const addUserChat: DispatchStateHandler<{ chatId: number | string, userId: number | string }> = async (_dispatch, _state, action) => {
     await chatsAPI.addUser(action).then(r => console.log(r)).catch(err => console.log(err));
+}
+
+export const getChatAvatar: DispatchStateHandler<{ path: number | string }> = async (_dispatch, _state, action) => {
+    chatsAPI.getAvatar(action).catch(err => console.log(err));
 }
