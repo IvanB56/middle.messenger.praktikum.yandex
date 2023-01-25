@@ -32,6 +32,12 @@ export const addUserChat: DispatchStateHandler<{ chatId: number | string, userId
     await chatsAPI.addUser(action).then(r => console.log(r)).catch(err => console.log(err));
 }
 
+export const removeUserChat: DispatchStateHandler<{ chatId: number | string, userId: number | string }> = async (_dispatch, _state, action) => {
+    console.log(action)
+    console.log(chatsAPI)
+    chatsAPI.removeUser(action).then(r => console.log(r)).catch(err => console.log(err));
+}
+
 export const getChatAvatar: DispatchStateHandler<{ path: number | string }> = async (_dispatch, _state, action) => {
     chatsAPI.getAvatar(action).catch(err => console.log(err));
 }
