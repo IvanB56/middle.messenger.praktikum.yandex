@@ -17,7 +17,7 @@
   flex-direction: column;
   justify-content: flex-end;
   position: relative;
-  background-color: rgba(188, 130, 215, 0.1);
+  background-color: #bc82d71a;
 
   .bg-chat {
     background: url("../../static/bg-chat.jpg") no-repeat center center;
@@ -34,13 +34,12 @@
   }
 
   .chat-message-items {
-    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    flex-grow: 1;
-    border-bottom: 1px solid rgba(73, 12, 102, 0.3);
+    flex: 1 0 0;
+    border-bottom: 1px solid #490c664d;
     position: relative;
+    overflow-y: auto;
   }
 
   .chat-message-send {
@@ -68,7 +67,8 @@
       font-size: 14px;
       margin-right: 20px;
 
-      &:active, &:focus {
+      &:active,
+      &:focus {
         box-shadow: none;
         border-color: @border-color_hover;
         outline: none;
@@ -90,20 +90,24 @@
     }
   }
 
-  .input_file {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-
   .form-input {
     margin-bottom: 0;
   }
 
-  label {
-    display: flex;
-    align-items: center;
+  .chat-message-profile_add,
+  .chat-message-profile_remove {
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+  .addUser {
+    color: #999;
+    font-size: 28px;
+    font-weight: 100;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -16px;
   }
 }
 

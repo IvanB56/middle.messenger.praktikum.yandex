@@ -15,7 +15,7 @@ export default class Block<P extends object> {
         FLOW_CDU: "flow:component-did-update",
         FLOW_RENDER: "flow:render",
     } as const;
-    public id = nanoid(6);
+    public id: string = nanoid(6);
     readonly _meta: BlockMeta<P>;
     protected _element: Nullable<HTMLElement> = null;
     protected readonly props: P;
@@ -27,20 +27,14 @@ export default class Block<P extends object> {
 
     public constructor(props?: P) {
         const eventBus = new EventBus<Events>();
-
         this._meta = {
             props,
         };
-
         this.getStateFromProps()
-
         this.props = this._makePropsProxy(props as P) as P;
         this.state = this._makePropsProxy(this.state);
-
         this.eventBus = () => eventBus;
-
         this._registerEvents(eventBus);
-
         eventBus.emit(Block.EVENTS.INIT, this.props);
     }
 
@@ -52,7 +46,7 @@ export default class Block<P extends object> {
     }
 
     _createResources() {
-        this._element = this._createDocumentElement("div");
+        this._element = Block._createDocumentElement("div");
     }
 
     protected getStateFromProps(): void {
@@ -88,7 +82,6 @@ export default class Block<P extends object> {
         if (!nextProps) {
             return;
         }
-
         Object.assign(this.props, nextProps);
     };
 
@@ -105,10 +98,8 @@ export default class Block<P extends object> {
 
     private _render() {
         const fragment = this._compile();
-
         this._removeEvents();
         const newElement = fragment.firstElementChild;
-
         if (this._element && newElement) {
             this._element.replaceWith(newElement);
         }
@@ -121,7 +112,6 @@ export default class Block<P extends object> {
     }
 
     getContent(): HTMLElement {
-        // Хак, чтобы вызвать CDM только после добавления в DOM
         if (this.element?.parentNode?.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
             setTimeout(() => {
                 if (this.element?.parentNode?.nodeType !== Node.DOCUMENT_FRAGMENT_NODE) {
@@ -129,7 +119,6 @@ export default class Block<P extends object> {
                 }
             }, 100)
         }
-
         return this.element as HTMLElement;
     }
 
@@ -150,17 +139,15 @@ export default class Block<P extends object> {
         }) as unknown as P;
     }
 
-    private _createDocumentElement(tagName: string) {
+    private static _createDocumentElement(tagName: string) {
         return document.createElement(tagName);
     }
 
     private _removeEvents() {
         const {events} = (this.props as { events: object });
-
         if (!events || !this._element) {
             return;
         }
-
         Object.entries(events).forEach(([event, listener]) => {
             if (this._element) {
                 this._element.removeEventListener(event, listener);
@@ -170,11 +157,9 @@ export default class Block<P extends object> {
 
     private _addEvents() {
         const {events} = (this.props as { events: object });
-
         if (!events) {
             return;
         }
-
         Object.entries(events).forEach(([event, listener]) => {
             if (this._element) {
                 this._element.addEventListener(event, listener);
@@ -184,47 +169,21 @@ export default class Block<P extends object> {
 
     private _compile(): DocumentFragment {
         const fragment = document.createElement("template");
-
-        /**
-         * Рендерим шаблон
-         */
         const template = Handlebars.compile(this.render());
         fragment.innerHTML = template({...this.state, ...this.props, children: this.children, refs: this.refs});
-
-        /**
-         * Заменяем заглушки на компоненты
-         */
         Object.entries(this.children).forEach(([id, component]) => {
-            /**
-             * Ищем заглушку по id
-             */
             const stub = fragment.content.querySelector(`[data-id="${id}"]`);
-
             if (!stub) {
                 return;
             }
-
             const stubChilds = stub.childNodes.length ? stub.childNodes : [];
-
-            /**
-             * Заменяем заглушку на component._element
-             */
             const content = component.getContent();
             stub.replaceWith(content);
-
-            /**
-             * Ищем элемент layout-а, куда вставлять детей
-             */
             const layoutContent = content.querySelector("[data-layout=\"1\"]");
-
             if (layoutContent && stubChilds.length) {
                 layoutContent.append(...stubChilds);
             }
         });
-
-        /**
-         * Возвращаем фрагмент
-         */
         return fragment.content;
     }
 

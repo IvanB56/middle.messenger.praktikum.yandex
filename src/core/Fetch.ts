@@ -24,30 +24,32 @@ enum Methods {
 type Options = {
     method: string;
     timeout?: number;
-    data?: object;
+    data?: object | string;
     headers?: { [key: string]: string };
 }
 
 type OptionsWithoutMethod = Omit<Options, 'method'>;
 
-export default class Fetch {
-    get(url: string | URL, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+type HTTPMethod = (url: string, options?: OptionsWithoutMethod) => Promise<XMLHttpRequest>;
+
+class Fetch {
+    get: HTTPMethod = (url, options = {}) => {
         return this.request(url + queryStringify(options.data), {...options, method: Methods.GET}, options.timeout);
     }
 
-    post(url: string | URL, options: Options) {
+    post: HTTPMethod = (url, options = {}) => {
         return this.request(url, {...options, method: Methods.POST}, options.timeout);
     }
 
-    put(url: string | URL, options: Options) {
+    put: HTTPMethod = (url, options = {}) => {
         return this.request(url, {...options, method: Methods.PUT}, options.timeout);
     }
 
-    delete(url: string | URL, options: Options) {
+    delete: HTTPMethod = (url, options = {}) => {
         return this.request(url, {...options, method: Methods.DELETE}, options.timeout);
     }
 
-    request(url: string | URL, options: Options, timeout = 5000): Promise<XMLHttpRequest> {
+    private request(url: string | URL, options: Options, timeout = 5000): Promise<XMLHttpRequest> {
         const {method, headers = {}, data} = options;
         return new Promise((resolve, reject) => {
             if (!method) {
@@ -60,6 +62,7 @@ export default class Fetch {
                 resolve(xhr);
             };
             xhr.timeout = timeout;
+            xhr.withCredentials = true;
             xhr.onabort = reject;
             xhr.onerror = reject;
             xhr.ontimeout = reject;
@@ -75,3 +78,4 @@ export default class Fetch {
     }
 }
 
+export default new Fetch();

@@ -6,8 +6,10 @@ export default class Validation {
         this.checkField();
     }
 
-    validForm(parent: HTMLElement) {
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    validForm(parent: HTMLElement): any {
         if (parent) {
+            const request: { [key: string]: string } = {};
             const form = parent.querySelector("form") as HTMLFormElement;
             let isFormValid = true;
             const fields = Array.from(form.querySelectorAll("[name]"));
@@ -22,8 +24,9 @@ export default class Validation {
             if (isFormValid) {
                 const formData = new FormData(form);
                 for (const formDataKey of formData.entries()) {
-                    console.log(`${formDataKey[0]}: ${formDataKey[1]}`)
+                    request[formDataKey[0]] = <string>formDataKey[1];
                 }
+                return request;
             }
         }
     }
@@ -44,6 +47,8 @@ export default class Validation {
                 isValid = this.validateEmail();
                 break;
             case "password":
+            case "newPassword":
+            case "oldPassword":
                 isValid = this.validatePassword();
                 break;
             case "phone":
@@ -72,7 +77,7 @@ export default class Validation {
 
     validatePassword(): boolean {
         const child = this.element?.nextElementSibling as HTMLElement;
-        let value: string = (this.element as HTMLInputElement).value;
+        const value: string = (this.element as HTMLInputElement).value;
         const regexp = new RegExp(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z]))/);
         child.textContent = "";
         if  (value.length < 8 || value.length > 40) {

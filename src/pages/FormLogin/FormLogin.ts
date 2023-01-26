@@ -1,22 +1,48 @@
-import Block from "core/Block";
 import Validation from "core/Validation";
+import {withStore} from "utils/withStore";
+import {withRouter} from "utils/withRouter";
+import {Router, Store, Block} from "core";
+import {Routes} from "../../routes";
+import {login} from "../../services/auth";
 
 interface FormLoginProps {
-    text: string
+    router: Router;
+    store: Store<AppState>;
+    text: string;
+    onButtonClick: () => void;
+    onLinkClick: () => void;
 }
 
-export default class FormLogin extends Block<FormLoginProps | object> {
+
+export class FormLogin extends Block<FormLoginProps> {
     static componentName = "FormLogin";
 
-    constructor({text}: FormLoginProps) {
-        super({text});
+    constructor({text, ...props}: FormLoginProps) {
+        super({text, ...props});
         this.setProps({
             onButtonClick: () => this.onButtonClick(),
+            onLinkClick: (e: Event) => this.onNavigateRegistration(e),
         })
     }
 
     onButtonClick() {
-        new Validation().validForm(this.element as HTMLElement);
+        const data: { login: string, password: string } = new Validation().validForm(this.element as HTMLElement);
+        if (data) {
+            const loginData = {
+                login: data.login,
+                password: data.password
+            };
+            if ("store" in this.props) {
+                this.props.store.dispatch(login, loginData);
+            }
+        }
+    }
+
+    onNavigateRegistration(event: Event) {
+        event.preventDefault();
+        if ("router" in this.props) {
+            this.props.router.go(Routes.REGISTRATION);
+        }
     }
 
     protected render(): string {
@@ -24,13 +50,16 @@ export default class FormLogin extends Block<FormLoginProps | object> {
          <div class="login">
             <div class="form-inner">
                 <div class="form-inner-header">
-                    <h2>{{ text }}</h2>
+                    <h2>Авторизация</h2>
                 </div>
                 <div class="form-inner-body">
                     <form class="form-login">
                         {{{ FormInput type="text" label="Логин" inputName="login" }}}
                         {{{ FormInput type="password" inputName="password" label="Пароль" }}}
-                        {{{ Link text="Ещё не зарегистрированы?" href="/registration" }}}
+                        <div>
+                            {{{ DefaultButton text="Ещё не зарегистрированы?" onClick=onLinkClick }}}
+                        </div>
+                        <span class="errorText" style="opacity: {{ store.state.errorOpacity }};">{{ store.state.loginFormError }}</span>
                         {{{ Button text="Войти" onClick=onButtonClick }}}
                     </form>
                 </div>
@@ -39,3 +68,5 @@ export default class FormLogin extends Block<FormLoginProps | object> {
         `;
     }
 }
+
+export default withRouter(withStore(FormLogin));

@@ -1,12 +1,12 @@
 @import url("../../styles/variable");
 
-.profiles {
+.chats {
   min-width: 30%;
-  background-color: rgba(188, 130, 215, 0.2);
+  background-color: #bc82d733;
   border-right: 1px solid @profile-border;
   overflow-y: hidden;
 
-  .profiles-top {
+  .chats-top {
     padding-bottom: 15px;
     margin: 15px;
     border-bottom: 1px solid @profile-border;
@@ -19,26 +19,29 @@
     margin-bottom: 15px;
   }
 
-  .profiles-top-info {
+  .chats-top-info {
     display: flex;
     justify-content: flex-start;
     align-items: center;
 
     .img {
       margin-right: 15px;
+      overflow: hidden;
+      position: relative;
+
+      img {
+        width: 100%;
+        top: 0;
+        position: absolute;
+      }
     }
 
     .profile-name {
       font-weight: 700;
     }
-
-    .profile-status {
-      color: @text-color_second;
-      font-size: 12px;
-    }
   }
 
-  .profiles-settings {
+  .chats-settings {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,17 +52,30 @@
     }
   }
 
-  .profiles-search {
+  .chats-create {
+    position: relative;
+
     input {
-      &:active, &:focus {
+      &:active,
+      &:focus {
         box-shadow: none;
         outline: none;
         border-color: @border-color_hover;
       }
     }
+
+    .createButton {
+      color: #999;
+      font-size: 28px;
+      font-weight: 100;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      margin-top: -16px;
+    }
   }
 
-  .profiles-body {
+  .chats-body {
     overflow-y: auto;
     overflow-x: hidden;
   }

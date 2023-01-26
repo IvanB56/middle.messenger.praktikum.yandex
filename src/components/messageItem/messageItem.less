@@ -9,12 +9,14 @@
   position: relative;
   margin-bottom: 20px;
   align-self: flex-start;
+  margin-left: 20px;
+  min-width: 150px;
 
   p {
     color: #fff;
   }
 
-  &:not(.my-message):before {
+  &:not(.my-message)::before {
     position: absolute;
     top: 0;
     left: -10px;
@@ -29,8 +31,9 @@
     background-color: @main-color;
     margin-left: auto;
     align-self: flex-end;
+    margin-right: 20px;
 
-    &:before {
+    &::before {
       position: absolute;
       top: 0;
       right: -10px;

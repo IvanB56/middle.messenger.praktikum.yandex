@@ -1,10 +1,10 @@
-@import "../../styles/variable";
+@import url("../../styles/variable");
 
 .profile-info {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #00000080;
 
   .inner {
     position: absolute;
@@ -52,11 +52,17 @@
       flex-direction: column;
     }
 
-    .change-data, .change-password {
+    .changeData,
+    .changePassword {
       margin-top: 20px;
     }
 
-    .change-avatar {
+    .changePassword-btn,
+    .changeData-btn {
+      text-decoration: underline;
+    }
+
+    .avatar {
       width: 150px;
       height: 150px;
       border: 1px solid @border-color;
@@ -89,6 +95,23 @@
           width: 70%;
           text-align: center;
         }
+
+        input {
+          opacity: 0;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
+        }
+      }
+
+      img {
+        min-width: 150px;
+        min-height: 150px;
+        height: auto;
+        width: 100%;
+        top: 0;
+        position: absolute;
       }
 
       i {
@@ -98,7 +121,7 @@
       }
 
       &:hover {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: #00000080;
 
         .change-avatar-text {
           opacity: 1;
