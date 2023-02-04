@@ -1,4 +1,5 @@
-import Block from "core/Block";
+import Block from "../../core/Block";
+import './messageItem.less';
 
 interface MessageProps {
     [key: string]: MessageDTO

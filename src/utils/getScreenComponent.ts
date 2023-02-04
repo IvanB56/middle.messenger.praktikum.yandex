@@ -1,10 +1,10 @@
-import FormLogin from "pages/FormLogin/FormLogin";
-import FormRegistration from "pages/FormRegistration/FormRegistration";
-import StartPage from "pages/StartPage/StartPage";
-import Messenger from "pages/Messenger/Messenger";
-import ProfileInfo from "pages/ProfileInfo/ProfileInfo";
-import Error404 from "pages/Services/error404";
-import ChangePassword from "pages/ChangePassword/ChangePassword";
+import FormLogin from "../pages/FormLogin/FormLogin";
+import FormRegistration from "../pages/FormRegistration/FormRegistration";
+import StartPage from "../pages/StartPage/StartPage";
+import Messenger from "../pages/Messenger/Messenger";
+import ProfileInfo from "../pages/ProfileInfo/ProfileInfo";
+import Error404 from "../pages/Services/error404";
+import ChangePassword from "../pages/ChangePassword/ChangePassword";
 import ProfileEdit from "../pages/ProfileEdit/ProfileEdit";
 
 

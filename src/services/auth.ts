@@ -1,5 +1,5 @@
-import {transformUser} from 'utils/transformUser';
-import {apiHasError} from 'utils/apiHasError';
+import {transformUser} from '../utils/transformUser';
+import {apiHasError} from '../utils/apiHasError';
 import {authApi} from "../api/authAPI";
 import {Routes} from "../routes";
 import {chatsAPI} from "../api/chatsAPI";

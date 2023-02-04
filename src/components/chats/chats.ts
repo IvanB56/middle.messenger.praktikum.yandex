@@ -1,5 +1,6 @@
-import Block from "core/Block";
+import Block from "../../core/Block";
 import {Routes} from "../../routes";
+import './chats.less';
 
 interface ChatsProps {
     chats: ChatDTO[];

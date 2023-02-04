@@ -1,8 +1,8 @@
-import Block from "core/Block";
-import Validation from "core/Validation";
-import {withRouter} from "utils/withRouter";
-import {withStore} from "utils/withStore";
-import {Router, Store} from "core";
+import Block from "../../core/Block";
+import Validation from "../../core/Validation";
+import {withRouter} from "../../utils/withRouter";
+import {withStore} from "../../utils/withStore";
+import {Router, Store} from "../../core";
 import {create} from "../../services/auth";
 
 interface FormRegistrationProps {

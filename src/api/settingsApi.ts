@@ -1,4 +1,4 @@
-import {Fetch} from "core";
+import {Fetch} from "../core";
 import {PasswordProps} from "../services/profileSettings";
 import {BASE_URL} from "./baseURL";
 

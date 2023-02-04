@@ -1,4 +1,5 @@
-import Block from "core/Block";
+import Block from "../../../core/Block";
+import './settingsButtons.less';
 
 interface SettingsButtonsProps {
     onClick?: () => void;

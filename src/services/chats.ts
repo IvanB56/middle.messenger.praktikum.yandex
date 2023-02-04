@@ -1,4 +1,4 @@
-import type {Dispatch} from 'core';
+import type {Dispatch} from '../core';
 import {chatsAPI} from "../api/chatsAPI";
 import {apiHasError} from "../utils/apiHasError";
 

@@ -1,4 +1,5 @@
-import Block from "core/Block";
+import Block from "../../../core/Block";
+import './defaultButton.less';
 
 interface DefaultButtonProps {
     text: string;

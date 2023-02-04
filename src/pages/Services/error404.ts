@@ -1,4 +1,4 @@
-import Block from "core/Block";
+import Block from "../../core/Block";
 
 export default class Error404 extends Block<object> {
     static componentName = "Error404";

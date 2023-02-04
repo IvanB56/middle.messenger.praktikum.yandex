@@ -1,4 +1,5 @@
-import Block from "core/Block";
+import Block from "../../core/Block";
+import './noSelect.less';
 
 export default class NoSelect extends Block<object> {
     static componentName = "NoSelect";

@@ -1,4 +1,4 @@
-import Block from "core/Block";
+import Block from "../../core/Block";
 
 export default class StartPage extends Block<object> {
     static componentName = "StartPage";

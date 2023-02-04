@@ -1,4 +1,4 @@
-import {Fetch} from "core";
+import {Fetch} from "../core";
 import {BASE_URL} from "./baseURL";
 
 type LoginRequestData = {

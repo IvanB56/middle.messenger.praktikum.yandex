@@ -1,6 +1,6 @@
-import Block from "core/Block";
-import {withRouter} from "utils/withRouter";
-import {withStore} from "utils/withStore";
+import Block from "../../core/Block";
+import {withRouter} from "../../utils/withRouter";
+import {withStore} from "../../utils/withStore";
 import {logout} from "../../services/auth";
 import {Router, Store} from "../../core";
 import {Routes} from "../../routes";
