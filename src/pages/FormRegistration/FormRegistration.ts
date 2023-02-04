@@ -4,6 +4,7 @@ import {withRouter} from "../../utils/withRouter";
 import {withStore} from "../../utils/withStore";
 import {Router, Store} from "../../core";
 import {create} from "../../services/auth";
+import './FormRegistration.less';
 
 interface FormRegistrationProps {
     router: Router;

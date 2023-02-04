@@ -5,6 +5,7 @@ import {Router, Store} from "../../core";
 import {Routes} from "../../routes";
 import Validation from "../../core/Validation";
 import {change} from "../../services/auth";
+import './ProfileEdit.less';
 
 interface ProfileEditProps {
     router: Router;

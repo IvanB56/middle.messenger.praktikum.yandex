@@ -5,6 +5,7 @@ import {logout} from "../../services/auth";
 import {Router, Store} from "../../core";
 import {Routes} from "../../routes";
 import {BASE_URL} from "../../api/baseURL";
+import './ProfileInfo.less';
 
 interface ProfileInfoProps {
     router: Router;

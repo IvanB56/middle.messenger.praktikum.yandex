@@ -16,6 +16,7 @@ import DefaultButton from "./components/UI/defaultButton/defaultButton";
 import Error500 from "./pages/Services/error500";
 import StartPage from "./pages/StartPage/StartPage";
 import Chats from "./components/chats/chats";
+import './styles/styles.less';
 
 registerComponent(Input)
 registerComponent(Button)
@@ -37,11 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.router = router;
     window.store = store;
     renderDOM(new StartPage({}));
-    store.on('changed', (_, nextState) => {
-        if (process.env.DEBUG) {
-            console.log(nextState);
-        }
-    });
     initRouter(router, store);
     store.dispatch(initApp);
 });

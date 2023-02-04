@@ -5,6 +5,7 @@ import {Router, Store} from "../../core";
 import {Routes} from "../../routes";
 import {changePassword, PasswordProps} from "../../services/profileSettings";
 import Validation from "../../core/Validation";
+import './ChangePassword.less';
 
 interface ChangePasswordProps {
     router: Router;
