@@ -22,7 +22,7 @@ export const createChat: DispatchStateHandler<ChatProps> = async (dispatch, _sta
     dispatch(getChat);
 }
 
-export const deleteChat: DispatchStateHandler<{ chatId: number, item: HTMLElement }> = async (_dispatch, _state, action) => {
+export const deleteChat = async (action: { chatId: number, item: HTMLElement }) => {
     const { item } = action;
     chatsAPI.deleteChat(JSON.stringify(action)).catch(err => console.log(err));
     item.remove();

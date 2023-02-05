@@ -50,8 +50,7 @@ export default class ChatItem extends Block<BlockProps | object> {
         let id: number | undefined;
         if (item.dataset.id) {
             id = parseInt(item.dataset.id);
-            await deleteChat(() => {
-            }, {} as AppState, {chatId: id, item: item});
+            await deleteChat({chatId: id, item: item});
         }
         return;
     }
