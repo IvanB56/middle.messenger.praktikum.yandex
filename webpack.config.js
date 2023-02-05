@@ -44,9 +44,9 @@ const config = {
                 use: [stylesHandler, "css-loader", "less-loader"],
             },
             {
-                test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-                type: "asset",
-            },
+                test: /\.(?:jpg|jpeg)$/i,
+                type: 'asset/resource',
+            }
         ],
     },
     resolve: {
