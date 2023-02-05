@@ -18,3 +18,4 @@ Figma</a>
 
 <h2>Sprint 4</h2>
 <p>Настройка webpack</p>
+<p>Деплой на <a href="https://messanger2.onrender.com/">render.com</a></p>
