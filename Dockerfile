@@ -1,7 +1,7 @@
 FROM node:16
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
+WORKDIR /appackage*.json ./
+RUN n
+COPY ppm install
 COPY . .
 EXPOSE 3000
 CMD npm start
