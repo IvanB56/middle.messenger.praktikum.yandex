@@ -18,4 +18,6 @@ Figma</a>
 
 <h2>Sprint 4</h2>
 <p>Настройка webpack</p>
+<p>Настройка Docker</p>
 <p>Деплой на <a href="https://messanger2.onrender.com/">render.com</a></p>
+<p>Написание тестов для Store, Router, Api, Component</p>

@@ -15,7 +15,8 @@
     "watch": "webpack --watch",
     "serve": "webpack serve",
     "precommit": "npm run lint:all",
-    "prepush": "npm run lint:all"
+    "prepush": "npm run lint:all",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -75,11 +76,6 @@
       "engines": {
         "browsers": ">= 50%"
       }
-    }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm-run-all test lint"
     }
   },
   "jest": {
