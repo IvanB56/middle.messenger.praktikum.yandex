@@ -1,5 +1,5 @@
 import EventBus from "../core/event-bus";
-import {nanoid} from "nanoid";
+import { v4 as uuidv4 } from 'uuid';
 import Handlebars from "handlebars";
 
 interface BlockMeta<P extends object> {
@@ -15,7 +15,7 @@ export default class Block<P extends object> {
         FLOW_CDU: "flow:component-did-update",
         FLOW_RENDER: "flow:render",
     } as const;
-    public id: string = nanoid(6);
+    public id: string = uuidv4();
     readonly _meta: BlockMeta<P>;
     protected _element: Nullable<HTMLElement> = null;
     protected readonly props: P;
