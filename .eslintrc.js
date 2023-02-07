@@ -2,7 +2,9 @@ module.exports = {
     "root": true,
     "env": {
         "browser": true,
-        "es2017": true
+        "es2017": true,
+        "amd": true,
+        "node": true
     },
     "extends": [
         "eslint:recommended",
