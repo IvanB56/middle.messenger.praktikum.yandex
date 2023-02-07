@@ -18,6 +18,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "lint-staged": {
+    "*.ts": ["npm run lint:ts", "git add"],
+    "*.less": ["npm run lint:css", "git add"]
+  },
   "devDependencies": {
     "@babel/core": "7.20.12",
     "@babel/preset-env": "7.20.2",
