@@ -20,4 +20,4 @@ Figma</a>
 <p>Настройка webpack</p>
 <p>Настройка Docker</p>
 <p>Деплой на <a href="https://messanger2.onrender.com/">render.com</a></p>
-<p>Написание тестов для Store, Router, Api, Component</p>
+<p>Написание тестов для Store, Router, Api, Block</p>
