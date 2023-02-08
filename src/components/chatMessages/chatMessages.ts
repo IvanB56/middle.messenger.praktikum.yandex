@@ -1,7 +1,8 @@
-import Block from "core/Block";
-import Validation from "core/Validation";
+import Block from "../../core/Block";
+import Validation from "../../core/Validation";
 import {addUserChat, removeUserChat} from "../../services/chats";
 import {sendMessage} from "../../services/messages";
+import './chatMessages.less';
 
 interface ChatProps {
     onClick?: () => void;

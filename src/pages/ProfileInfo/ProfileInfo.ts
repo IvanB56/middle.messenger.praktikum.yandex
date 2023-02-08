@@ -1,10 +1,11 @@
-import Block from "core/Block";
-import {withRouter} from "utils/withRouter";
-import {withStore} from "utils/withStore";
+import Block from "../../core/Block";
+import {withRouter} from "../../utils/withRouter";
+import {withStore} from "../../utils/withStore";
 import {logout} from "../../services/auth";
 import {Router, Store} from "../../core";
 import {Routes} from "../../routes";
 import {BASE_URL} from "../../api/baseURL";
+import './ProfileInfo.less';
 
 interface ProfileInfoProps {
     router: Router;

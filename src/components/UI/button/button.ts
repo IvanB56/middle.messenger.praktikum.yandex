@@ -1,4 +1,5 @@
-import Block from "core/Block";
+import Block from "../../../core/Block";
+import './button.less';
 
 interface ButtonProps {
     text: string;

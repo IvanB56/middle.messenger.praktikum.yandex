@@ -1,5 +1,5 @@
-import {Store, renderDOM, Router} from 'core';
-import {getScreenComponent, Screens} from 'utils/getScreenComponent';
+import {Store, renderDOM, Router} from './core';
+import {getScreenComponent, Screens} from './utils/getScreenComponent';
 
 export enum Routes {
     MAIN = '/',

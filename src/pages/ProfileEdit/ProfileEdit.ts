@@ -1,10 +1,11 @@
-import Block from "core/Block";
-import {withRouter} from "utils/withRouter";
-import {withStore} from "utils/withStore";
-import {Router, Store} from "core";
+import Block from "../../core/Block";
+import {withRouter} from "../../utils/withRouter";
+import {withStore} from "../../utils/withStore";
+import {Router, Store} from "../../core";
 import {Routes} from "../../routes";
-import Validation from "core/Validation";
+import Validation from "../../core/Validation";
 import {change} from "../../services/auth";
+import './ProfileEdit.less';
 
 interface ProfileEditProps {
     router: Router;

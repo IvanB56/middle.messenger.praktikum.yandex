@@ -1,51 +1,73 @@
 {
-  "name": "messanger",
+  "name": "my_messenger",
   "version": "1.0.0",
-  "description": "",
+  "description": "My Messenger",
   "scripts": {
-    "dev": "parcel src/index.html --no-cache --open",
-    "build": "parcel build src/index.html --no-cache",
-    "start": "npm run build && node server.js",
-    "jsLint": "eslint --fix --config=./.eslintrc.js .",
-    "styleLint": "npx stylelint --fix ./src/**/*.css"
-  },
-  "alias": {
-    "core": "./src/core",
-    "components": "./src/components",
-    "helpers": "./src/helpers",
-    "pages": "./src/pages",
-    "static": "./src/static",
-    "utils": "./src/utils"
+    "test": "jest",
+    "build": "webpack --mode=production --node-env=production",
+    "start": "npm run build:prod && node server.js",
+    "lint:ts": "eslint --fix --config=./.eslintrc.js .",
+    "lint:css": "npx stylelint --fix ./src/**/*.css",
+    "lint:all": "npm run lint:ts && npm run lint:css",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production",
+    "watch": "webpack --watch",
+    "serve": "webpack serve",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "lint-staged": {
+    "*.ts": ["npm run lint:ts", "git add"],
+    "*.less": ["npm run lint:css", "git add"]
+  },
   "devDependencies": {
-    "@anikin/parcel-transformer-handlebars": "1.0.9",
-    "@parcel/transformer-less": "2.8.2",
+    "@babel/core": "7.20.12",
+    "@babel/preset-env": "7.20.2",
+    "@babel/preset-typescript": "7.18.6",
+    "@testing-library/jest-dom": "5.16.5",
+    "@types/jest": "27.5.2",
     "@types/node": "18.11.17",
+    "@types/uuid": "9.0.0",
     "@typescript-eslint/eslint-plugin": "5.46.1",
     "@typescript-eslint/parser": "5.46.1",
-    "cssnano": "4.1.11",
+    "@webpack-cli/generators": "3.0.1",
+    "css-loader": "6.7.3",
+    "cssnano": "5.1.14",
     "eslint": "8.29.0",
     "handlebars": "4.7.7",
+    "html-webpack-plugin": "5.5.0",
+    "husky": "8.0.3",
+    "jest": "29.4.1",
+    "jest-environment-jsdom": "29.4.1",
     "less": "4.1.3",
-    "parcel": "2.8.2",
-    "parcel-plugin-handlebars-precompile": "1.0.2",
-    "parcel-plugin-static-files-copy": "2.6.0",
+    "less-loader": "11.1.0",
+    "mini-css-extract-plugin": "2.6.1",
+    "msw": "1.0.0",
     "postcss-less": "6.0.0",
+    "prettier": "2.7.1",
+    "style-loader": "3.3.1",
     "stylelint": "14.16.0",
     "stylelint-config-prettier": "9.0.4",
     "stylelint-config-standard": "29.0.0",
-    "typescript": "4.9.4"
+    "ts-loader": "9.4.2",
+    "typescript": "4.9.4",
+    "webpack": "5.75.0",
+    "webpack-cli": "5.0.1",
+    "webpack-dev-server": "4.11.1"
   },
   "engines": {
     "node": ">=12.0.0",
     "npm": "8.11.0"
   },
   "dependencies": {
+    "@testing-library/dom": "8.20.0",
+    "babel-jest": "29.4.1",
+    "dotenv": "16.0.3",
     "express": "4.18.2",
-    "nanoid": "4.0.0"
+    "nanoid": "4.0.0",
+    "uuid": "9.0.0"
   },
   "staticFiles": {
     "staticPath": [
@@ -59,6 +81,26 @@
       "engines": {
         "browsers": ">= 50%"
       }
+    }
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFiles": [
+      "<rootDir>/src/tests/setupEnv.ts"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/tests/setup.ts"
+    ],
+    "moduleNameMapper": {
+      "\\.(css)$": "identity-obj-proxy",
+      "^core(.*)$": "<rootDir>/src/core$1",
+      "^components(.*)$": "<rootDir>/src/components$1",
+      "^utils(.*)$": "<rootDir>/src/utils$1",
+      "^services(.*)$": "<rootDir>/src/services$1",
+      "^api(.*)$": "<rootDir>/src/api$1",
+      "^store(.*)$": "<rootDir>/src/store$1",
+      "^pages(.*)$": "<rootDir>/src/pages$1",
+      "^tests(.*)$": "<rootDir>/src/tests$1"
     }
   }
 }

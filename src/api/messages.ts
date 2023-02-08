@@ -1,4 +1,4 @@
-import Fetch from "core/Fetch";
+import Fetch from "../core/Fetch";
 import {BASE_URL} from "./baseURL";
 
 export const messagesAPI = {

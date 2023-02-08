@@ -1,6 +1,7 @@
-import Block from "core/Block"
-import Validation from "core/Validation";
+import Block from "../../../core/Block";
+import Validation from "../../../core/Validation";
 import {changeAvatar} from "../../../services/auth";
+import './input.less';
 
 interface InputProps {
     [keys: string]: string;

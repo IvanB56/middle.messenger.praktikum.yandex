@@ -1,9 +1,10 @@
-import Block from "core/Block";
-import {withRouter} from "utils/withRouter";
-import {withStore} from "utils/withStore";
-import {Router, Store} from "core";
+import Block from "../../core/Block";
+import {withRouter} from "../../utils/withRouter";
+import {withStore} from "../../utils/withStore";
+import {Router, Store} from "../../core";
 import {createChat} from "../../services/chats";
 import {BASE_URL} from "../../api/baseURL";
+import './Messenger.less';
 
 interface MessengerProps {
     router: Router;

@@ -1,10 +1,11 @@
-import Block from "core/Block";
+import Block from "../../core/Block";
+import './messageItem.less';
 
 interface MessageProps {
     [key: string]: MessageDTO
 }
 
-export default class MessageItem extends Block<MessageProps> {
+export default class MessageItem extends Block<Partial<MessageProps>> {
     static componentName = "MessageItem";
 
     constructor(props: MessageProps) {

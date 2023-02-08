@@ -1,9 +1,10 @@
-import Validation from "core/Validation";
-import {withStore} from "utils/withStore";
-import {withRouter} from "utils/withRouter";
-import {Router, Store, Block} from "core";
+import Validation from "../../core/Validation";
+import {withStore} from "../../utils/withStore";
+import {withRouter} from "../../utils/withRouter";
+import {Router, Store, Block} from "../../core";
 import {Routes} from "../../routes";
 import {login} from "../../services/auth";
+import './FormLogin.less';
 
 interface FormLoginProps {
     router: Router;

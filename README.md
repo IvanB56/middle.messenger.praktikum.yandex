@@ -13,4 +13,11 @@ Figma</a>
 <p>Рендер страниц происходит на стороне клиента</p>
 
 <h2>Sprint 3</h2>
-<p>Добавлен роутинг (в работе)</p>
+<p>Добавлен роутинг</p>
+<p>Рендер страницы на стороне клиента</p>
+
+<h2>Sprint 4</h2>
+<p>Настройка webpack</p>
+<p>Настройка Docker</p>
+<p>Деплой на <a href="https://messanger2.onrender.com/">render.com</a></p>
+<p>Написание тестов для Store, Router, Api, Block</p>

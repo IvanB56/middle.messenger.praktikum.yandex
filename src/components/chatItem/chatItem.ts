@@ -1,7 +1,8 @@
-import Block from "core/Block";
+import Block from "../../core/Block";
 import {getMessages} from "../../services/messages";
 import {deleteChat, getChatAvatar} from "../../services/chats";
 import {BASE_URL} from "../../api/baseURL";
+import './chatItem.less';
 
 interface BlockProps {
     profile: chatItemProps,
@@ -49,8 +50,7 @@ export default class ChatItem extends Block<BlockProps | object> {
         let id: number | undefined;
         if (item.dataset.id) {
             id = parseInt(item.dataset.id);
-            await deleteChat(() => {
-            }, {} as AppState, {chatId: id, item: item});
+            await deleteChat({chatId: id, item: item});
         }
         return;
     }

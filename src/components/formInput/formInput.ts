@@ -1,4 +1,5 @@
-import Block from "core/Block";
+import Block from "../../core/Block";
+import './formInput.less';
 
 interface FormInputProps {
     [key: string]: string
